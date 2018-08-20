@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
+    <AssemblyName>Transcoma</AssemblyName>
+    <RootNamespace>Transcoma</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,11 +11,48 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.ViewCompilation" Version="2.0.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\jquery\dist\jquery-1.10.2.intellisense.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery-1.10.2.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery-1.10.2.min.map" />
+    <None Include="wwwroot\lib\jquery\dist\jquery-ui-1.10.3.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery-ui-1.10.3.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\knockout-2.3.0.debug.js" />
+    <None Include="wwwroot\lib\jquery\dist\knockout-2.3.0.js" />
+    <None Include="wwwroot\lib\jquery\dist\modernizr-2.6.2.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\lib\jquery-validation\dist\jquery.validate-vsdoc.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery-validation\dist\jquery.validate.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery-validation\dist\jquery.validate.unobtrusive.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery-validation\dist\jquery.validate.unobtrusive.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

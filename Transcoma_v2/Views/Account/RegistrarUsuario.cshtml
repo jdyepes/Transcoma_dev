@@ -1,0 +1,77 @@
+﻿@model Transcoma.Models.Account.Usuario
+
+@{
+    ViewData["Title"] = "RegistrarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registrar Usuario</h2>
+
+@*<h4>Usuario</h4>*@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RegistrarUsuario">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>           
+            <div class="form-group">
+                <label for="">Rol</label>
+                <select class="form-control" id="roles" name="roles" value="roles">
+                    <option></option>
+                    <option>Administrador</option>
+                    <option>Cliente</option>
+
+                </select>
+                @* Escribir los errores de validación del correo electrónico en la página *@
+                @Html.ValidationMessage("_rolUsuario")
+            </div>
+            <div class="form-group">
+                <label asp-for="_primerNombre" class="control-label">Primer Nombre</label>
+                <input asp-for="_primerNombre" class="form-control" />
+                <span asp-validation-for="_primerNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_segundoNombre" class="control-label">Segundo Nombre</label>
+                <input asp-for="_segundoNombre" class="form-control" />
+                <span asp-validation-for="_segundoNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_primerApellido" class="control-label">Primer Apellido</label>
+                <input asp-for="_primerApellido" class="form-control" />
+                <span asp-validation-for="_primerApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_segundoApellido" class="control-label">Segundo Apellido</label>
+                <input asp-for="_segundoApellido" class="form-control" />
+                <span asp-validation-for="_segundoApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_nombreUsuario" class="control-label">Usuario</label>
+                <input asp-for="_nombreUsuario" class="form-control" />
+                <span asp-validation-for="_nombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_correo" class="control-label">Correo Electronico</label>
+                <input asp-for="_correo" class="form-control" />
+                <span asp-validation-for="_correo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_password" class="control-label">Contraseña</label>
+                <input asp-for="_password" class="form-control" />
+                <span asp-validation-for="_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="_confirmarPassword" class="control-label">Confirmar Contraseña</label>
+                <input asp-for="_confirmarPassword" class="form-control" />
+                <span asp-validation-for="_confirmarPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index">Volver al menu principal</a>
+</div>
+
