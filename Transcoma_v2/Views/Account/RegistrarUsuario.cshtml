@@ -77,7 +77,7 @@
             </div>*@
 
         <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:300px;">
-            <form asp-action="RegistrarUsuario" method="post">
+            <form asp-action="IniciarSesion" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="_nombreUsuario" class="control-label">Nombre de Usuario</label>
@@ -88,8 +88,9 @@
                     <label asp-for="_rolUsuario">Rol</label>
                     <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles" required>
                         <option></option>
-                        <option>@Model._rolUsuario</option>
-                        @*<option>Cliente</option>*@
+                        <option>Administrador</option>
+                        @*<option>@Model._rolUsuario</option>*@
+                        <option>Cliente</option>
 
                     </select>
                 </div>
