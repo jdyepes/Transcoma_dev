@@ -3,6 +3,12 @@
 @section Scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js">
+    </script>
+    @*<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js">
+    </script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js">
+    </script>*@
 }
 
 @{
@@ -42,45 +48,45 @@
                     <select class="form-control" id="roles" name="roles" value="roles">
                         <option></option>
                         <option>@Model._rolUsuario</option>*@
-                        @*  <option>Cliente</option>
+        @*  <option>Cliente</option>
 
-                    @*</select>
-                </div>*@
-                @*<div class="form-group">
-                    <label asp-for="_primerNombre" class="control-label">Primer Nombre</label>
-                    <input asp-for="_primerNombre" class="form-control" />
-                    <span asp-validation-for="_primerNombre" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="_segundoNombre" class="control-label">Segundo Nombre</label>
-                    <input asp-for="_segundoNombre" class="form-control" />
-                    <span asp-validation-for="_segundoNombre" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="_primerApellido" class="control-label">Primer Apellido</label>
-                    <input asp-for="_primerApellido" class="form-control" />
-                    <span asp-validation-for="_primerApellido" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="_segundoApellido" class="control-label">Segundo Apellido</label>
-                    <input asp-for="_segundoApellido" class="form-control" />
-                    <span asp-validation-for="_segundoApellido" class="text-danger"></span>
-                </div>
+                @*</select>
+            </div>*@
+        @*<div class="form-group">
+                        <label asp-for="_primerNombre" class="control-label">Primer Nombre</label>
+                        <input asp-for="_primerNombre" class="form-control" />
+                        <span asp-validation-for="_primerNombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="_segundoNombre" class="control-label">Segundo Nombre</label>
+                        <input asp-for="_segundoNombre" class="form-control" />
+                        <span asp-validation-for="_segundoNombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="_primerApellido" class="control-label">Primer Apellido</label>
+                        <input asp-for="_primerApellido" class="form-control" />
+                        <span asp-validation-for="_primerApellido" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="_segundoApellido" class="control-label">Segundo Apellido</label>
+                        <input asp-for="_segundoApellido" class="form-control" />
+                        <span asp-validation-for="_segundoApellido" class="text-danger"></span>
+                    </div>
 
-            </form>
-        </div>*@
+                </form>
+            </div>*@
 
         <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:300px;">
             <form asp-action="RegistrarUsuario" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="_nombreUsuario" class="control-label">Nombre de Usuario</label>
-                    <input asp-for="_nombreUsuario" class="form-control" />
-                    <span asp-validation-for="_nombreUsuario" class="text-danger"></span>
+                    <input asp-for="_nombreUsuario" class="form-control" required/>
+                    <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group"> 
                     <label asp-for="_rolUsuario">Rol</label>
-                    <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles">
+                    <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles" required>
                         <option></option>
                         <option>@Model._rolUsuario</option>
                         @*<option>Cliente</option>*@
@@ -89,7 +95,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="_organizacion" class="control-label">Organizacion/Empresa</label>
-                    <input asp-for="_organizacion" class="form-control" type="text" />
+                    <input asp-for="_organizacion" class="form-control" type="text" required/>
                     <span asp-validation-for="_organizacion" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -99,27 +105,27 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="_password" class="control-label">Contraseña</label>
-                    <input asp-for="_password" class="form-control" />
+                    <input asp-for="_password" class="form-control" type="password" required/>
                     <span asp-validation-for="_password" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="_confirmarPassword" class="control-label">Confirmar Contraseña</label>
-                    <input asp-for="_confirmarPassword" class="form-control" />
+                    <input asp-for="_confirmarPassword" class="form-control" type="password" required/>
                     <span asp-validation-for="_confirmarPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <a asp-controller="Home" asp-action="Index" style="margin-right:10px; margin-left:20px;">Volver al menu principal</a>
                     @*   <input type="submit" value="Enviar" class="btn btn-primary" style="width:10%;  margin-right:10px; margin-left:100px; " />*@
-                    <button type="submit" value="Enviar" class="btn btn-primary" style="width:auto;  margin-right:0px; margin-left:150px; ">Enviar</button>
+                    <button type="submit" value="Enviar" class="btn btn-primary" style="width:auto;  margin-right:0px; margin-left:150px; ">Registrarse</button>
                 </div>
             </form>
         </div>
-        </div>
-        @*<div class="col-md-4" style="width:40%; float:right; margin-right:0px; margin-left:-20px;">  
+    </div>
+    @*<div class="col-md-4" style="width:40%; float:right; margin-right:0px; margin-left:-20px;">
 
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.262221946548!2d2.1386219511656464!3d41.32491100772688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49f5e7da54fdd%3A0x2a8233057e50dd6e!2sTranscoma+Grupo+Empresarial+S.L.!5e0!3m2!1ses!2ses!4v1496408082115" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 
         </div>*@
-         
- 
+
+
 </fieldset>
