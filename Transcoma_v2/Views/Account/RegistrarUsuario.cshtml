@@ -77,12 +77,14 @@
             </div>*@
 
         <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:300px;">
-            <form asp-action="IniciarSesion" method="post">
+            <form asp-action="/" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="_nombreUsuario" class="control-label">Nombre de Usuario</label>
-                    <input asp-for="_nombreUsuario" class="form-control" required/>
-                    <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>
+                    <label asp-for="_nombreUsuario" class="control-label"> Nombre de Usuario</label>
+                    <input asp-for="_nombreUsuario" class="form-control" name="usuario" required placeholder="Indique su usuario"/>
+                    <span asp-validation-for="_organizacion" class="text-danger"></span>
+
+                    @*     <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>*@
                 </div>
                 <div class="form-group"> 
                     <label asp-for="_rolUsuario">Rol</label>
@@ -96,22 +98,23 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="_organizacion" class="control-label">Organizacion/Empresa</label>
-                    <input asp-for="_organizacion" class="form-control" type="text" required/>
+                    <input asp-for="_organizacion" class="form-control" type="text" required name ="organizacion" placeholder="Indique Organizacion o Empresa"/>
                     <span asp-validation-for="_organizacion" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="_correo" class="control-label">Correo Electronico</label>
-                    <input asp-for="_correo" class="form-control" type="email" required />
+                    <input asp-for="_correo" class="form-control" type="email" required name ="correo" placeholder="ejemplo@mail.com"  pattern="^[\w._%-]+[\w.-]+\.[a-zA-Z]{2,4}$" />
                     <span asp-validation-for="_correo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="_password" class="control-label">Contraseña</label>
-                    <input asp-for="_password" class="form-control" type="password" required/>
+                    <input asp-for="_password" class="form-control" type="password" required name ="password" minlength="6" placeholder="Minimo 6 caracteres" pattern="^[\w._%-]+[\w.-]+\.[a-zA-Z]{2,4}$"/>
+
                     <span asp-validation-for="_password" class="text-danger"></span>
-                </div>
+               </div>
                 <div class="form-group">
                     <label asp-for="_confirmarPassword" class="control-label">Confirmar Contraseña</label>
-                    <input asp-for="_confirmarPassword" class="form-control" type="password" required/>
+                    <input asp-for="_confirmarPassword" class="form-control" type="password" minlength="6"/>
                     <span asp-validation-for="_confirmarPassword" class="text-danger"></span>
                 </div>
                 <div class="form-group">
