@@ -9,7 +9,7 @@ namespace Transcoma_v2.Controllers
 {
     public class AccountController : Controller
     {
-        public ActionResult RegistrarUsuario()
+        public IActionResult RegistrarUsuario()
         {
             //Usuario obj = new Usuario();
             ////  obj._rolUsuario = "Administrador";
@@ -21,17 +21,17 @@ namespace Transcoma_v2.Controllers
             return View();
         }
 
-        public ActionResult IniciarSesion()
+        public IActionResult IniciarSesion()
         {
-            Usuario obj = new Usuario();
-            //  obj._rolUsuario = "Administrador";
-            obj._nombreUsuario = Request.Form["usuario"].ToString();
-            obj._rolUsuario = Request.Form["roles"].ToString();
-            obj._organizacion = Request.Form["organizacion"].ToString();
-            obj._correo = Request.Form["correo"].ToString();
-            obj._password = Request.Form["password"].ToString();
-            return View(obj);
-          //  return View();
+            //Usuario obj = new Usuario();
+            ////  obj._rolUsuario = "Administrador";
+            //obj._nombreUsuario = Request.Form["usuario"].ToString();
+            //obj._rolUsuario = Request.Form["roles"].ToString();
+            //obj._organizacion = Request.Form["organizacion"].ToString();
+            //obj._correo = Request.Form["correo"].ToString();
+            //obj._password = Request.Form["password"].ToString();
+            //return View(obj);
+            return View();
         }
-    }
+    }   /////////////   pendiente por arreglar el login-luego el layaout del tablero principal-modificar controlador
 }
