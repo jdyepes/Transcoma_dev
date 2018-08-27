@@ -76,19 +76,19 @@
                 </form>
             </div>*@
 
-        <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:300px;">
-            <form asp-action="/" method="post">
+        <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:30%;">
+            <form asp-action="~/Dashboard/Menu" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="_nombreUsuario" class="control-label"> Nombre de Usuario</label>
                     <input asp-for="_nombreUsuario" class="form-control" name="usuario" required placeholder="Indique su usuario"/>
-                    <span asp-validation-for="_organizacion" class="text-danger"></span>
+                    <span asp-validation-for="_nombreUsuario" class="text-danger"></span>
 
                     @*     <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>*@
                 </div>
                 <div class="form-group"> 
                     <label asp-for="_rolUsuario">Rol</label>
-                    <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles" required>
+                    <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles" required placeholder="Seleccione un rol">
                         <option></option>
                         <option>Administrador</option>
                         @*<option>@Model._rolUsuario</option>*@
@@ -103,12 +103,12 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="_correo" class="control-label">Correo Electronico</label>
-                    <input asp-for="_correo" class="form-control" type="email" required name ="correo" placeholder="ejemplo@mail.com"  pattern="^[\w._%-]+[\w.-]+\.[a-zA-Z]{2,4}$" />
+                    <input asp-for="_correo" class="form-control" type="email" required name ="correo" placeholder="ejemplo@mail.com"  />
                     <span asp-validation-for="_correo" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="_password" class="control-label">Contraseña</label>
-                    <input asp-for="_password" class="form-control" type="password" required name ="password" minlength="6" placeholder="Minimo 6 caracteres" pattern="^[\w._%-]+[\w.-]+\.[a-zA-Z]{2,4}$"/>
+                    <input asp-for="_password" class="form-control" type="password" required name ="password" minlength="6" placeholder="Minimo 6 caracteres"/>
 
                     <span asp-validation-for="_password" class="text-danger"></span>
                </div>
@@ -120,7 +120,7 @@
                 <div class="form-group">
                     <a asp-controller="Home" asp-action="Index" style="margin-right:10px; margin-left:20px;">Volver al menu principal</a>
                     @*   <input type="submit" value="Enviar" class="btn btn-primary" style="width:10%;  margin-right:10px; margin-left:100px; " />*@
-                    <button type="submit" value="Enviar" class="btn btn-primary" style="width:auto;  margin-right:0px; margin-left:150px; ">Registrarse</button>
+                    <button type="submit" value="Registrar" class="btn btn-primary" style="width:auto;  margin-right:0px; margin-left:150px; ">Registrarse</button>
                 </div>
             </form>
         </div>
