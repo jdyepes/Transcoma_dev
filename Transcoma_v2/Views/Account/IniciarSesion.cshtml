@@ -1,7 +1,38 @@
-﻿
+﻿@model Transcoma.Models.Account.Usuario
+
 @{
     ViewData["Title"] = "Iniciar Sesion";
 }
 
 <h2>Iniciar Sesion</h2>
+<fieldset>
+    <div class="row">
+        <div class="col-md-4" style="width:50%;  margin-right:auto; margin-left:30%; margin-top:4%; margin-bottom:8%">
+            <form asp-controller="Dashboard" asp-action="Menu" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="_nombreUsuario" class="control-label"> Nombre de Usuario</label>
+                    <input asp-for="_nombreUsuario" class="form-control" name="usuario" required placeholder="Indique su usuario" />
+                    <span asp-validation-for="_organizacion" class="text-danger"></span>
 
+                    @*     <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>*@
+                </div>
+               
+                <div class="form-group">
+                    <label asp-for="_password" class="control-label">Contraseña</label>
+                    <input asp-for="_password" class="form-control" type="password" required name="password" minlength="6" placeholder="Minimo 6 caracteres" />
+
+                    <span asp-validation-for="_password" class="text-danger"></span>
+                </div>
+             
+                <div class="form-group">
+                    Recordarme: <input asp-for="_nombreUsuario" type="checkbox" /><br />
+                    <a asp-controller="Home" asp-action="Index" style="margin-right:10px; margin-left:20px;">Volver al menu principal</a>
+                    @*   <input type="submit" value="Enviar" class="btn btn-primary" style="width:10%;  margin-right:10px; margin-left:100px; " />*@
+                    <button type="submit" value="Enviar" class="btn btn-primary" style="width:auto;  margin-right:0px; margin-left:150px; ">Acceder</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</fieldset>
