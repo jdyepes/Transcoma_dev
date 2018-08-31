@@ -11,15 +11,28 @@ namespace Transcoma_v2.Controllers
     {
         public IActionResult Menu()
         {
-            Usuario obj = new Usuario();
-            //  obj._rolUsuario = "Administrador";
-            obj._nombreUsuario = Request.Form["usuario"].ToString();
-            obj._rolUsuario = Request.Form["roles"].ToString();
-            obj._organizacion = Request.Form["organizacion"].ToString();
-            obj._correo = Request.Form["correo"].ToString();
-            obj._password = Request.Form["password"].ToString();
-            return View(obj);
-            //return View();
+            try
+            {
+                Usuario obj = new Usuario();
+                //  obj._rolUsuario = "Administrador";
+                obj._nombreUsuario = Request.Form["usuario"].ToString();
+                obj._rolUsuario = Request.Form["roles"].ToString();
+                obj._organizacion = Request.Form["organizacion"].ToString();
+                obj._correo = Request.Form["correo"].ToString();
+                obj._password = Request.Form["password"].ToString();
+                return View(obj);
+                //return View();
+            }
+            catch (InvalidOperationException e)
+            {
+                return View("No se pudo procesar la solicitud, no puede haber campos vacios. La excepcion es: "+e);
+
+            }
+            catch (Exception e)
+            {
+                return View(e);
+
+            }
         }
     }
 }
