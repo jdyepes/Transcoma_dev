@@ -15,6 +15,20 @@
     ViewData["Title"] = "RegistrarUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
+    var listado = new List<SelectListItem>()
+    {
+        new SelectListItem()
+        {
+            Text = "Administrador",
+            Value ="1"
+        },
+         new SelectListItem()
+        {
+            Text = "Usuario",
+            Value ="2",
+        }
+    };
+
     //// Inicializar variables de página generales
     //var nombre = "";
     //var apellido = "";
@@ -40,42 +54,6 @@
 <hr />
 <fieldset>
     <div class="row">
-        @*<div class="col-md-4" style="width:40%; float:left;margin-left: 120px; margin-right:0px;">
-            <form asp-action="RegistrarUsuario" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label for="">Rol</label>
-                    <select class="form-control" id="roles" name="roles" value="roles">
-                        <option></option>
-                        <option>@Model._rolUsuario</option>*@
-        @*  <option>Cliente</option>
-
-                @*</select>
-            </div>*@
-        @*<div class="form-group">
-                        <label asp-for="_primerNombre" class="control-label">Primer Nombre</label>
-                        <input asp-for="_primerNombre" class="form-control" />
-                        <span asp-validation-for="_primerNombre" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="_segundoNombre" class="control-label">Segundo Nombre</label>
-                        <input asp-for="_segundoNombre" class="form-control" />
-                        <span asp-validation-for="_segundoNombre" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="_primerApellido" class="control-label">Primer Apellido</label>
-                        <input asp-for="_primerApellido" class="form-control" />
-                        <span asp-validation-for="_primerApellido" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="_segundoApellido" class="control-label">Segundo Apellido</label>
-                        <input asp-for="_segundoApellido" class="form-control" />
-                        <span asp-validation-for="_segundoApellido" class="text-danger"></span>
-                    </div>
-
-                </form>
-            </div>*@
-
         <div class="col-md-4" style="width:60%; float:inherit; margin-right:auto; margin-left:30%;">
             @*<form asp-action="IniciarSesion" method="post">*@
             <form asp-controller="Dashboard" asp-action="Menu" method="post">
@@ -88,14 +66,8 @@
                     @*     <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>*@
                 </div>
                 <div class="form-group">
-                    <label asp-for="_rolUsuario">Rol</label>
-                    <select class="form-control" for="_rolUsuario" id="roles" name="roles" value="roles" required placeholder="Seleccione un rol">
-                        <option></option>
-                        <option>Administrador</option>
-                        @*<option>@Model._rolUsuario</option>*@
-                        <option>Cliente</option>
-
-                    </select>
+                    <label asp-for="_rolUsuario">Rol</label>                   
+                    @Html.DropDownList("roles", listado, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
                     <label asp-for="_organizacion" class="control-label">Organizacion/Empresa</label>
