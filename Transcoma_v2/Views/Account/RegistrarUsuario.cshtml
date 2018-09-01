@@ -17,15 +17,20 @@
 
     var listado = new List<SelectListItem>()
     {
+         new SelectListItem()
+        {
+            Text = "Indique un rol",
+            Value ="1"
+        },
         new SelectListItem()
         {
             Text = "Administrador",
-            Value ="1"
+            Value ="2"
         },
          new SelectListItem()
         {
             Text = "Usuario",
-            Value ="2",
+            Value ="3",
         }
     };
 
@@ -66,8 +71,9 @@
                     @*     <span asp-validation-for="_nombreUsuario" class="text-danger" ></span>*@
                 </div>
                 <div class="form-group">
-                    <label asp-for="_rolUsuario">Rol</label>                   
+                    <label asp-for="_rolUsuario">Rol</label>
                     @Html.DropDownList("roles", listado, new { @class = "form-control" })
+                    <span asp-validation-for="_rolUsuario" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="_organizacion" class="control-label">Organizacion/Empresa</label>
