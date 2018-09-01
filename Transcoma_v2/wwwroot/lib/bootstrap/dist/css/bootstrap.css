@@ -6768,12 +6768,13 @@ footer {
     line-height: 12px;
     font-weight: 300;
     text-transform: none;
-    vertical-align: middle;
+    vertical-align: baseline;
     font-style: normal;
-    height: 150px;
+    height: 100px;
     width: 100%;
     text-align: center;
     clear: both;
+    bottom:0;
     position: absolute;
     right: 0;
     left: 0;
