@@ -37,7 +37,7 @@
                 </ul>
                 @* Habilitando seccion superior derecha *@
                 <ul class="nav navbar-nav navbar-right">
-                    <li ><label style=" font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 14px;font-weight: normal; color:white;margin-right:20px; margin-left:2.5%; margin-top:15px; margin-bottom:auto">Usuario:<b>@Model._nombreUsuario</b></label></li>
+                    <li><label style=" font-family: Helvetica Neue, Helvetica, Arial, sans-serif;font-size: 14px;font-weight: normal; color:white;margin-right:20px; margin-left:2.5%; margin-top:15px; margin-bottom:auto">Usuario:<b>@Model._nombreUsuario</b></label></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Salir</a></li>
 
                 </ul>
@@ -53,16 +53,7 @@
                     <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
                 </p>
             </footer>*@
-        <footer>
-            @*<div class="content-wrapper">
-                <div class="float-left">*@
-            <p>
-                &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
-                <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
-            </p>
-            @*</div>
-                </div>*@
-        </footer>
+
     </div>
 
     <environment include="Development">
@@ -87,5 +78,15 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+    <footer>
+        @*<div class="content-wrapper">
+            <div class="float-left">*@
+        <p>
+            &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
+            <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
+        </p>
+        @*</div>
+            </div>*@
+    </footer>
 </body>
 </html>
