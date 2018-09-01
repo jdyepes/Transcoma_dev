@@ -1,17 +1,48 @@
 ﻿@model Transcoma.Models.Account.Usuario
 @{
     ViewData["Title"] = "Iniciar Sesion";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
 <!DOCTYPE html>
 <body>
     <div>
-        <h3>Bienvenido! @Model._nombreUsuario</h3>
-        <label>
+        <h3>Rol: @Model._rolUsuario</h3>
+       <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Entradas</th>
+                   <th>Salidas</th>
+                   <th>Existencias</th>
+                   <th>Pedidos</th>
+               </tr>
+           </thead>
+           <tbody>
+               @{ 
+                   var claseFila = string.Empty;
+                   if(!claseFila.Equals(""))
+                   {
+                       claseFila = "danger";
+                   }
+               }
+               <tr class="@claseFila">
+                   <td>
+                      La entrada es
+                   </td>
+                   <td>
+                       11
+                   </td>
+                   <td>
+                       11
+                   </td>
+                   <td>
+                       11
+                   </td>
 
-            Iniciar Sesion
-        </label>
+               </tr>
+           </tbody>
+
+       </table>
     </div>
 </body>
 
