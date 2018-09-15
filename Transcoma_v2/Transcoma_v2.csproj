@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\images\Transcoma_Article.jpg" />
+    <Content Remove="wwwroot\images\Transcoma_Article_.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="jQuery.Validation" Version="1.17.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.3" />
