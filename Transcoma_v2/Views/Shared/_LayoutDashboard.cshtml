@@ -47,12 +47,12 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        @*<footer>
-                <p>
-                    &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
-                    <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
-                </p>
-            </footer>*@
+        <footer>
+            <p>
+                &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
+                <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
+            </p>
+        </footer>
 
     </div>
 
@@ -78,15 +78,6 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
-    <footer>
-        @*<div class="content-wrapper">
-            <div class="float-left">*@
-        <p>
-            &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
-            <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
-        </p>
-        @*</div>
-            </div>*@
-    </footer>
+
 </body>
 </html>
