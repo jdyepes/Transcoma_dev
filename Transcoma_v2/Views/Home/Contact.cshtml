@@ -1,17 +1,48 @@
 ﻿@{
-    ViewData["Title"] = "Contact";
+    ViewData["Title"] = "Contacto";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<div class="col-md-6">
+    <section class="contact">
+        <header>
+            <h4>Telefonos:</h4>
+        </header>
+        <p>
+            <span class="label">Ph.:</span>
+            <span>(34) 93 262 41 10</span>
+        </p>
+        <p>
+            <span class="label">Fax.:</span>
+            <span>(34) 93 228 94 45</span>
+        </p>
+    </section>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+    <section class="contact">
+        <header>
+            <h4>Email:</h4>
+        </header>
+        <p>
+            <span class="label">info:</span>
+            <span><a href="mailto:Support@example.com">info@grupotranscoma.com</a></span>
+        </p>
+    </section>
 
-<address>
-    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <section class="contact">
+        <header>
+            <h4>Direccion:</h4>
+        </header>
+        <p>
+            EDIFICI NORAI
+            Carrer de L'Atlàntic, 112-120
+            <br />
+            (Z.A.L.) Barcelona 08040
+        </p>
+    </section>
+    @*<address>
+        <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>*@
+</div>
+<div class="col-md-5" style="margin-bottom:10%">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.262221946548!2d2.1386219511656464!3d41.32491100772688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a49f5e7da54fdd%3A0x2a8233057e50dd6e!2sTranscoma+Grupo+Empresarial+S.L.!5e0!3m2!1ses!2ses!4v1496408082115" width="450" height="450" frameborder="0" style="border: 0px; pointer-events: none;" allowfullscreen=""></iframe>
+</div>
