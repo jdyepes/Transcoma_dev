@@ -4,46 +4,197 @@
     Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
-<!DOCTYPE html>
-<body>
-    <div>
-        <h3>Rol: @Model._rolUsuario</h3>
-       <table class="table table-striped">
-           <thead>
-               <tr>
-                   <th>Entradas</th>
-                   <th>Salidas</th>
-                   <th>Existencias</th>
-                   <th>Pedidos</th>
-               </tr>
-           </thead>
-           <tbody>
-               @{ 
-                   var claseFila = string.Empty;
-                   if(!claseFila.Equals(""))
-                   {
-                       claseFila = "danger";
-                   }
-               }
-               <tr class="@claseFila">
-                   <td>
-                      La entrada es
-                   </td>
-                   <td>
-                       11
-                   </td>
-                   <td>
-                       11
-                   </td>
-                   <td>
-                       11
-                   </td>
+<link rel="stylesheet" href="~/StyleSheet.css" >
+<h3>Rol: @Model._rolUsuario</h3>
 
-               </tr>
-           </tbody>
+<div class="row">
+    <div class="container">
+        <ul class="tab">
+            <li>
+                <input type="radio" name="tab" id="tab1" checked class="tabs" />
+                <label for="tab1">Entradas</label>
+                <div class="tab-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Entrada</th>
+                                <th>Fecha</th>
+                                <th>Articulo</th>
+                                <th>Descripcion</th>
+                                <th>Lote</th>
+                                <th>Calidad</th>
+                                <th>Unidades</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                @* var claseFila = () ? "danger" : string.Empty;*@
+                                var claseFila = string.Empty;
+                                if (!claseFila.Equals(""))
+                                {
+                                    claseFila = "danger";
+                                }
+                            }
+                            <tr class="@claseFila">
+                                <td>
+                                    La entrada es
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
 
-       </table>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="tab" id="tab2" class="tabs" />
+                <label for="tab2">Salidas</label>
+                <div class="tab-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Fecha</th>
+                                <th>Articulo</th>
+                                <th>Descripcion</th>
+                                <th>Lote</th>              
+                                <th>Calidad</th>
+                                <th>N°Serie</th>
+                                <th>Unidades</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                @* var claseFila = () ? "danger" : string.Empty;*@
+                                var claseFila2 = string.Empty;
+                                if (!claseFila2.Equals(""))
+                                {
+                                    claseFila2 = "danger";
+                                }
+                            }
+                            <tr class="@claseFila2">
+                                <td>
+                                    La entrada es
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="tab" id="tab3" class="tabs" />
+                <label for="tab3">Existencias</label>
+                <div class="tab-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Articulo</th>
+                                <th>Descripcion</th>
+                                <th>Lote</th>
+                                <th>Calidad</th>
+                                <th>Total</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                @* var claseFila = () ? "danger" : string.Empty;*@
+                                var claseFila3 = string.Empty;
+                                if (!claseFila3.Equals(""))
+                                {
+                                    claseFila3 = "danger";
+                                }
+                            }
+                            <tr class="@claseFila3">
+                                <td>
+                                    La entrada es
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </li>
+            <li>
+                <input type="radio" name="tab" id="tab4" class="tabs" />
+                <label for="tab4">Pedidos</label>
+                <div class="tab-content">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Entregar</th>
+                                <th>Pedido</th>
+                                <th>Estado</th>
+                                <th>Entregado</th>
+                                <th>Carga</th>
+                                <th>Destinatario</th>
+                                <th>Poblacion</th>
+                                <th>Direccion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                @* var claseFila = () ? "danger" : string.Empty;*@
+                                var claseFila4 = string.Empty;
+                                if (!claseFila4.Equals(""))
+                                {
+                                    claseFila4 = "danger";
+                                }
+                            }
+                            <tr class="@claseFila4">
+                                <td>
+                                    La entrada es
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+                                <td>
+                                    11
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </li>
+        </ul>
     </div>
-</body>
+ </div>
+
+
 
 
