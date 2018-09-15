@@ -6756,29 +6756,81 @@ button.close {
   }
 }
 
+
+
+/*.float-left {
+    float: left;
+}
+
+    .float-left img {
+        float: left;
+        margin-left: -180px;
+    }
+
+footer .float-left,
+footer .float-right {
+    float: none;
+}
+
+footer {
+    text-align: center;
+    height: auto;
+    padding: 10px 0;
+}
+
+    footer p {
+        margin: 0;
+    }*/
 /*# sourceMappingURL=bootstrap.css.map */
 
 /*Seccion del footer*/
 footer {
-    clear: both;
+    /*/*clear: both;
     color: #777;
     background-color: #25272a;
     font-size: 12px;
-    letter-spacing: 0px;
+   // letter-spacing: 0px;
     line-height: 12px;
     font-weight: 300;
-    text-transform: none;
-    vertical-align: baseline;
+   // text-transform: none;
+   // vertical-align: baseline;
     font-style: normal;
     height: 100px;
-    width: 100%;
+    width: auto;
     text-align: center;
     clear: both;
     bottom:0;
-    position: absolute;
+   // margin:0;
+    position:absolute;
     right: 0;
     left: 0;
     line-height: 5em;
     font: Georgia, serif;
+   // margin-top:600px;*/
+    /*position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+    background: #999;*/
+     display: block;
+    clear: both;
+    color: #777;
+    font-size: 12px;
+    line-height: 5em;
+    font-style: normal;
+    background-color: #25272a;
+    font-size: .8em;
+    height: 100px;
+    position: absolute;
+   // bottom: 0;
+    width: 100%;
+    right: 0;
+    left: 0;
+    text-align: center;
+    //margin: 0 auto;
+    // padding-bottom:0;
+    margin-top: 0%;
+    // padding-bottom:5000px;
 }
 
