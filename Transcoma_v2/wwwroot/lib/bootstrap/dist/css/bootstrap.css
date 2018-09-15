@@ -6816,12 +6816,11 @@ footer {
      display: block;
     clear: both;
     color: #777;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 5em;
     font-style: normal;
     background-color: #25272a;
-    font-size: .8em;
-    height: 100px;
+    height: 300px;
     position: absolute;
    // bottom: 0;
     width: 100%;
