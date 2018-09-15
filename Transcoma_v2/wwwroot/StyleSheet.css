@@ -1,0 +1,69 @@
+﻿
+.tab input.tabs{
+    position:absolute;
+    left: -9999px;
+    top: -9999px;
+    margin-bottom: 50px;
+}
+
+.tab {
+    width: 650px;
+    list-style: none;
+    position: absolute;
+    padding: 0;
+    margin: 71px auto;
+}
+
+
+.tab li {
+    float:left;
+    width:auto;
+}
+
+.tab label {
+     display: block;
+     padding: 10px 20px;
+     border-radius: 2px 2px 0 0;
+     color: rgba(14, 62, 103,1);
+     font-size: 15px;
+     background: rgba(255,255,255,0.2);
+     cursor: pointer;
+     position: relative;
+     top: 3px;
+     transition: all 0.2s ease-in-out;
+    }
+
+.tab label:hover {
+    background: rgba(255,255,255,0.5);
+    top:0;
+}
+
+.tabs:checked + label{
+    background:#08c;
+    color:#fff;
+    top:0;
+}
+
+
+
+.tabs:checked ~ .tab-content {
+    display: block;
+  /*  position: relative;*/
+}
+
+.tab-content {
+    background: none;
+    box-sizing: border-box;
+    color: #000;
+    display: none;
+    left: 0;
+   line-height: 140%;
+    font-size: 14px;
+    padding: 15px;
+    padding-top: 10px;
+    position:absolute;
+    text-align: left;
+    width: 100%;
+    z-index: 20;
+    animation-duration: 0.5s;
+}
