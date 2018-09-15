@@ -37,7 +37,7 @@
                 @* Habilitando seccion superior derecha *@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a asp-area="" asp-controller="Account" asp-action="RegistrarUsuario">Registrar</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a></li>            
+                    <li><a asp-area="" asp-controller="Account" asp-action="IniciarSesion">Iniciar Sesion</a></li>
                 </ul>
             </div>
         </div>
@@ -45,24 +45,15 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        @*<footer>
-            <p>
-                &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
-                <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
-            </p>
-        </footer>*@
-        <footer>
-            @*<div class="content-wrapper">
-                <div class="float-left">*@
-                    <p>
-                        &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
-                        <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
-                    </p>
-                @*</div>
-            </div>*@
-        </footer>
-    </div>
 
+
+    </div>
+    <footer>
+        <p>
+            &copy;Copyright @DateTime.Now.Year – Transcoma Grupo Empresarial – Aviso Legal
+            <a href="https://www.grupotranscoma.com/aviso-legal-y-politica-de-cookies/"></a>
+        </p>
+    </footer>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -84,6 +75,8 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
+
     @RenderSection("Scripts", required: false)
+
 </body>
 </html>
