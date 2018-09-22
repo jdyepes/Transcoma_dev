@@ -12,7 +12,8 @@
     list-style: none;
     position: absolute;
     padding: 0;
-    margin: 40px auto auto 40px;    
+    margin: 40px auto auto 40px; 
+   
 }
 
 
@@ -67,9 +68,22 @@
     width: 100%;
     z-index: 20;
     animation-duration: 0.5s;
-    max-width: 100%;
+    max-width: 100%;   
+    height: 200px;
+    overflow: auto;
 }
-    .tab-content th {
-        text-align: center;
-        color: rgb(10, 52, 87);
+
+.tab-content th {
+    text-align: center;
+    color: rgb(10, 52, 87);
+}
+@media screen and (max-with: 800px)
+{
+    .tab-content{
+        width:50%;
+        flex-basis:0;
+        flex-grow:1;
+        font-size:10px;
+        color:green;
     }
+}
