@@ -95,7 +95,7 @@ thead > tr, th {
     text-align: center;
 }
 
-
+/** propiedad responsive */
 @media screen and (min-width: 600px) and (max-width:720px) {
     .tab-content {
         width: 700px;
