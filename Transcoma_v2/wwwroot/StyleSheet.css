@@ -12,7 +12,7 @@
     list-style: none;
     position: absolute;
     padding: 0;
-    margin: 40px auto auto 40px; 
+    margin: 30px auto auto 30px; 
    
 }
 
@@ -61,29 +61,69 @@
     left: 0;
     line-height: 140%;
     font-size: 14px;
-    padding: 5px;
-    padding-top: 10px;
+    padding: 0.5px;
+    padding-top: 5px;
+    padding-bottom: 0.1px;
     position: absolute;
     text-align: justify;
     width: 100%;
-    z-index: 20;
+    z-index: 2;
     animation-duration: 0.5s;
-    max-width: 100%;   
-    height: 200px;
-    overflow: auto;
+    max-width: 100%;
+    height: auto;
+    // overflow: auto;
 }
 
 .tab-content th {
     text-align: center;
     color: rgb(10, 52, 87);
 }
-@media screen and (max-with: 800px)
-{
-    .tab-content{
-        width:50%;
-        flex-basis:0;
-        flex-grow:1;
-        font-size:10px;
-        color:green;
+th {
+    text-align: left;
+}
+    tbody {
+    height: 300px;
+    overflow: auto;
+    width: 100.1%;
+}
+
+thead > tr, tbody {
+    display: block;
+}
+
+thead > tr, th {
+    text-align: center;
+}
+
+
+@media screen and (min-width: 600px) and (max-width:720px) {
+    .tab-content {
+        width: 700px;
+        flex-basis: 0;
+        flex-grow: 1;
+        font-size: 15px;
     }
+    th{
+        font-size:13px;
+    }
+    .tab label {
+        display: block;
+        padding: 10px 30px;
+        border-radius: 2px 20px 0 0;
+        color: rgba(14, 62, 103,1);
+        font-size: 14px;
+        background: rgba(181, 180, 180, 0.27);
+        cursor: pointer;
+        position: relative;
+        top: 0px;
+        transition: all 0.2s ease-in-out;
+    }
+    .tab {
+        width: 80%;
+        list-style: none;
+        position: absolute;
+        padding: 0;
+        margin: 20px auto auto 40px;
+    }
+
 }
