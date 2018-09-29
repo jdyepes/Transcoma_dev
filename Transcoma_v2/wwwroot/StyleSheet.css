@@ -80,8 +80,8 @@
 th {
     text-align: left;
 }
-    tbody {
-    height: 300px;
+tbody {
+    height: 600px;
     overflow: auto;
     width: 100.1%;
 }
