@@ -70,9 +70,8 @@
     z-index: 2;
     animation-duration: 0.5s;
     max-width: 100%;
-    height: auto;
-    // overflow: auto;
-}
+    height: 500px;
+  }
 
 .tab-content th {
     text-align: center;
