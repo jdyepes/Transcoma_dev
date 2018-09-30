@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TranscomaAPI.Common.Exceptions
+namespace TranscomaAPI.Common.Entities
 {
-    public class GeneralException
+    public class UsuarioAdminstrador
     {
     }
 }

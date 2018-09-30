@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TranscomaAPI.Persistence.Factory
+namespace TranscomaAPI.Common.Entities
 {
-    public static class DaoFactory
+    public class Entrada
     {
     }
 }

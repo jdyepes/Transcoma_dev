@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TranscomaAPI.Common.Entities.Factory
+namespace TranscomaAPI.Common.Entities
 {
-    public static class EntitiesFactory
+    public class Pedido
     {
     }
 }

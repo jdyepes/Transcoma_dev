@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TranscomaAPI.Common.Entities
 {
-    public class AdminUser
+    public class Salida
     {
     }
 }
