@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TranscomaAPI.Persistence.Dao
 {
-    public class Dao
+    public abstract class Dao
     {
     }
 }
