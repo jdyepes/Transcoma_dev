@@ -1,11 +1,11 @@
 -- =============================================================================
--- Diagram Name: Transcomadv
+-- Diagram Name: Transcoma
 -- Created on: 13/10/2018 1:12:31 a. m.
 -- Diagram Version: 
 -- =============================================================================
 
 
-CREATE TABLE "Administrador" (
+CREATE TABLE "ADMINISTRADOR" (
 	"_id" SERIAL,
 	"_nombre" varchar(25) NOT NULL,
 	"_correo" varchar(30),
@@ -14,37 +14,38 @@ CREATE TABLE "Administrador" (
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Cliente" (
+CREATE TABLE "CLIENTE" (
 	"_id" SERIAL,
 	"_nombre" varchar(25) NOT NULL,
 	"_correo" varchar(30),
 	"_password" varchar(10),
 	"_fechaRegistro" int4,
-	"_fxAdminCliente" int4 NOT NULL,
+	"_fxAdminCliente" int4,
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Almacen" (
+CREATE TABLE "ALMACEN" (
 	"_id" SERIAL,
 	"_nombreAlmacen" varchar(25) NOT NULL,
+	"_direccion" varchar(200) NOT NULL,
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Entrada" (
+CREATE TABLE "ENTRADA" (
 	"_id" SERIAL,
 	"_fechaEntrada" date NOT NULL,
-	"_fkAlmacenEntrada" int4 NOT NULL,
+	"_fkAlmacenEntrada" int4,
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Salida" (
+CREATE TABLE "SALIDA" (
 	"_id" SERIAL,
 	"_fechaSalida" date NOT NULL,
 	"_fkAlmacenSalida" int4,
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Pedido" (
+CREATE TABLE "PEDIDO" (
 	"_id" SERIAL,
 	"_fechaSolicitud" date NOT NULL,
 	"_fechaEntrega" date NOT NULL,
@@ -54,7 +55,7 @@ CREATE TABLE "Pedido" (
 	PRIMARY KEY("_id")
 );
 
-CREATE TABLE "Producto" (
+CREATE TABLE "PRODUCTO" (
     "_id" SERIAL,
 	"_descripcion" varchar(50),
 	"_lote" varchar(50),
@@ -68,57 +69,57 @@ CREATE TABLE "Producto" (
 );
 
 
-ALTER TABLE "Cliente" ADD CONSTRAINT "Ref_Cliente_to_Administrador" FOREIGN KEY ("_fxAdminCliente")
-	REFERENCES "Administrador"("_id")
+ALTER TABLE "CLIENTE" ADD CONSTRAINT "Ref_Cliente_to_Administrador" FOREIGN KEY ("_fxAdminCliente")
+	REFERENCES "ADMINISTRADOR"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Entrada" ADD CONSTRAINT "Ref_Entrada_to_Almacen" FOREIGN KEY ("_fkAlmacenEntrada")
-	REFERENCES "Almacen"("_id")
+ALTER TABLE "ENTRADA" ADD CONSTRAINT "Ref_Entrada_to_Almacen" FOREIGN KEY ("_fkAlmacenEntrada")
+	REFERENCES "ALMACEN"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Salida" ADD CONSTRAINT "Ref_Salida_to_Almacen" FOREIGN KEY ("_fkAlmacenSalida")
-	REFERENCES "Almacen"("_id")
+ALTER TABLE "SALIDA" ADD CONSTRAINT "Ref_Salida_to_Almacen" FOREIGN KEY ("_fkAlmacenSalida")
+	REFERENCES "ALMACEN"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Pedido" ADD CONSTRAINT "Ref_Pedido_to_Almacen" FOREIGN KEY ("_fkAlmacenPedido")
-	REFERENCES "Almacen"("_id")
+ALTER TABLE "PEDIDO" ADD CONSTRAINT "Ref_Pedido_to_Almacen" FOREIGN KEY ("_fkAlmacenPedido")
+	REFERENCES "ALMACEN"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Producto" ADD CONSTRAINT "Ref_Producto_to_Entrada" FOREIGN KEY ("_fkEntradaProducto")
-	REFERENCES "Entrada"("_id")
+ALTER TABLE "PRODUCTO" ADD CONSTRAINT "Ref_Producto_to_Entrada" FOREIGN KEY ("_fkEntradaProducto")
+	REFERENCES "ENTRADA"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Producto" ADD CONSTRAINT "Ref_Producto_to_Salida" FOREIGN KEY ("_fkSalidaProducto")
-	REFERENCES "Salida"("_id")
+ALTER TABLE "PRODUCTO" ADD CONSTRAINT "Ref_Producto_to_Salida" FOREIGN KEY ("_fkSalidaProducto")
+	REFERENCES "SALIDA"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Producto" ADD CONSTRAINT "Ref_Producto_to_Pedido" FOREIGN KEY ("_fkPedidoProducto")
-	REFERENCES "Pedido"("_id")
+ALTER TABLE "PRODUCTO" ADD CONSTRAINT "Ref_Producto_to_Pedido" FOREIGN KEY ("_fkPedidoProducto")
+	REFERENCES "PEDIDO"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
 	NOT DEFERRABLE;
 
-ALTER TABLE "Producto" ADD CONSTRAINT "Ref_Producto_to_Cliente" FOREIGN KEY ("_fkClienteProducto")
-	REFERENCES "Cliente"("_id")
+ALTER TABLE "PRODUCTO" ADD CONSTRAINT "Ref_Producto_to_Cliente" FOREIGN KEY ("_fkClienteProducto")
+	REFERENCES "CLIENTE"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
