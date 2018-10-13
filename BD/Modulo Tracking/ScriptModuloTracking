@@ -8,26 +8,29 @@
 CREATE TABLE "ADMINISTRADOR" (
 	"_id" SERIAL,
 	"_nombre" varchar(25) NOT NULL,
+	"_nombreUsuario" varchar(25) NOT NULL,
 	"_correo" varchar(30),
 	"_password" varchar(10),
-	"_fechaRegistro" int4,
+	"_fechaRegistro" date,
 	PRIMARY KEY("_id")
 );
 
 CREATE TABLE "CLIENTE" (
 	"_id" SERIAL,
-	"_nombre" varchar(25) NOT NULL,
-	"_correo" varchar(30),
+	"_nombre" varchar(250) NOT NULL,
+	"_nombreUsuario" varchar(25) NOT NULL,
+	"_correo" varchar(50),
 	"_password" varchar(10),
-	"_fechaRegistro" int4,
-	"_fxAdminCliente" int4,
+	"_fechaRegistro" date,
+	"_fkAdminCliente" int4,
 	PRIMARY KEY("_id")
 );
 
 CREATE TABLE "ALMACEN" (
 	"_id" SERIAL,
-	"_nombreAlmacen" varchar(25) NOT NULL,
+	"_nombreAlmacen" varchar(100) NOT NULL,
 	"_direccion" varchar(200) NOT NULL,
+	"_fkAduanaAlmacen" int4,
 	PRIMARY KEY("_id")
 );
 
@@ -68,9 +71,22 @@ CREATE TABLE "PRODUCTO" (
 	PRIMARY KEY("_id")
 );
 
+CREATE TABLE "ADUANA" (
+	"_id" SERIAL,
+	"_codigo" varchar(10) NOT NULL,
+	"_nombre" varchar(50) NOT NULL,	
+	PRIMARY KEY("_id")
+);
 
-ALTER TABLE "CLIENTE" ADD CONSTRAINT "Ref_Cliente_to_Administrador" FOREIGN KEY ("_fxAdminCliente")
+ALTER TABLE "CLIENTE" ADD CONSTRAINT "Ref_Cliente_to_Administrador" FOREIGN KEY ("_fkAdminCliente")
 	REFERENCES "ADMINISTRADOR"("_id")
+	MATCH SIMPLE
+	ON DELETE NO ACTION
+	ON UPDATE NO ACTION
+	NOT DEFERRABLE;
+
+ALTER TABLE "ALMACEN" ADD CONSTRAINT "Ref_Almacen_to_Aduana" FOREIGN KEY ("_fkAduanaAlmacen")
+	REFERENCES "ADUANA"("_id")
 	MATCH SIMPLE
 	ON DELETE NO ACTION
 	ON UPDATE NO ACTION
