@@ -2,19 +2,20 @@ select * from "ADMINISTRADOR";
 select * from "CLIENTE";
 select * from "ADUANA";
 select * from "ALMACEN";
-
+select * from "ENTRADA";
+select * from "SALIDA";
 --USANDO JOINS-- 
 -- VER LOS CLIENTES DE UN ADMINISTRADOR
-SELECT "ADMINISTRADOR"._NOMBRE, "CLIENTE"._NOMBRE
+SELECT distinct "ADMINISTRADOR"._NOMBRE, "CLIENTE"._NOMBRE
 FROM "ADMINISTRADOR"
 INNER JOIN "CLIENTE"
 ON "ADMINISTRADOR"._ID = "CLIENTE"."_fkAdminCliente"
 WHERE "ADMINISTRADOR"._ID=2;
 
 -- VER LOS ALMACENES DE UNA ADUANA
-SELECT "ADUANA"._NOMBRE as "Aduana", "ALMACEN"."_nombreAlmacen" as "Almacen"
+SELECT distinct "ADUANA"._NOMBRE as "Aduana", "ALMACEN"."_nombreAlmacen" as "Almacen"
 FROM "ADUANA"
 INNER JOIN "ALMACEN"
 ON "ADUANA"._ID = "ALMACEN"."_fkAduanaAlmacen"
-WHERE "ADUANA"._ID=2;
+WHERE "ADUANA"._ID=11;
 
