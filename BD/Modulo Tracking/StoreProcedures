@@ -1,0 +1,66 @@
+-- STORE PROCEDURES
+ 
+----------- VER LOS ALMACENES DE UNA ADUANA
+CREATE OR REPLACE FUNCTION consultarAlmacenesAduana(_idAduana integer)
+RETURNS TABLE
+  (nombreAduana varchar, nombreAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	    SELECT distinct "ADUANA"._nombre as "Aduana", "ALMACEN"."_nombreAlmacen" as "Almacen"
+		FROM "ADUANA"
+		INNER JOIN "ALMACEN"
+		ON "ADUANA"._ID = "ALMACEN"."_fkAduanaAlmacen"
+		WHERE "ADUANA"._ID=_idAduana;	
+	
+END;
+$$ LANGUAGE plpgsql;
+-------
+------- SEGUNDA FORMA DE HACERLO
+CREATE OR REPLACE FUNCTION consultarAlmacenesAduana(_idAduana integer)
+RETURNS TABLE
+  (nombreAduana varchar, nombreAlmacen varchar)
+AS $$
+DECLARE
+   var_r record;
+BEGIN
+	
+	FOR var_r IN(SELECT distinct "ADUANA"._nombre as "Aduana", "ALMACEN"."_nombreAlmacen" as "Almacen"
+		FROM "ADUANA"
+		INNER JOIN "ALMACEN"
+		ON "ADUANA"._ID = "ALMACEN"."_fkAduanaAlmacen"
+		WHERE "ADUANA"._ID=_idAduana)	
+	LOOP
+		nombreAduana = var_r."Aduana";
+		nombreAlmacen = var_r."Almacen";
+	    RETURN NEXT;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+----------------------------------------------------------------------------------------------
+
+-- VER LOS CLIENTES DE UN ADMINISTRADOR
+CREATE OR REPLACE FUNCTION consultarClientesAdministrador(_idAdminstrador integer)
+RETURNS TABLE
+  (nombreAdminstrador varchar, nombreCliente varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+		SELECT distinct "ADMINISTRADOR"._NOMBRE, "CLIENTE"._NOMBRE
+		FROM "ADMINISTRADOR"
+		INNER JOIN "CLIENTE"
+		ON "ADMINISTRADOR"._ID = "CLIENTE"."_fkAdminCliente"
+		WHERE "ADMINISTRADOR"._ID=_idAdminstrador;	
+END;
+$$ LANGUAGE plpgsql;
+
+
+----------------------------------------------------------------------------------------------
+-- DROPS FUNCTION
+DROP FUNCTION consultaralmacenesaduana(integer);
+
+-- CONSULTAS Y LLAMADA A LAS FUNCIONES
+
+select * from consultarAlmacenesAduana(2);
+select * from consultarClientesAdministrador(2);
