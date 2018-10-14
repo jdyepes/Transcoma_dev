@@ -79,7 +79,9 @@ insert into "ADUANA" ("_codigo","_nombre") values ('4171','SEVILLA FF.CC');
 insert into "ADUANA" ("_codigo","_nombre") values ('4241','SORIA');
 insert into "ADUANA" ("_codigo","_nombre") values ('4371','TARRAGONA FF.CC.');
 insert into "ADUANA" ("_codigo","_nombre") values ('4874','BILBAO POSTALES');
-insert into "ADUANA" ("_codigo","_nombre") values ('5503','CEUTA HELIPUERTO');
+
+------------HASTA AQUI PARA EFECTOS DE PRUEBA ------------------------------
+/*insert into "ADUANA" ("_codigo","_nombre") values ('5503','CEUTA HELIPUERTO');
 insert into "ADUANA" ("_codigo","_nombre") values ('5611','MELILLA MARITIMA');
 insert into "ADUANA" ("_codigo","_nombre") values ('1110','JEREZ ADM.PROV.ADUANAS IE.');
 insert into "ADUANA" ("_codigo","_nombre") values ('1710','LA JUNQUERA ADM.ADUAN. E IE');
@@ -129,7 +131,7 @@ insert into "ADUANA" ("_codigo","_nombre") values ('5004','ZARAGOZA POSTALES');
 insert into "ADUANA" ("_codigo","_nombre") values ('2650','HARO ADM.ADUANAS E II.EE.');
 insert into "ADUANA" ("_codigo","_nombre") values ('4320','S.CARLOS DE LA RAPITA ADM.');
 insert into "ADUANA" ("_codigo","_nombre") values ('0814','BARCELONA MAR.E.VERDE');
-
+*/
 
 -- Inserciones para Almacen
 insert into "ALMACEN" ("_nombreAlmacen","_direccion","_fkAduanaAlmacen") values ('FROTEIS','VIGO-PONTEVEDRA-ESPAÑA',1);
