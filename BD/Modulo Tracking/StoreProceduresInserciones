@@ -1,0 +1,39 @@
+-- STORED PROCEDURES -------- <INSERCIONES>
+
+---- Inserciones para usuario con rol Administrador
+CREATE OR REPLACE FUNCTION agregarAdministrador (nombre VARCHAR, nombreUsuario VARCHAR, correo VARCHAR, _password VARCHAR)
+RETURNS integer AS
+$$
+DECLARE
+   fecha date;
+   idUsuario integer;
+BEGIN
+   fecha =  to_timestamp(to_char(CURRENT_DATE,'DD/MM/YYYY ') || to_char(now(),'hh:mi:ss'),'DD/MM/YYYY HH:MI:SS');   
+   INSERT INTO "ADMINISTRADOR" ("_nombre","_nombreUsuario","_correo","_password","_fechaRegistro") 
+   VALUES (upper(nombre), upper(nombreUsuario), upper(correo), _password, fecha )RETURNING _id into idUsuario ;
+   RETURN idUsuario;
+END;
+$$ LANGUAGE plpgsql;
+----------------------------------------------------------------------------------------------------------
+-- Inserciones para usuario con rol Cliente/Compañia
+CREATE OR REPLACE FUNCTION agregarCliente (
+	nombre VARCHAR, nombreUsuario VARCHAR, correo VARCHAR, _password VARCHAR,_fkAdminCliente INTEGER)
+RETURNS integer AS
+$$
+DECLARE
+   fecha date;
+   idUsuario integer;
+BEGIN
+   fecha =  to_timestamp(to_char(CURRENT_DATE,'DD/MM/YYYY ') || to_char(now(),'hh:mi:ss'),'DD/MM/YYYY HH:MI:SS');   
+   INSERT INTO "CLIENTE" ("_nombre","_nombreUsuario","_correo","_password","_fechaRegistro", "_fkAdminCliente") 
+   VALUES (upper(nombre), upper(nombreUsuario), upper(correo), _password, fecha, _fkAdminCliente )
+   RETURNING _id into idUsuario ;
+   RETURN idUsuario;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT agregarAdministrador('wilmer perez', 'wperez', 'wperez@transcoma.com', 'wPerez');
+SELECT agregarCliente('GLOBAL TRAVELING SEA SRL', 'GTRAVEL', 'GTRAVEL@transcoma.com', 'GTr4v3L',9);
+DROP FUNCTION agregaradministrador(character varying,character varying,character varying,character varying);
+DELETE FROM "ADMINISTRADOR" WHERE "_nombreUsuario"= 'WPEREZ'
