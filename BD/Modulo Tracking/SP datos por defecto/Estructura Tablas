@@ -36,24 +36,24 @@ CREATE TABLE "ALMACEN" (
 
 CREATE TABLE "ENTRADA" (
 	"_id" SERIAL,
-	"_fechaEntrada" date NOT NULL,
+	"_fechaEntrada" varchar NOT NULL,
 	"_fkAlmacenEntrada" int4,
 	PRIMARY KEY("_id")
 );
 
 CREATE TABLE "SALIDA" (
 	"_id" SERIAL,
-	"_fechaSalida" date NOT NULL,
+	"_fechaSalida" varchar NOT NULL,
 	"_fkAlmacenSalida" int4,
 	PRIMARY KEY("_id")
 );
 
 CREATE TABLE "PEDIDO" (
 	"_id" SERIAL,
-	"_fechaSolicitud" date NOT NULL,
-	"_fechaEntrega" date NOT NULL,
+	"_fechaSolicitud" varchar NOT NULL,
+	"_fechaEntrega" varchar,
 	"_estadoPedido" varchar,
-	"_destinatario" int4,
+	"_destinatario" varchar,
 	"_fkAlmacenPedido" int4,
 	PRIMARY KEY("_id")
 );
@@ -62,7 +62,7 @@ CREATE TABLE "PRODUCTO" (
     "_id" SERIAL,
 	"_descripcion" varchar(250),
 	"_lote" varchar(50),
-	"_estadoCalidad" varchar(50),
+	"_estadoCalidad" varchar(100),
 	"_disponible" bool NOT NULL,
 	"_fkEntradaProducto" int4,
 	"_fkSalidaProducto" int4,

@@ -31,9 +31,16 @@ BEGIN
    RETURN idUsuario;
 END;
 $$ LANGUAGE plpgsql;
+-----------------------------------------------------------------------------------------------
 
+------------------- Ejecucion de los SP ----------------------------------------
 
 SELECT agregarAdministrador('wilmer perez', 'wperez', 'wperez@transcoma.com', 'wPerez');
 SELECT agregarCliente('GLOBAL TRAVELING SEA SRL', 'GTRAVEL', 'GTRAVEL@transcoma.com', 'GTr4v3L',9);
+SELECT * FROM agregarProductoPedido();
+
+---------------------- DROPS DE LAS DUNCIONES------------------------------------------------------
 DROP FUNCTION agregaradministrador(character varying,character varying,character varying,character varying);
-DELETE FROM "ADMINISTRADOR" WHERE "_nombreUsuario"= 'WPEREZ'
+DROP FUNCTION agregarProductoEntrada();
+DROP FUNCTION agregarProductoSalida()
+DROP FUNCTION agregarProductoPedido()

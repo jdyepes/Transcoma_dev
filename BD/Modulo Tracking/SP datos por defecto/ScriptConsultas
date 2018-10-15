@@ -4,6 +4,9 @@ select * from "ADUANA";
 select * from "ALMACEN";
 select * from "ENTRADA";
 select * from "SALIDA";
+select * from "PRODUCTO";
+select COUNT (*) from "PRODUCTO";
+select distinct "_nombreAlmacen" from "ALMACEN";
 
 --CONSULTAR TIEMPO ACTUAL
 SELECT to_timestamp(to_char(CURRENT_DATE,'DD/MM/YYYY ') || to_char(now(),'hh:mi:ss'),'DD/MM/YYYY HH:MI:SS') ;

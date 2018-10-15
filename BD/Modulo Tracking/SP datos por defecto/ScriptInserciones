@@ -54,7 +54,7 @@ insert into "CLIENTE" ("_nombre","_nombreUsuario", "_correo", "_password", "_fec
 insert into "CLIENTE" ("_nombre","_nombreUsuario", "_correo", "_password", "_fechaRegistro", "_fkAdminCliente") values ('BRODY MUM','BMUM28', 'BMUM28@TRANSCOMA.COM', 'BRODY', '08/06/2010',2);
 insert into "CLIENTE" ("_nombre","_nombreUsuario", "_correo", "_password", "_fechaRegistro", "_fkAdminCliente") values ('HARMONIA RUNHAM','HRUNHAM29', 'HRUNHAM29@TRANSCOMA.COM', 'HARMONIA', '13/02/2015',1);
 insert into "CLIENTE" ("_nombre","_nombreUsuario", "_correo", "_password", "_fechaRegistro", "_fkAdminCliente") values ('FERGUSON BRIDAL','FBRIDAL2A', 'FBRIDAL2A@TRANSCOMA.COM', 'FERGUSON', '04/08/2005',1);
-insert into "CLIENTE" ("_nombre","_nombreUsuario", "_correo", "_password", "_fechaRegistro", "_fkAdminCliente") values ('AGOSTO SNADDEN','ASNADDEN2B', 'ASNADDEN2B@TRANSCOMA.COM', 'AGOSTO', '25/05/2004',1);
+insert into "CLIENTE" (_id,"_nombre","_nombreUsuario", "_correo", "_password", "_fechaRegistro", "_fkAdminCliente") values (2,'AGOSTO SNADDEN','ASNADDEN2B', 'ASNADDEN2B@TRANSCOMA.COM', 'AGOSTO', '14/10/2018',1);
 
 -- Inserciones para Aduana
 insert into "ADUANA" ("_codigo","_nombre") values ('0707','IBIZA AEROPUERTO');
