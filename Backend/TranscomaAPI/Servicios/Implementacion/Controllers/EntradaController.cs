@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
+using TranscomaAPI.Comun.Entidades;
+using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando;
+using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
-    public class EntradaController : Controller
+    [ApiController]
+    public class EntradaController : ControllerBase
     {
+        Logger logger = LogManager.GetLogger("fileLogger");
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -24,5 +31,18 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         {
             return "value";
         }
+
+        [Route("obtener")]
+        [HttpGet]
+        public HttpResponseMessage ObtenerEntrada()
+        {
+   
+            Comando comando = FabricaComando.CrearComandoConsultarEntradas();
+            comando.Ejecutar();
+            List<Entidad> entradas = comando.GetEntidades();
+            return new HttpResponseMessage(HttpStatusCode.OK);
+            //  return Request.CreateResponse(HttpStatusCode.OK, entradas);
+        }
+
     }
 }
