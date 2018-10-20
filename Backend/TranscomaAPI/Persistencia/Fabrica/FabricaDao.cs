@@ -2,10 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TranscomaAPI.Persistencia.Dao;
 
-namespace TranscomaAPI.Persistence.Factory
+namespace TranscomaAPI.Persistencia.Fabrica
 {
     public static class FabricaDao
     {
+
+        /// <summary>
+        /// Devuelve instancia de DaoEntrada
+        /// </summary>
+        /// <returns>DaoEntrada</returns>
+        public static DaoEntrada CrearDaoEntrada()
+        {
+            return new DaoEntrada();
+        }
     }
 }
