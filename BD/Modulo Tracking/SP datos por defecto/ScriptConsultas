@@ -4,7 +4,8 @@ select * from "ADUANA";
 select * from "ALMACEN";
 select * from "ENTRADA";
 select * from "SALIDA";
-select * from "PRODUCTO";
+select * from "PEDIDO";
+select * from "PRODUCTO" as p where p."_fkPedidoProducto">0;
 select COUNT (*) from "PRODUCTO";
 select distinct "_nombreAlmacen" from "ALMACEN";
 
@@ -13,7 +14,7 @@ SELECT to_timestamp(to_char(CURRENT_DATE,'DD/MM/YYYY ') || to_char(now(),'hh:mi:
 
 --USANDO JOINS-- 
 -- VER LOS CLIENTES DE UN ADMINISTRADOR
-SELECT distinct "ADMINISTRADOR"._NOMBRE, "CLIENTE"._NOMBRE
+SELECT distinct "ADMINISTRADOR"._NOMBRE AS ADMINISTRADOR, "CLIENTE"._NOMBRE AS CLIENTE
 FROM "ADMINISTRADOR"
 INNER JOIN "CLIENTE"
 ON "ADMINISTRADOR"._ID = "CLIENTE"."_fkAdminCliente"
@@ -25,4 +26,98 @@ FROM "ADUANA"
 INNER JOIN "ALMACEN"
 ON "ADUANA"._ID = "ALMACEN"."_fkAduanaAlmacen"
 WHERE "ADUANA"._ID=11;
+
+-------------------------------- ENTRADAS ---------------------------------
+
+-- VER LAS ENTRADAS DE UN CLIENTE EN ESPECIFICO SIN DETALLE
+-- SOLO ENTRADA, PRODUCTO Y CLIENTE
+SELECT distinct E."_fechaEntrada", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "ENTRADA" AS E
+INNER JOIN "PRODUCTO" AS P ON E._ID = P."_fkEntradaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+WHERE C._ID =18
+
+-- VER LAS ENTRADAS DE CADA CLIENTE SIN DETALLE
+-- SOLO ENTRADA, PRODUCTO Y CLIENTE
+SELECT distinct E."_fechaEntrada", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "ENTRADA" AS E
+INNER JOIN "PRODUCTO" AS P ON E._ID = P."_fkEntradaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+
+---------------- CON DETALLE ---------------
+SELECT distinct C._ID as "cod_cliente", E."_fechaEntrada", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._NOMBRE, C._CORREO,
+AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+FROM "ENTRADA" AS E
+INNER JOIN "PRODUCTO" AS P ON E._ID = P."_fkEntradaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+INNER JOIN "ALMACEN" AS AL ON AL._ID = E."_fkAlmacenEntrada"
+WHERE C._ID =18
+-------------------------------- SALIDAS ---------------------------------
+
+-- VER LAS SALIDAS DE UN CLIENTE EN ESPECIFICO SIN DETALLE
+-- SOLO SALIDA, PRODUCTO Y CLIENTE
+SELECT distinct S."_fechaSalida", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "SALIDA" AS S
+INNER JOIN "PRODUCTO" AS P ON S._ID = P."_fkSalidaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+WHERE C._ID =10
+
+-- VER LAS SALIDAS DE CADA CLIENTE SIN DETALLE
+-- SOLO SALIDA, PRODUCTO Y CLIENTE
+SELECT distinct S."_fechaSalida", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "SALIDA" AS S
+INNER JOIN "PRODUCTO" AS P ON S._ID = P."_fkSalidaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+
+---------------- CON DETALLE ---------------
+SELECT distinct C._ID, S."_fechaSalida", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._NOMBRE, C._CORREO,
+AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+FROM "SALIDA" AS S
+INNER JOIN "PRODUCTO" AS P ON S._ID = P."_fkSalidaProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+INNER JOIN "ALMACEN" AS AL ON AL._ID = S."_fkAlmacenSalida"
+
+-------------------------------- PEDIDOS ---------------------------------
+
+-- VER LAS PEDIDOS DE UN CLIENTE EN ESPECIFICO SIN DETALLE
+-- SOLO PEDIDO, PRODUCTO Y CLIENTE
+SELECT distinct PE."_fechaSolicitud", PE."_fechaEntrega", PE."_estadoPedido", PE."_destinatario", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "PEDIDO" AS PE
+INNER JOIN "PRODUCTO" AS P ON PE._ID = P."_fkPedidoProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+WHERE C._ID =1
+
+-- VER LAS PEDIDOS DE CADA CLIENTE SIN DETALLE
+-- SOLO PEDIDO, PRODUCTO Y CLIENTE
+SELECT distinct PE."_fechaSolicitud", PE."_fechaEntrega", PE."_estadoPedido", PE."_destinatario", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO
+FROM "PEDIDO" AS PE
+INNER JOIN "PRODUCTO" AS P ON PE._ID = P."_fkPedidoProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+
+---------------- CON DETALLE ---------------
+SELECT distinct PE."_fechaSolicitud", PE."_fechaEntrega", PE."_estadoPedido", PE."_destinatario", 
+P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+C._ID, C._NOMBRE, C._CORREO,
+AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+FROM "PEDIDO" AS PE
+INNER JOIN "PRODUCTO" AS P ON PE._ID = P."_fkPedidoProducto"
+INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+INNER JOIN "ALMACEN" AS AL ON AL._ID = PE."_fkAlmacenPedido"
+
 

@@ -50,8 +50,8 @@ CREATE TABLE "SALIDA" (
 
 CREATE TABLE "PEDIDO" (
 	"_id" SERIAL,
-	"_fechaSolicitud" varchar NOT NULL,
-	"_fechaEntrega" varchar,
+	"_fechaSolicitud" date NOT NULL,
+	"_fechaEntrega" date,
 	"_estadoPedido" varchar,
 	"_destinatario" varchar,
 	"_fkAlmacenPedido" int4,

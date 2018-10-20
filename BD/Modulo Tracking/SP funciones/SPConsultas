@@ -55,12 +55,80 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+------------------------ENTRADAS ------------------------
 
+-- VER LAS ENTRADAS CON DETALLE DE UN CLIENTE EN ESPECIFICO POR SU ID
+CREATE OR REPLACE FUNCTION consultarEntradasCliente(_idCliente integer)
+RETURNS TABLE
+  (codCliente integer, fechaEntrada Date, descripcion varchar, lote varchar, estadoCalidad varchar, 
+   disponible bool, nombreCliente varchar,correoCliente varchar, nombreAlmacen varchar, dirAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+		SELECT distinct C._ID as "cod_cliente", E."_fechaEntrada", 
+		P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+		C._NOMBRE, C._CORREO,
+		AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+		FROM "ENTRADA" AS E
+		INNER JOIN "PRODUCTO" AS P ON E._ID = P."_fkEntradaProducto"
+		INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+		INNER JOIN "ALMACEN" AS AL ON AL._ID = E."_fkAlmacenEntrada"
+		WHERE C._ID =_idCliente;	
+END;
+$$ LANGUAGE plpgsql;
+
+------------------------SALIDAS ------------------------
+
+-- VER LAS SALIDAS CON DETALLE DE UN CLIENTE EN ESPECIFICO POR SU ID
+CREATE OR REPLACE FUNCTION consultarSalidasCliente(_idCliente integer)
+RETURNS TABLE
+  (codCliente integer, fechaEntrada Date, descripcion varchar, lote varchar, estadoCalidad varchar, 
+   disponible bool, nombreCliente varchar,correoCliente varchar, nombreAlmacen varchar, dirAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+		SELECT distinct C._ID, S."_fechaSalida", 
+		P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+		C._NOMBRE, C._CORREO,
+		AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+		FROM "SALIDA" AS S
+		INNER JOIN "PRODUCTO" AS P ON S._ID = P."_fkSalidaProducto"
+		INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+		INNER JOIN "ALMACEN" AS AL ON AL._ID = S."_fkAlmacenSalida"
+		WHERE C._ID =_idCliente;	
+END;
+$$ LANGUAGE plpgsql;
+
+------------------------PEDIDOS ------------------------
+
+-- VER LAS PEDIDOS CON DETALLE DE UN CLIENTE EN ESPECIFICO POR SU ID
+CREATE OR REPLACE FUNCTION consultarPedidosCliente(_idCliente integer)
+RETURNS TABLE
+  (codCliente integer, fechaSolicitud Date, fechaEntrega Date, estadoPedido varchar, 
+   destinatario varchar, descripcion varchar, lote varchar, estadoCalidad varchar, disponible bool,
+   nombreCliente varchar,correoCliente varchar, nombreAlmacen varchar, dirAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+		SELECT distinct C._ID, PE."_fechaSolicitud", PE."_fechaEntrega", PE."_estadoPedido", PE."_destinatario", 
+		P._DESCRIPCION, P._LOTE, P."_estadoCalidad" , P._disponible , 
+		C._NOMBRE, C._CORREO,
+		AL."_nombreAlmacen", AL."_direccion" as "Direccion Almacen"
+		FROM "PEDIDO" AS PE
+		INNER JOIN "PRODUCTO" AS P ON PE._ID = P."_fkPedidoProducto"
+		INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
+		INNER JOIN "ALMACEN" AS AL ON AL._ID = PE."_fkAlmacenPedido"
+		WHERE C._ID =_idCliente;	
+END;
+$$ LANGUAGE plpgsql;
 ----------------------------------------------------------------------------------------------
 -- DROPS FUNCTION
 DROP FUNCTION consultaralmacenesaduana(integer);
-
+DROP FUNCTION consultarentradascliente(integer);
 -- CONSULTAS Y LLAMADA A LAS FUNCIONES
 
 select * from consultarAlmacenesAduana(2);
 select * from consultarClientesAdministrador(2);
+select * from consultarEntradasCliente(2);
+select * from consultarSalidasCliente(2);
+select * from consultarPedidosCliente(10);
