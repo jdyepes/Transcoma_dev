@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using NLog;
 using TranscomaAPI.Comun.Entidades;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando;
@@ -32,17 +33,14 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
             return "value";
         }
 
-        [Route("obtener")]
-        [HttpGet]
-        public HttpResponseMessage ObtenerEntrada()
+        // [Route("obtener")]
+        [HttpGet("obtener/{id}")]
+        public ActionResult<List<Entidad>> ObtenerEntrada(long id)
         {
-   
-            Comando comando = FabricaComando.CrearComandoConsultarEntradas();
+            Comando comando = FabricaComando.CrearComandoConsultarEntradas(id);
             comando.Ejecutar();
             List<Entidad> entradas = comando.GetEntidades();
-            return new HttpResponseMessage(HttpStatusCode.OK);
-            //  return Request.CreateResponse(HttpStatusCode.OK, entradas);
+            return comando.GetEntidades();
         }
-
     }
 }
