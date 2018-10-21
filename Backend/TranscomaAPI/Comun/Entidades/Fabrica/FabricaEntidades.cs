@@ -61,5 +61,38 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         {
             return new Salida(id, fechaEntrada, producto, almacen, cliente);
         }
+
+        /// <summary>
+        /// Fabrica para consultar los pedidos de un cliente en especifico
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fechaSolicitud"></param>
+        /// <param name="fechaEntrega"></param>
+        /// <param name="estadoPedido"></param>
+        /// <param name="destinatario"></param>
+        /// <param name="producto"></param>
+        /// <param name="almacen"></param>
+        /// <returns></returns>
+        public static Pedido CrearPedido(int id, DateTime fechaSolicitud, DateTime fechaEntrega, string estadoPedido, string destinatario, Producto producto, Almacen almacen)
+        {
+            return new Pedido(id, fechaSolicitud, fechaEntrega, estadoPedido, destinatario, producto, almacen);
+        }
+
+        /// <summary>
+        /// Fabrica para consultar todos los pedidos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fechaSolicitud"></param>
+        /// <param name="fechaEntrega"></param>
+        /// <param name="estadoPedido"></param>
+        /// <param name="destinatario"></param>
+        /// <param name="producto"></param>
+        /// <param name="almacen"></param>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public static Pedido CrearPedido(int id, DateTime fechaSolicitud, DateTime fechaEntrega, string estadoPedido, string destinatario, Producto producto, Almacen almacen, Cliente cliente)
+        {
+            return new Pedido(id,  fechaSolicitud,  fechaEntrega,  estadoPedido,  destinatario,  producto,  almacen,  cliente);
+        }
     }
 }

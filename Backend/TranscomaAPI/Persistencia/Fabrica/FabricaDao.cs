@@ -26,5 +26,14 @@ namespace TranscomaAPI.Persistencia.Fabrica
         {
             return new DaoSalida();
         }
+
+        /// <summary>
+        /// Devuelve instancia de DaoPedido
+        /// </summary>
+        /// <returns>DaoPedido</returns>
+        public static DaoPedido CrearDaoPedido()
+        {
+            return new DaoPedido();
+        }
     }
 }

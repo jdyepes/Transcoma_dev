@@ -12,7 +12,7 @@ using TranscomaAPI.Persistencia.Fabrica;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
 {
-    public class ComandoConsultarPedidosCliente : Comando
+    public class ComandoConsultarTodosPedidos : Comando
     {
         private List<Entidad> _pedidos;
         Logger logger = LogManager.GetLogger("fileLogger");//logger
@@ -23,18 +23,17 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         /// Contructor para la consulta de los pedidos de un cliente
         /// </summary>
         /// <param name="idUsuario"></param>
-        public ComandoConsultarPedidosCliente(int idUsuario)
+        public ComandoConsultarTodosPedidos()
         {
             _pedidos = new List<Entidad>();
             _dao = FabricaDao.CrearDaoPedido();
-            _idUsuario = idUsuario;
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="pedido"></param>
-        public ComandoConsultarPedidosCliente(Entidad pedido)
+        public ComandoConsultarTodosPedidos(Entidad pedido)
         {
             Entidad = pedido;
         }
@@ -43,7 +42,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         {
             try
             {
-                _pedidos = _dao.ConsultarPedidoPorUsuario(_idUsuario);
+                _pedidos = _dao.ConsultarTodos();
             }
             catch (NullReferenceException e)
             {
