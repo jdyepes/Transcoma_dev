@@ -26,5 +26,24 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         {
             return new ComandoConsultarTodasEntradas();
         }
+
+        /// <summary>
+        /// Consulta las salidas de un cliente
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns></returns>
+        public static ComandoConsultarSalidasCliente CrearComandoConsultarSalidas(int idUsuario)
+        {
+            return new ComandoConsultarSalidasCliente(idUsuario);
+        }
+
+        /// <summary>
+        /// Consultta todas las salidas estando el usuario en rol administrador
+        /// </summary>
+        /// <returns></returns>
+        public static ComandoConsultarTodasSalidas CrearComandoConsultarTodasSalidas()
+        {
+            return new ComandoConsultarTodasSalidas();
+        }
     }
 }

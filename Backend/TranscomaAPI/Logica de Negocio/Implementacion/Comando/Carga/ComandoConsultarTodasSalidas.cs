@@ -3,36 +3,34 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using TranscomaAPI.Comun.Entidades;
 using TranscomaAPI.Comun.Excepciones;
-using TranscomaAPI.Persistencia.Dao;
+using TranscomaAPI.Persistencia.Dao.Contrato;
 using TranscomaAPI.Persistencia.Fabrica;
+using System.Reflection;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
 {
-    public class ComandoConsultarSalidasCliente : Comando
+    public class ComandoConsultarTodasSalidas : Comando
     {
         private List<Entidad> _salidas;
         Logger logger = LogManager.GetLogger("fileLogger");//logger
-        private DaoSalida _dao; //Dao
-        private int _idUsuario;
+        private IDaoSalida _dao; //Dao
 
-        public ComandoConsultarSalidasCliente(int idUsuario)
+        public ComandoConsultarTodasSalidas()
         {
             _salidas = new List<Entidad>();
             _dao = FabricaDao.CrearDaoSalida();
-            _idUsuario = idUsuario;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="entradas"></param>
-        public ComandoConsultarSalidasCliente(Entidad salida)
+        /// <param name="salidas">Instancia la Salida que se desea obtener</param>
+        public ComandoConsultarTodasSalidas(Entidad salidas)
         {
-            Entidad = salida;
+            Entidad = salidas;
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         {
             try
             {
-                _salidas = _dao.ConsultarSalidaPorUsuario(_idUsuario);
+                _salidas = _dao.ConsultarTodos();
             }
             catch (NullReferenceException e)
             {
@@ -66,11 +64,20 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
             }
         }
 
+        /// <summary>
+        /// Metodo que retorna una instancia de tipo Entidad de la respuesta del metodo ejecutar().
+        /// </summary>
+        /// <returns>Una instacia de tipo Entidad</returns>
+        /// <exception cref="System.NotImplementedException">Metodo No implementado</exception>
         public override Entidad GetEntidad()
         {
             return Entidad;
         }
 
+        /// <summary>
+        /// Metodo que retorna una lista de tipo Entidad de la respuesta del metodo ejecutar().
+        /// </summary>
+        /// <returns>Una lista de tipo Entidad</returns>
         public override List<Entidad> GetEntidades()
         {
             return _salidas;
