@@ -1,4 +1,4 @@
-﻿using NLog;
+using NLog;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TranscomaAPI.Comun.Entidades;
 using TranscomaAPI.Comun.Excepciones;
 using TranscomaAPI.Persistencia.Dao;
+using TranscomaAPI.Persistencia.Dao.Contrato;
 using TranscomaAPI.Persistencia.Fabrica;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
@@ -16,7 +17,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
     {
         private List<Entidad> _salidas;
         Logger logger = LogManager.GetLogger("fileLogger");//logger
-        private DaoSalida _dao; //Dao
+        private IDaoSalida _dao; //Dao
         private int _idUsuario;
 
         public ComandoConsultarSalidasCliente(int idUsuario)
