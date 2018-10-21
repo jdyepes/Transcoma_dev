@@ -5,19 +5,17 @@ using System.Threading.Tasks;
 
 namespace TranscomaAPI.Comun.Entidades
 {
-    public class Almacen : Entidad
+    public class Aduana : Entidad
     {
         private string _nombre;
-        private string _direccion;      
-        private Entrada _entrada;
-        private Salida _salida;
-        private Pedido _pedido;
+        private string _codigo;
+        private Almacen _almacen;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
-        public Almacen(int id)
+        public Aduana(int id)
         {
             Id = id;
         }
@@ -28,20 +26,18 @@ namespace TranscomaAPI.Comun.Entidades
         /// <param name="id"></param>
         /// <param name="nombre"></param>
         /// <param name="direccion"></param>
-        public Almacen(int id, string nombre, string direccion)
+        public Aduana(int id, string nombre, string codigo)
         {
             Id = id;
             _nombre = nombre;
-            _direccion = direccion;
+            _codigo = codigo;
         }
 
         /// <summary>
         /// Getters y Setters
         /// </summary>
         public string Nombre { get => _nombre; set => _nombre = value; }
-        public string DireccionAlmacen { get => _direccion; set => _direccion = value; }
-        public Entrada Entradas { get => _entrada; set => _entrada = value; }
-        public Salida Salidas { get => _salida; set => _salida = value; }
-        public Pedido Pedidos { get => _pedido; set => _pedido = value; }
+        public string DireccionAlmacen { get => _codigo; set => _codigo = value; }
+        public Almacen Almacen { get => _almacen; set => _almacen = value; }
     }
 }

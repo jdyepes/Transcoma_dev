@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 
 namespace TranscomaAPI.Comun.Entidades
 {
-    public class UsuarioCliente : Entidad
+    public class UsuarioAdministrador : Entidad
     {
         private string _nombre;
         private string _nombreUsuario;
         private string _correo;
         private string _password;
         private DateTime _fechaRegistro;
-        
-        public UsuarioCliente(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
+        private UsuarioCliente _cliente;
+
+        public UsuarioAdministrador(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
         {
             Id = Id;
             _nombre = nombre;
@@ -31,5 +32,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string Correo { get => _correo; set => _correo = value; }
         public string Contraseña { get => _password; set => _password = value; }
         public DateTime FechaRegistro { get => _fechaRegistro; set => _fechaRegistro = value; }
+        public UsuarioCliente Clientes { get => _cliente; set => _cliente = value; }
     }
 }

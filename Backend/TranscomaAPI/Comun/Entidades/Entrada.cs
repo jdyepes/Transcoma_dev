@@ -8,6 +8,8 @@ namespace TranscomaAPI.Comun.Entidades
     public class Entrada : Entidad
     {
         private DateTime _fechaEntrada;
+        private Producto _producto;
+        private Almacen _almacen;
 
         /// <summary>
         /// 
@@ -37,9 +39,12 @@ namespace TranscomaAPI.Comun.Entidades
             Id = id;
             _fechaEntrada = fechaEntrada;
         }
+
         /// <summary>
         /// Getters y Setters
         /// </summary>
         public DateTime FechaEntrada {get=> _fechaEntrada;set => _fechaEntrada = value;}
+        public Producto Productos { get => _producto; set => _producto = value; }
+        public Almacen Almacenes { get => _almacen; set => _almacen = value; }
     }
 }
