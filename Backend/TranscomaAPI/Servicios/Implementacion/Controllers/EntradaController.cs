@@ -34,7 +34,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         }
 
         /// <summary>
-        /// Se pasa el id del usuario cliente
+        /// Se obtiene las entradas de un cliente pasando su id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -44,7 +44,20 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
             Comando comando = FabricaComando.CrearComandoConsultarEntradas(id);
             comando.Ejecutar();
             List<Entidad> entradas = comando.GetEntidades();
-            return comando.GetEntidades();
+            return entradas;
+        }
+
+        /// <summary>
+        /// Se obtiene todas las entradas cuando es rol Administrador
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("obtener/")]
+        public ActionResult<List<Entidad>> ObtenerTodasEntrada()
+        {
+            Comando comando = FabricaComando.CrearComandoConsultarTodasEntradas();
+            comando.Ejecutar();
+            List<Entidad> entradas = comando.GetEntidades();
+            return entradas;
         }
     }
 }

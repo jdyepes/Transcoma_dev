@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 
 namespace TranscomaAPI.Comun.Entidades
 {
-    public class UsuarioAdministrador : Entidad
+    public class Cliente : Entidad
     {
         private string _nombre;
         private string _nombreUsuario;
         private string _correo;
         private string _password;
         private DateTime _fechaRegistro;
-        private UsuarioCliente _cliente;
-
-        public UsuarioAdministrador(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
+        
+        public Cliente(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
         {
             Id = Id;
             _nombre = nombre;
@@ -25,6 +24,19 @@ namespace TranscomaAPI.Comun.Entidades
         }
 
         /// <summary>
+        /// Contructor para las entradas, salidas y pedidos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="correo"></param>
+        public Cliente(int id, string nombre,  string correo)
+        {
+            Id = Id;
+            _nombre = nombre;      
+            _correo = correo;
+        }
+
+        /// <summary>
         /// Getters y Setters
         /// </summary>        
         public string Nombre { get => _nombre; set => _nombre = value; }
@@ -32,6 +44,5 @@ namespace TranscomaAPI.Comun.Entidades
         public string Correo { get => _correo; set => _correo = value; }
         public string Contraseña { get => _password; set => _password = value; }
         public DateTime FechaRegistro { get => _fechaRegistro; set => _fechaRegistro = value; }
-        public UsuarioCliente Clientes { get => _cliente; set => _cliente = value; }
     }
 }

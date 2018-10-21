@@ -10,6 +10,7 @@ namespace TranscomaAPI.Comun.Entidades
         private DateTime _fechaEntrada;
         private Producto _producto;
         private Almacen _almacen;
+        private Cliente _cliente;
 
         /// <summary>
         /// 
@@ -21,30 +22,43 @@ namespace TranscomaAPI.Comun.Entidades
         }
 
         /// <summary>
-        /// Registro de la fecha de entrada
-        /// </summary>
-        /// <param name="fechaEntrada"></param>
-        public Entrada (DateTime fechaEntrada)
-        {
-            _fechaEntrada = fechaEntrada;
-        }
-
-        /// <summary>
-        /// 
+        /// Constructor para la consulta de un cliente en especifico
         /// </summary>
         /// <param name="id"></param>
         /// <param name="fechaEntrada"></param>
-        public Entrada(int id, DateTime fechaEntrada)
+        /// <param name="producto"></param>
+        /// <param name="almacen"></param>
+        public Entrada(int id, DateTime fechaEntrada , Producto producto, Almacen almacen)
         {
             Id = id;
             _fechaEntrada = fechaEntrada;
+            _producto = producto;
+            _almacen = almacen;
+        }
+
+        /// <summary>
+        /// Contructor para la consulta de todas las entradas
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="fechaEntrada"></param>
+        /// <param name="producto"></param>
+        /// <param name="almacen"></param>
+        /// <param name="cliente"></param>
+        public Entrada(int id, DateTime fechaEntrada, Producto producto, Almacen almacen, Cliente cliente)
+        {
+            Id = id;
+            _fechaEntrada = fechaEntrada;
+            _producto = producto;
+            _almacen = almacen;
+            _cliente = cliente;
         }
 
         /// <summary>
         /// Getters y Setters
         /// </summary>
         public DateTime FechaEntrada {get=> _fechaEntrada;set => _fechaEntrada = value;}
-        public Producto Productos { get => _producto; set => _producto = value; }
-        public Almacen Almacenes { get => _almacen; set => _almacen = value; }
+        public Producto Producto { get => _producto; set => _producto = value; }
+        public Almacen Almacen { get => _almacen; set => _almacen = value; }
+        public Cliente Cliente { get => _cliente; set => _cliente = value; }
     }
 }

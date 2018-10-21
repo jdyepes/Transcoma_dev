@@ -27,56 +27,6 @@ namespace TranscomaAPI.Persistencia.Dao
         }
 
         /// <summary>
-        /// Consulta las entradas por su id
-        /// </summary>
-        /// <param name="entidad"></param>
-        /// <returns></returns>
-        public Entidad ConsultarEntradaPorId(Entidad entidad)
-        {
-            try
-            {
-                Entrada entrada = (Entrada)entidad;
-                List<Entidad> _entradas = new List<Entidad>();
-                Conectar();
-                StoredProcedure("--- nombre del sp---");
-                AgregarParametro("id", entrada.Id);
-                EjecutarReader();
-                Entrada entradaARetornar = null;
-                for (int i = 0; i < cantidadRegistros; i++)
-                {
-                    entradaARetornar = FabricaEntidades.CrearEntrada(GetInt(i, 0), GetDateTime(i,1));                   
-                }
-
-                return entradaARetornar;
-            }
-            catch (NullReferenceException e)
-            {
-                logger.Error(e, e.Message);
-                throw new ExcepcionObjetoNulo(e, "Parametros nulos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
-            }
-            catch (InvalidCastException e)
-            {
-                logger.Error(e, e.Message);
-                throw new ExcepcionCasteoIncorrecto(e, "Casteo no correcto en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
-            }
-
-            catch (NpgsqlException e)
-            {
-                logger.Error(e, e.Message);
-                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
-            }
-            catch (Exception e)
-            {
-                logger.Error(e, e.Message);
-                throw new ExcepcionGeneral(e, DateTime.Now);
-            }
-            finally
-            {
-                Desconectar();
-            }
-        }
-
-        /// <summary>
         /// Consulta las entradas de un usuario especificando su id
         /// </summary>
         /// <param name="entidad"></param>
@@ -85,18 +35,22 @@ namespace TranscomaAPI.Persistencia.Dao
         {
             try
             {
-                //Entrada entrada = (Entrada)entidad;
                 List<Entidad> _entradas = new List<Entidad>();
+                Producto producto;
+                Almacen almacen;
+
                 Conectar();
                 StoredProcedure("consultarEntradasCliente(@id)");
-                // AgregarParametro("id", entrada.Id);
                 AgregarParametro("id", idUsuario);
                 EjecutarReader();
+
                 Entrada entradaARetornar = null;
                 for (int i = 0; i < cantidadRegistros; i++)
                 {
-                    entradaARetornar = FabricaEntidades.CrearEntrada(GetInt(i, 0), GetDateTime(i, 1));
-                   // entradaARetornar.FechaEntrada = GetDateTime()
+                    producto = new Producto(GetInt(i, 2), GetString(i, 3), GetString(i, 4), GetString(i, 5), GetBool(i, 6));
+                    almacen = new Almacen(GetInt(i, 7), GetString(i, 8), GetString(i, 9));
+                    
+                    entradaARetornar = FabricaEntidades.CrearEntrada(GetInt(i, 0), GetDateTime(i, 1), producto,almacen);
                     _entradas.Add(entradaARetornar);
                 }
 
@@ -128,9 +82,59 @@ namespace TranscomaAPI.Persistencia.Dao
             }
         }  
 
+        /// <summary>
+        /// Consulta todas las entradas cuando esta en rol Administrador
+        /// </summary>
+        /// <returns></returns>
         public List<Entidad> ConsultarTodos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                List<Entidad> _entradas = new List<Entidad>();
+                Producto producto;
+                Almacen almacen;
+                Cliente cliente;
+                Conectar();
+                StoredProcedure("consultarTodasEntradas()");              
+                EjecutarReader();
+
+                Entrada entradaARetornar = null;
+                for (int i = 0; i < cantidadRegistros; i++)
+                {
+                    producto = new Producto(GetInt(i, 2), GetString(i, 3), GetString(i, 4), GetString(i, 5), GetBool(i, 6));
+                    cliente = new Cliente(GetInt(i, 0), GetString(i, 7), GetString(i, 8));
+                    almacen = new Almacen(GetInt(i, 9), GetString(i, 10), GetString(i, 11));
+
+                    entradaARetornar = FabricaEntidades.CrearEntrada(GetInt(i, 0), GetDateTime(i, 1), producto, almacen, cliente);
+                    _entradas.Add(entradaARetornar);
+                }
+
+                return _entradas;
+            }
+            catch (NullReferenceException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionObjetoNulo(e, "Parametros nulos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (InvalidCastException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionCasteoIncorrecto(e, "Casteo no correcto en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
+            finally
+            {
+                Desconectar();
+            }
         }
 
         public void Eliminar(Entidad entidad)

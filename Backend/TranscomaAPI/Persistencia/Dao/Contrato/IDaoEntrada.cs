@@ -9,6 +9,6 @@ namespace TranscomaAPI.Persistencia.Dao.Contrato
     public interface IDaoEntrada : IDao
     {      
         List<Entidad> ConsultarEntradaPorUsuario(int idUsuario);
-        //List<Entidad> ConsultarTodasEntradas();
+       // List<Entidad> ConsultarTodasEntradas();
     }
 }

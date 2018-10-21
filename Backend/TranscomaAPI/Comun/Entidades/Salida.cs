@@ -41,7 +41,7 @@ namespace TranscomaAPI.Comun.Entidades
         /// Getters y Setters
         /// </summary>
         public DateTime FechaSalida { get => _fechaSalida; set => _fechaSalida = value; }
-        public Producto Productos { get => _producto; set => _producto = value; }
-        public Almacen Almacenes { get => _almacen; set => _almacen = value; }
+        public Producto Producto { get => _producto; set => _producto = value; }
+        public Almacen Almacen { get => _almacen; set => _almacen = value; }
     }
 }

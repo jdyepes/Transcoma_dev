@@ -277,5 +277,36 @@ namespace TranscomaAPI.Persistencia.Dao
                 throw e;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fila"></param>
+        /// <param name="columna"></param>
+        /// <returns></returns>
+        public bool GetBool(int fila, int columna)
+        {
+            try
+            {
+                bool boolItem = Convert.ToBoolean(_dataTable.Rows[fila][columna]);
+                return boolItem;
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                throw e;
+            }
+            catch (FormatException e)
+            {
+                throw e;
+            }
+            catch (NullReferenceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

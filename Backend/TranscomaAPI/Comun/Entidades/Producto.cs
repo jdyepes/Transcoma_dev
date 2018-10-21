@@ -12,7 +12,6 @@ namespace TranscomaAPI.Comun.Entidades
         private string _estadoCalidad;
         private bool _disponible;
 
-
         /// <summary>
         /// 
         /// </summary>
