@@ -33,9 +33,13 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
             return "value";
         }
 
-        // [Route("obtener")]
+        /// <summary>
+        /// Se pasa el id del usuario cliente
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("obtener/{id}")]
-        public ActionResult<List<Entidad>> ObtenerEntrada(long id)
+        public ActionResult<List<Entidad>> ObtenerEntrada(int id)
         {
             Comando comando = FabricaComando.CrearComandoConsultarEntradas(id);
             comando.Ejecutar();

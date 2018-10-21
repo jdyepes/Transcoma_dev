@@ -8,9 +8,9 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
 {
     public static class FabricaComando
     {
-        public static ComandoConsultarEntradasCliente CrearComandoConsultarEntradas()
+        public static ComandoConsultarEntradasCliente CrearComandoConsultarEntradas(int idUsuario)
         {
-            return new ComandoConsultarEntradasCliente();
+            return new ComandoConsultarEntradasCliente(idUsuario);
         }
     }
 }

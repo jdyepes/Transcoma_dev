@@ -81,16 +81,16 @@ namespace TranscomaAPI.Persistencia.Dao
         /// </summary>
         /// <param name="entidad"></param>
         /// <returns></returns>
-        public List<Entidad> ConsultarEntradaPorUsuario(Entidad entidad)
+        public List<Entidad> ConsultarEntradaPorUsuario(int idUsuario)
         {
             try
             {
-                Entrada entrada = (Entrada)entidad;
+                //Entrada entrada = (Entrada)entidad;
                 List<Entidad> _entradas = new List<Entidad>();
                 Conectar();
                 StoredProcedure("consultarEntradasCliente(@id)");
                 // AgregarParametro("id", entrada.Id);
-                AgregarParametro("id", 2);
+                AgregarParametro("id", idUsuario);
                 EjecutarReader();
                 Entrada entradaARetornar = null;
                 for (int i = 0; i < cantidadRegistros; i++)

@@ -17,11 +17,13 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         private List<Entidad> _entradas;
         Logger logger = LogManager.GetLogger("fileLogger");//logger
         private IDaoEntrada _dao; //Dao
+        private int _idUsuario;
 
-        public ComandoConsultarEntradasCliente()
+        public ComandoConsultarEntradasCliente(int idUsuario)
         {
             _entradas = new List<Entidad>();
             _dao = FabricaDao.CrearDaoEntrada();
+            _idUsuario = idUsuario;
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         {
             try
             {
-                _entradas = _dao.ConsultarEntradaPorUsuario(Entidad);
+                _entradas = _dao.ConsultarEntradaPorUsuario(_idUsuario);
             }
             catch (NullReferenceException e)
             {
