@@ -103,7 +103,7 @@ $$ LANGUAGE plpgsql;
 -- VER LAS SALIDAS CON DETALLE DE UN CLIENTE EN ESPECIFICO POR SU ID
 CREATE OR REPLACE FUNCTION consultarSalidasCliente(idCliente integer)
 RETURNS TABLE
-  (codClienteEntrada integer, fechaEntrada Date, codProducto integer, descripcion varchar, lote varchar, estadoCalidad varchar, 
+  (codClienteSalida integer, fechaSalida Date, codProducto integer, descripcion varchar, lote varchar, estadoCalidad varchar, 
    disponible bool, codAlmacen integer, nombreAlmacen varchar, dirAlmacen varchar)
 AS $$
 BEGIN	
@@ -122,9 +122,9 @@ $$ LANGUAGE plpgsql;
 
 ------- ADMINISTRADOR -----
 -- CONSULTA TODAS LAS SALIDAS
-CREATE OR REPLACE FUNCTION consultarTodasSalidasCliente(idCliente integer)
+CREATE OR REPLACE FUNCTION consultarTodasSalidas()
 RETURNS TABLE
-  (codClienteEntrada integer, fechaEntrada Date, codProducto integer, descripcion varchar, lote varchar, estadoCalidad varchar, 
+  (codClienteSalida integer, fechaSalida Date, codProducto integer, descripcion varchar, lote varchar, estadoCalidad varchar, 
    disponible bool, nombreCliente varchar,correoCliente varchar, codAlmacen integer, nombreAlmacen varchar, dirAlmacen varchar)
 AS $$
 BEGIN	
@@ -195,9 +195,9 @@ DROP FUNCTION consultarPedidosCliente(integer);
 
 select * from consultarAlmacenesAduana(2);
 select * from consultarClientesAdministrador(2);
-select * from consultarEntradasCliente(18);
+select * from consultarEntradasCliente(29);
 select * from consultarTodasEntradas();
-select * from consultarSalidasCliente(2);
+select * from consultarSalidasCliente(10);
 select * from consultarTodasSalidas();
 select * from consultarPedidosCliente(10);
 select * from consultarTodosPedidos();
