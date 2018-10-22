@@ -104,3 +104,17 @@ INNER JOIN "CLIENTE" AS C ON C._ID = P."_fkClienteProducto"
 INNER JOIN "ALMACEN" AS AL ON AL._ID = PE."_fkAlmacenPedido"
 ORDER BY C._NOMBRE
 WHERE C._ID =18
+
+------- ACTUALIZACION PARA LA FECHA DE ENTREGA NULL
+select * from "PEDIDO" p 
+ where p."_fechaEntrega"  = '18/10/2018'
+ is null
+order by p."_fechaEntrega" desc ;
+
+update "PEDIDO" p
+set "_fechaEntrega" = null
+where p."_fechaEntrega" ='18/10/2018'
+
+update "PEDIDO" p
+set "_fechaEntrega" ='18/10/2018'
+where p."_fechaEntrega" IS null
