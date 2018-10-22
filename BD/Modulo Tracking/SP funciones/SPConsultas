@@ -69,9 +69,18 @@ END;
 $$ LANGUAGE plpgsql;
 
 -----------------------------------------------------------
+--------------- CONSULTAR TDOSS LOS ALMACENES --------------------
+CREATE OR REPLACE FUNCTION consultarTodosAlmacenes()
+RETURNS TABLE
+  (idAlmacen integer, nombreAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	   SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen"
+	   FROM "ALMACEN" AS AL;		
+END;
+$$ LANGUAGE plpgsql;
 
-SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen"
-FROM "ALMACEN" AS AL
 ----------------------------------------------------------------------------------------------
 
 -- VER LOS CLIENTES DE UN ADMINISTRADOR
@@ -231,6 +240,7 @@ DROP FUNCTION consultarPedidosCliente(integer);
 select * from consultarAlmacenesAduana(2);
 select * from consultarAduana(2);
 select * from consultarTodasAduana();
+select * from consultarTodosAlmacenes();
 select * from consultarClientesAdministrador(2);
 select * from consultarEntradasCliente(29);
 select * from consultarTodasEntradas();
