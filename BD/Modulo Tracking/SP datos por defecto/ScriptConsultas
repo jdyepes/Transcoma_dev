@@ -105,6 +105,25 @@ INNER JOIN "ALMACEN" AS AL ON AL._ID = PE."_fkAlmacenPedido"
 ORDER BY C._NOMBRE
 WHERE C._ID =18
 
+-------------------- ROL ADMINISTRADOR----------
+---------- CONSULTAR ADUANA DADO EL ALMACEN --------
+
+SELECT AD._ID ,AD._CODIGO AS "cod_aduana", AD._NOMBRE AS "nombre_aduana",
+AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen", AL."_direccion" as "direccion_almacen"
+FROM "ADUANA" AD
+INNER JOIN "ALMACEN" AL ON AL."_fkAduanaAlmacen" = AD._ID
+WHERE AL._ID =29;
+
+---------------- CONSULTAR TODAS LAS ADUANAS-----
+
+SELECT AD._ID ,AD._CODIGO AS "cod_aduana", AD._NOMBRE AS "nombre_aduana"
+FROM "ADUANA" AS AD
+
+-----------------CONSULTAR TODOS LOS ALMACENES ---------
+
+SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen"
+FROM "ALMACEN" AS AL
+
 ------- ACTUALIZACION PARA LA FECHA DE ENTREGA NULL
 select * from "PEDIDO" p 
  where p."_fechaEntrega"  = '18/10/2018'

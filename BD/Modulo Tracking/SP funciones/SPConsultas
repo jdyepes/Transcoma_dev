@@ -1,4 +1,4 @@
--- STORE PROCEDURES
+-- STORED PROCEDURES
  
 ----------- VER LOS ALMACENES DE UNA ADUANA
 CREATE OR REPLACE FUNCTION consultarAlmacenesAduana(_idAduana integer)
@@ -38,6 +38,40 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-----------------------------------------------------------------------------------
+
+----------- CONSULTAR LA ADUANA DADO EL ALMACEN -----------------
+CREATE OR REPLACE FUNCTION consultarAduana(idAlmacen integer)
+RETURNS TABLE
+  (idAduanaAlmacen integer, codAduana varchar, nombreAduana varchar, 
+   codAlmacen integer, nombreAlmacen varchar, direccionAlmacen varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	    SELECT AD._ID ,AD._CODIGO AS "cod_aduana", AD._NOMBRE AS "nombre_aduana",
+		AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen", AL."_direccion" as "direccion_almacen"
+		FROM "ADUANA" AD
+		INNER JOIN "ALMACEN" AL ON AL."_fkAduanaAlmacen" = AD._ID
+		WHERE AL._ID =idAlmacen;		
+END;
+$$ LANGUAGE plpgsql;
+
+--------------- CONSULTAR TODAS LAS ADUANAS --------------------
+CREATE OR REPLACE FUNCTION consultarTodasAduana()
+RETURNS TABLE
+  (idAduanaAlmacen integer, codAduana varchar, nombreAduana varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	   SELECT AD._ID ,AD._CODIGO AS "cod_aduana", AD._NOMBRE AS "nombre_aduana"
+	   FROM "ADUANA" AS AD;		
+END;
+$$ LANGUAGE plpgsql;
+
+-----------------------------------------------------------
+
+SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen"
+FROM "ALMACEN" AS AL
 ----------------------------------------------------------------------------------------------
 
 -- VER LOS CLIENTES DE UN ADMINISTRADOR
@@ -185,6 +219,7 @@ BEGIN
 		ORDER BY C._NOMBRE;
 		END;
 $$ LANGUAGE plpgsql;
+
 ----------------------------------------------------------------------------------------------
 -- DROPS FUNCTION
 DROP FUNCTION consultaralmacenesaduana(integer);
@@ -194,10 +229,12 @@ DROP FUNCTION consultarPedidosCliente(integer);
 -- CONSULTAS Y LLAMADA A LAS FUNCIONES
 
 select * from consultarAlmacenesAduana(2);
+select * from consultarAduana(2);
+select * from consultarTodasAduana();
 select * from consultarClientesAdministrador(2);
 select * from consultarEntradasCliente(29);
 select * from consultarTodasEntradas();
 select * from consultarSalidasCliente(10);
 select * from consultarTodasSalidas();
-select * from consultarPedidosCliente(10);
+select * from consultarPedidosCliente(28);
 select * from consultarTodosPedidos();
