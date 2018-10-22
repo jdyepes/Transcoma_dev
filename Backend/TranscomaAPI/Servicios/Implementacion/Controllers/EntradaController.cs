@@ -15,7 +15,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EntradaController : ControllerBase
+    public class EntradaController : Controller
     {
         Logger logger = LogManager.GetLogger("fileLogger");
 

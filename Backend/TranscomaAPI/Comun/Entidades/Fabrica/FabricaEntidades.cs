@@ -94,5 +94,30 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         {
             return new Pedido(id,  fechaSolicitud,  fechaEntrega,  estadoPedido,  destinatario,  producto,  almacen,  cliente);
         }
+
+        /// <summary>
+        /// Fabrica para consutar la aduana dado un almacen
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="codigoAduana"></param>
+        /// <param name="nombreAduana"></param>
+        /// <param name="almacen"></param>
+        /// <returns></returns>
+        public static Aduana CrearAduana(int id, string codigoAduana, string nombreAduana, Almacen almacen)
+        {
+            return new Aduana( id, codigoAduana, nombreAduana, almacen);
+        }
+
+        /// <summary>
+        /// Consulta todas las aduanas en rol administrador sin especificar relaciones
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="codigoAduana"></param>
+        /// <param name="nombreAduana"></param>
+        /// <returns></returns>
+        public static Aduana CrearAduana(int id, string codigoAduana, string nombreAduana)
+        {
+            return new Aduana(id, codigoAduana, nombreAduana);
+        }
     }
 }

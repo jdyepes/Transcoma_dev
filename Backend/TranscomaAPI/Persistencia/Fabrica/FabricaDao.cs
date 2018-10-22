@@ -35,5 +35,14 @@ namespace TranscomaAPI.Persistencia.Fabrica
         {
             return new DaoPedido();
         }
+
+        /// <summary>
+        /// Devuelve instancia de DaoAduana
+        /// </summary>
+        /// <returns>DaoAduana</returns>
+        public static DaoAduana CrearDaoAduana()
+        {
+            return new DaoAduana();
+        }
     }
 }

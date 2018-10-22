@@ -21,16 +21,31 @@ namespace TranscomaAPI.Comun.Entidades
         }
 
         /// <summary>
-        /// 
+        /// Constructor para la consulta de un aduana dado un almacen
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="nombre"></param>
-        /// <param name="direccion"></param>
-        public Aduana(int id, string nombre, string codigo)
+        /// <param name="codigoAduana"></param>
+        /// <param name="nombreAduana"></param>
+        /// <param name="almacen"></param>
+        public Aduana (int id, string codigoAduana, string nombreAduana, Almacen almacen)
         {
             Id = id;
-            _nombre = nombre;
-            _codigo = codigo;
+            _nombre = nombreAduana;
+            _codigo = codigoAduana;
+            _almacen = almacen;
+        }
+
+        /// <summary>
+        /// Constructor para la consulta de todas las aduanas
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="codigoAduana"></param>
+        /// <param name="nombreAduana"></param>
+        public Aduana(int id, string codigoAduana, string nombreAduana)
+        {
+            Id = id;
+            _nombre = nombreAduana;
+            _codigo = codigoAduana;
         }
 
         /// <summary>

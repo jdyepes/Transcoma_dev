@@ -64,5 +64,24 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         {
             return new ComandoConsultarTodosPedidos();
         }
+
+        /// <summary>
+        /// Consulta las aduanas dado el almacen
+        /// </summary>
+        /// <param name="idAlmacen"></param>
+        /// <returns></returns>
+        public static ComandoConsultarAduanaAlmacen CrearComandoConsultarAduanaAlmacen(int idAlmacen)
+        {
+            return new ComandoConsultarAduanaAlmacen(idAlmacen);
+        }
+
+        /// <summary>
+        /// Consultta todas las aduanas en rol administrador
+        /// </summary>
+        /// <returns></returns>
+        public static ComandoConsultarTodasAduanas CrearComandoConsultarTodasAduanas()
+        {
+            return new ComandoConsultarTodasAduanas();
+        }
     }
 }
