@@ -1,0 +1,111 @@
+/*Styles for the Sidenav Menu*/
+.sidenav-container{
+    height: 100%;
+    margin: 0;
+}
+
+.sidenav{
+    width: 195px;
+    box-shadow: 3px 0 6px rgba(0,0,0,.24);
+    margin-left: 0px;
+    background-color: #2f4050;
+    color: #ffffff; 
+    font-size: 16px;
+}
+
+.sidenav a{
+    color: #ccccff; 
+    font-size: 14px;
+}
+
+.mat-nav-list a:hover {
+    border-left: 4px solid #19aa8d;
+    background: #293846;
+}
+
+.mat-list-item a.active{
+    
+    border-left: 4px solid #19aa8d;
+    background: #293846;
+
+}
+
+.mat-icon{
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.sidenav-content{
+
+    margin: 0;
+}
+
+.arrow-back-icon{
+    font-size: 12px;
+    margin-top: 12px;
+    text-align: center;
+    
+}
+
+/*Styles for the top toolbar menu*/
+.top-toolbar{
+    
+    border: 2px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.103);
+    background-color: #ffffff;
+    
+    box-sizing: border-box;
+    height: 48px;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.top-toolbar ul{
+    display: block;
+    float: left;
+    list-style: none;
+
+}
+
+.top-toolbar li{
+    display: inline-block;
+    margin-right: 10px;
+    
+}
+
+.top-toolbar li a{
+    text-decoration: none;
+    font-size: 16px;
+    text-align: right;
+    color: #807e7e;
+}
+
+.top-toolbar li a .icon-toolbar{
+  margin-bottom: 10px;
+  
+}
+
+.top-toolbar .mat-icon{
+    font-size: 24px;
+}
+
+.top-toolbar button{
+
+    background-color: #1ab394;    
+    border: 0;
+    color: #ffffff;
+    border-radius: 2px;
+    height: 40px;
+    text-align: center;
+    margin-left: -15px;
+}
+
+.fill-remaining-space{
+    width: 80%;
+}
+
+.top-toolbar button .mat-icon{
+    
+       text-align: center;
+        margin: 8px 4px;
+    }
