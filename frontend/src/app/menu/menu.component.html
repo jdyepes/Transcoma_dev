@@ -1,0 +1,62 @@
+<!--<header>
+  <div>
+      <i class="material-icons">menu</i>
+  </div>
+</header>
+<div class="navbar-nav">
+    <div class="nav-item dropdown">
+      <ul>
+          <li *ngFor="let module of moduleArray">
+              <a routerLink={{module.routeName}}>
+                
+              </a>
+              {{module.name}}
+          </li>
+      </ul>
+    </div>
+</div>-->
+<mat-sidenav-container class="sidenav-container">
+        <mat-sidenav-content>
+                <mat-toolbar class="top-toolbar">
+                    <button
+                        type="button"
+                        aria-label = "Toogle sidenav">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <span class="fill-remaining-space"></span>
+                    <ul>
+                            <li><a mat-list-item href="#"><mat-icon class="icon-toolbar">person_pin</mat-icon>Super Admin:<span>Test2</span></a></li>
+                            <li><a mat-list-item href="#"><mat-icon class="icon-toolbar">settings</mat-icon></a></li>
+                            <li><a mat-list-item href="#"><mat-icon class="icon-toolbar">forward</mat-icon>Salir</a></li>
+                    </ul>
+                </mat-toolbar>
+            </mat-sidenav-content>
+    <mat-sidenav
+        #drawer
+        class="sidenav"
+        fixedInViewport="true"
+        [attr.role]="isHandset ? 'dialog' : 'navigation'"
+        [mode] ="'side'"
+        [opened]="true">
+        <mat-toolbar  class="sidenav">
+                <img src="../../assets/img/Icon.svg"
+                width="40px" style="float: left;">
+                <div>
+                    <span class="nav-label" style="margin: 0px; color: white; font-size: 18px">ELSA</span>
+                    <span style=" display: block; font-size: 10px; color:#e7eaec">v0.4.127</span>
+                </div>
+        </mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item href="#"><mat-icon>description</mat-icon>DUA<mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon></a>
+            <a mat-list-item href="#"><mat-icon>description</mat-icon>EXS</a>
+            <a mat-list-item  routerLink="bl" routerLinkActive="active"><mat-icon>description</mat-icon>{{moduleArray[0].name}}</a>
+            <a mat-list-item href="#"><mat-icon>attach_money</mat-icon>Cotización</a>
+            <a mat-list-item href="#"><mat-icon>person</mat-icon>Usuarios</a>
+            <a mat-list-item href="#"><mat-icon>pin_drop</mat-icon>Tracking</a>
+            <a mat-list-item href="#"><mat-icon>warning</mat-icon>Incidencias</a>
+            <a mat-list-item href="#"><mat-icon> local_post_office</mat-icon>Emails</a>
+            <a mat-list-item href="#"><mat-icon>security</mat-icon>Admin<mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon></a>
+            <a mat-list-item href="#"><mat-icon>folder</mat-icon>Maestros<mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon></a>
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>
