@@ -12,7 +12,17 @@ namespace TranscomaAPI.Comun.Entidades
         private string _correo;
         private string _password;
         private DateTime _fechaRegistro;
-        
+        private Administrador _administrador;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="correo"></param>
+        /// <param name="password"></param>
+        /// <param name="fechaRegistro"></param>
         public Cliente(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
         {
             Id = Id;
@@ -24,15 +34,35 @@ namespace TranscomaAPI.Comun.Entidades
         }
 
         /// <summary>
+        /// Contructor para la consulta de los clientes de un admin
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreUsuario"></param>
+        /// <param name="correo"></param>
+        /// <param name="fechaRegistro"></param>
+        /// <param name="administrador"></param>
+        public Cliente(int id, string nombre,  string nombreUsuario, string correo, DateTime fechaRegistro, Administrador administrador)
+        {
+            Id = Id;
+            _nombre = nombre;      
+            _correo = correo;
+            _nombreUsuario = nombreUsuario;           
+            _fechaRegistro = fechaRegistro;
+            _administrador = administrador;
+        }
+
+        /// <summary>
         /// Contructor para las entradas, salidas y pedidos
         /// </summary>
         /// <param name="id"></param>
         /// <param name="nombre"></param>
         /// <param name="correo"></param>
-        public Cliente(int id, string nombre,  string correo)
+
+        public Cliente(int id, string nombre, string correo)
         {
             Id = Id;
-            _nombre = nombre;      
+            _nombre = nombre;
             _correo = correo;
         }
 
@@ -44,5 +74,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string Correo { get => _correo; set => _correo = value; }
         public string Contraseña { get => _password; set => _password = value; }
         public DateTime FechaRegistro { get => _fechaRegistro; set => _fechaRegistro = value; }
+        public Administrador Administrador { get => _administrador; set => _administrador = value; }
     }
 }

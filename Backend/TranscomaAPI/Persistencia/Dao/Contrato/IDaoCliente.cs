@@ -6,8 +6,8 @@ using TranscomaAPI.Comun.Entidades;
 
 namespace TranscomaAPI.Persistencia.Dao.Contrato
 {
-    public interface IDaoAlmacen : IDao
-    {
-        List<Entidad> ConsultarAlmacenes();
+    public interface IDaoCliente
+    {        
+        List<Entidad> ConsultarClientes(int idAdminstrador);        
     }
 }

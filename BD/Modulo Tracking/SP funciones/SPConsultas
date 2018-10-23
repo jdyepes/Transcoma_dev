@@ -72,7 +72,7 @@ $$ LANGUAGE plpgsql;
 --------------- CONSULTAR TDOSS LOS ALMACENES --------------------
 CREATE OR REPLACE FUNCTION consultarTodosAlmacenes()
 RETURNS TABLE
-  (idAlmacen integer, nombreAlmacen varchar, )
+  (idAlmacen integer, nombreAlmacen varchar, direccion varchar)
 AS $$
 BEGIN	
 	RETURN QUERY
@@ -84,17 +84,19 @@ $$ LANGUAGE plpgsql;
 ----------------------------------------------------------------------------------------------
 
 -- VER LOS CLIENTES DE UN ADMINISTRADOR
-CREATE OR REPLACE FUNCTION consultarClientesAdministrador(_idAdminstrador integer)
+CREATE OR REPLACE FUNCTION consultarClientesAdministrador(_idAdministrador integer)
 RETURNS TABLE
-  (nombreAdminstrador varchar, nombreCliente varchar)
+  (codAdministrador integer, nombreAdminstrador varchar,
+   codCliente integer, nombreCliente varchar, nombreUsuario varchar, correo varchar, fechaRegistro date)
 AS $$
 BEGIN	
 	RETURN QUERY
-		SELECT distinct "ADMINISTRADOR"._NOMBRE, "CLIENTE"._NOMBRE
-		FROM "ADMINISTRADOR"
-		INNER JOIN "CLIENTE"
-		ON "ADMINISTRADOR"._ID = "CLIENTE"."_fkAdminCliente"
-		WHERE "ADMINISTRADOR"._ID=_idAdminstrador;	
+		SELECT distinct ad._ID , ad._NOMBRE,
+		cl._ID ,cl._NOMBRE, cl."_nombreUsuario", cl."_correo", cl."_fechaRegistro"
+		FROM "ADMINISTRADOR" as ad
+		INNER JOIN "CLIENTE" as cl
+		ON ad._ID = cl."_fkAdminCliente"
+		WHERE ad._ID=_idAdministrador;	
 END;
 $$ LANGUAGE plpgsql;
 
@@ -235,13 +237,15 @@ DROP FUNCTION consultaralmacenesaduana(integer);
 DROP FUNCTION consultarentradascliente(integer);
 DROP FUNCTION consultarsalidascliente(integer);
 DROP FUNCTION consultarPedidosCliente(integer);
+DROP FUNCTION consultartodosalmacenes();
+DROP FUNCTION consultarclientesadministrador(integer)
 -- CONSULTAS Y LLAMADA A LAS FUNCIONES
 
 select * from consultarAlmacenesAduana(2);
 select * from consultarAduana(2);
 select * from consultarTodasAduana();
 select * from consultarTodosAlmacenes();
-select * from consultarClientesAdministrador(2);
+select * from consultarClientesAdministrador(10);
 select * from consultarEntradasCliente(29);
 select * from consultarTodasEntradas();
 select * from consultarSalidasCliente(10);

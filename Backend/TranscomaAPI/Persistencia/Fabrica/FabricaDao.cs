@@ -53,5 +53,14 @@ namespace TranscomaAPI.Persistencia.Fabrica
         {
             return new DaoAlmacen();
         }
+
+        /// <summary>
+        /// Devuelve la instancia de DaoCliente
+        /// </summary>
+        /// <returns></returns>
+        public static DaoCliente CrearDaoCliente()
+        {
+            return new DaoCliente();
+        }
     }
 }

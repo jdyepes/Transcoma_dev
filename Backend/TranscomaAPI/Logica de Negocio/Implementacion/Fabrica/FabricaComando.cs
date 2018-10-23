@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga;
+using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Usuarios;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
 {
@@ -91,6 +92,16 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         public static ComandoConsultarAlmacenes CrearComandoConsultarAlmacenes()
         {
             return new ComandoConsultarAlmacenes();
+        }
+
+        /// <summary>
+        /// Consulta todos los clientes de un administrador
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static ComandoConsultarClientes CrearComandoConsultarClientes(int id)
+        {
+            return new ComandoConsultarClientes(id);
         }
     }
 }
