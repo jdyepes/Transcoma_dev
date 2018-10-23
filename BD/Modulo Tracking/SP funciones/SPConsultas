@@ -72,11 +72,11 @@ $$ LANGUAGE plpgsql;
 --------------- CONSULTAR TDOSS LOS ALMACENES --------------------
 CREATE OR REPLACE FUNCTION consultarTodosAlmacenes()
 RETURNS TABLE
-  (idAlmacen integer, nombreAlmacen varchar)
+  (idAlmacen integer, nombreAlmacen varchar, )
 AS $$
 BEGIN	
 	RETURN QUERY
-	   SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen"
+	   SELECT AL._ID AS "cod_almacen", AL."_nombreAlmacen" AS "nombre_almacen", AL._DIRECCION AS "Direccion"
 	   FROM "ALMACEN" AS AL;		
 END;
 $$ LANGUAGE plpgsql;

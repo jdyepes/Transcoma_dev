@@ -13,13 +13,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
     public class AduanaController : Controller
-    {
-        // GET: /<controller>/
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+    {  
         /// <summary>
         /// Se obtiene las aduanas pasando el id del almacen
         /// </summary>

@@ -119,5 +119,11 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         {
             return new Aduana(id, codigoAduana, nombreAduana);
         }
+
+
+        public static Almacen CrearAlmacen(int id, string nombreAlmacen, string direccion)
+        {
+            return new Almacen(id, nombreAlmacen, direccion);
+        }
     }
 }

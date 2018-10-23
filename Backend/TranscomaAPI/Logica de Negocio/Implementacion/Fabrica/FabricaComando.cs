@@ -83,5 +83,14 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         {
             return new ComandoConsultarTodasAduanas();
         }
+
+        /// <summary>
+        /// Consultta todos los almacenes en rol administrador
+        /// </summary>
+        /// <returns></returns>
+        public static ComandoConsultarAlmacenes CrearComandoConsultarAlmacenes()
+        {
+            return new ComandoConsultarAlmacenes();
+        }
     }
 }
