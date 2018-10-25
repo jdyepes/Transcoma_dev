@@ -19,13 +19,15 @@ import { MatButtonModule,
          MatPaginatorModule,
          MatGridListModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
+import { TrackingComponent } from './core/tracking/tracking.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     BlComponent,
-    BlDetailsComponent
+    BlDetailsComponent,
+    TrackingComponent
   ],
   imports: [
     BrowserModule,
