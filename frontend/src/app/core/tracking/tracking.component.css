@@ -19,6 +19,11 @@ table {
     width: 180px;
    
 }
+
+.mat-card-title{
+  margin-left: 210px;
+  
+}
 .mat-form-field-infix {
     padding: .5em 0;
     border-top: .84375em solid transparent;
