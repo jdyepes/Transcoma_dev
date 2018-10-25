@@ -25,6 +25,17 @@ namespace TranscomaAPI.Comun.Entidades
         }
 
         /// <summary>
+        /// Constructor para la consulta de clientes de un administrador
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        public Administrador(int id, string nombre)
+        {
+            Id = Id;
+            _nombre = nombre;
+        }
+
+        /// <summary>
         /// Getters y Setters
         /// </summary>        
         public string Nombre { get => _nombre; set => _nombre = value; }

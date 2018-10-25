@@ -19,13 +19,16 @@ import { MatButtonModule,
          MatPaginatorModule,
          MatGridListModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
+import { TrackingComponent } from './core/tracking/tracking.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     BlComponent,
-    BlDetailsComponent
+    BlDetailsComponent,
+    TrackingComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { BlDetailsComponent } from './core/bl-details/bl-details.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule
 
 
   ],
