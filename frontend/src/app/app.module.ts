@@ -17,6 +17,8 @@ import { MatButtonModule,
          MatFormFieldModule,
          MatInputModule,
          MatPaginatorModule,
+         MatOptionModule,
+         MatSelectModule,
          MatGridListModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
@@ -46,9 +48,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatPaginatorModule,
     MatGridListModule,
-    MatTabsModule
-
-
+    MatTabsModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

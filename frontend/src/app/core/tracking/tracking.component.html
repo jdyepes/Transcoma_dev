@@ -1,11 +1,20 @@
 <mat-card class="col-md-12">
-  <mat-card-title>Tracking</mat-card-title>
-<mat-tab-group >
-  <mat-tab label="Entrada">
-    <mat-form-field appearance="standard">
+  <mat-card-title>Almacenes de Carga</mat-card-title>
+  <br>
+  <div class="row">
+    <mat-form-field style="margin-bottom: 100px; margin-left:20px; ">
+      <mat-select placeholder="Clientes">
+        <mat-option *ngFor="let roles of rolesList" [value]="roles">{{roles}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard" style="margin-left: 350px">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
       <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+    </mat-form-field> 
+  </div>
+<mat-tab-group >
+  
+  <mat-tab label="Entrada">    
   <!--Entradas -->
       <table mat-table [dataSource]="dataSource">
           
@@ -42,12 +51,12 @@
     </mat-tab> 
 
     <!--Salidas -->
-
+<!-- <mat-form-field appearance="standard">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Salidas">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>-->
     <mat-tab label="Salida">
-        <mat-form-field appearance="standard">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+       
       <table mat-table [dataSource]="dataSource">
     
         <!-- Position Column -->
@@ -85,10 +94,7 @@
 <!--Pedidos -->
 
     <mat-tab label="Pedido">
-        <mat-form-field appearance="standard">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
+    
       <table mat-table [dataSource]="dataSource">
     
         <!-- Position Column -->

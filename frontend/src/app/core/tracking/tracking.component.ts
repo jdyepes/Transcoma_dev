@@ -9,9 +9,10 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 export class TrackingComponent implements OnInit {
 
   constructor() { }
-   
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  rolesList = ROL_DATA;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -30,6 +31,11 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
+
+const ROL_DATA: String[] = [
+   'Administrador',
+   'Cliente'
+];
 
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
