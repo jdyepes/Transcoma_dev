@@ -17,12 +17,14 @@ import { MatButtonModule,
          MatFormFieldModule,
          MatInputModule,
          MatPaginatorModule,
+         MatOptionModule,
          MatAutocompleteModule,
          MatSelectModule,
          MatGridListModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HomeComponent } from './core/home/home.component';
 import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
 
@@ -33,6 +35,7 @@ import { LoginComponent } from './core/login/login.component';
     BlComponent,
     BlDetailsComponent,
     TrackingComponent,
+    HomeComponent,
     CotizadorComponent,
     LoginComponent
   ],
@@ -53,12 +56,11 @@ import { LoginComponent } from './core/login/login.component';
     MatPaginatorModule,
     MatGridListModule,
     MatTabsModule,
+    MatOptionModule,
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]

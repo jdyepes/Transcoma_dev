@@ -1,40 +1,67 @@
 <mat-card class="col-md-12">
-  <mat-card-title>Tracking</mat-card-title>
-<mat-tab-group >
-  <mat-tab label="Entrada">
-    <mat-form-field appearance="standard">
+  <mat-card-title>Almacenes de Carga</mat-card-title>
+  <br>
+  <div class="row">
+    <mat-form-field style="margin-bottom: 100px; margin-left:20px; ">
+      <mat-select placeholder="Clientes">
+        <mat-option *ngFor="let roles of rolesList" [value]="roles">{{roles}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard" style="margin-left: 350px">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
       <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
+    </mat-form-field> 
+  </div>
+<mat-tab-group >
+  
+  <mat-tab label="Entrada">    
   <!--Entradas -->
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="dataSourceEntrada">
           
             <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="codClienteEntrada">
+              <th mat-header-cell *matHeaderCellDef> Cod. </th>
+              <td mat-cell *matCellDef="let element"> {{element.codClienteEntrada}} </td>
             </ng-container>
           
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="fechaEntrada">
+              <th mat-header-cell *matHeaderCellDef> Fecha </th>
+              <td mat-cell *matCellDef="let element"> {{element.fechaEntrada}} </td>
             </ng-container>
           
             <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="codProducto">
+              <th mat-header-cell *matHeaderCellDef> Cod. Prod </th>
+              <td mat-cell *matCellDef="let element"> {{element.codProducto}} </td>
             </ng-container>
           
             <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="descripcion">
+              <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+              <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
             </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="lote">
+              <th mat-header-cell *matHeaderCellDef> Lote </th>
+              <td mat-cell *matCellDef="let element"> {{element.lote}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="estadoCalidad">
+              <th mat-header-cell *matHeaderCellDef> Calidad </th>
+              <td mat-cell *matCellDef="let element"> {{element.estadoCalidad}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="disponible">
+              <th mat-header-cell *matHeaderCellDef> Disponible </th>
+              <td mat-cell *matCellDef="let element"> {{element.disponible}} </td>
+            </ng-container>           
           
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsEntrada"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsEntrada;"></tr>
           </table>
           
           <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
@@ -42,40 +69,59 @@
     </mat-tab> 
 
     <!--Salidas -->
-
+<!-- <mat-form-field appearance="standard">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Salidas">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>-->
     <mat-tab label="Salida">
-        <mat-form-field appearance="standard">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      <table mat-table [dataSource]="dataSource">
-    
+       
+      <table mat-table [dataSource]="dataSourceSalida">
+      
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <ng-container matColumnDef="codClienteSalida">
+          <th mat-header-cell *matHeaderCellDef> Cod. </th>
+          <td mat-cell *matCellDef="let element"> {{element.codClienteSalida}} </td>
         </ng-container>
-    
+      
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="fechaSalida">
+          <th mat-header-cell *matHeaderCellDef> Fecha </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaSalida}} </td>
         </ng-container>
-    
+      
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <ng-container matColumnDef="codProducto">
+          <th mat-header-cell *matHeaderCellDef> Cod. Prod </th>
+          <td mat-cell *matCellDef="let element"> {{element.codProducto}} </td>
         </ng-container>
-    
+      
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
         </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="lote">
+          <th mat-header-cell *matHeaderCellDef> Lote </th>
+          <td mat-cell *matCellDef="let element"> {{element.lote}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="estadoCalidad">
+          <th mat-header-cell *matHeaderCellDef> Calidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.estadoCalidad}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="disponible">
+          <th mat-header-cell *matHeaderCellDef> Disponible </th>
+          <td mat-cell *matCellDef="let element"> {{element.disponible}} </td>
+        </ng-container>      
+       
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsSalida"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsSalida;"></tr>
       </table>
 
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
@@ -85,38 +131,72 @@
 <!--Pedidos -->
 
     <mat-tab label="Pedido">
-        <mat-form-field appearance="standard">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      <table mat-table [dataSource]="dataSource">
     
+      <table mat-table [dataSource]="dataSourcePedido">
+      
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <ng-container matColumnDef="codClientePedido">
+          <th mat-header-cell *matHeaderCellDef> Cod. </th>
+          <td mat-cell *matCellDef="let element"> {{element.codClientePedido}} </td>
         </ng-container>
-    
+      
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <ng-container matColumnDef="fechaSolicitud">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Solicitud </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaSolicitud}} </td>
         </ng-container>
-    
+      
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> Weight </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <ng-container matColumnDef="fechaEntrega">
+          <th mat-header-cell *matHeaderCellDef> Fecha de Entrega </th>
+          <td mat-cell *matCellDef="let element"> {{element.fechaEntrega}} </td>
         </ng-container>
-    
+      
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> Symbol </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <ng-container matColumnDef="estadoPedido">
+          <th mat-header-cell *matHeaderCellDef> Estado </th>
+          <td mat-cell *matCellDef="let element"> {{element.estadoPedido}} </td>
         </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="destinatario">
+          <th mat-header-cell *matHeaderCellDef> Destino </th>
+          <td mat-cell *matCellDef="let element"> {{element.destinatario}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="codProducto">
+          <th mat-header-cell *matHeaderCellDef> Cod. Prod </th>
+          <td mat-cell *matCellDef="let element"> {{element.codProducto}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+          <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="lote">
+          <th mat-header-cell *matHeaderCellDef> Lote </th>
+          <td mat-cell *matCellDef="let element"> {{element.lote}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="estadoCalidad">
+          <th mat-header-cell *matHeaderCellDef> Calidad </th>
+          <td mat-cell *matCellDef="let element"> {{element.estadoCalidad}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="disponible">
+          <th mat-header-cell *matHeaderCellDef> Disponible </th>
+          <td mat-cell *matCellDef="let element"> {{element.disponible}} </td>
+        </ng-container>
+      
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsPedido"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsPedido;"></tr>
       </table>
     
       <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
