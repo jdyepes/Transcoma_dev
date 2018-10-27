@@ -21,6 +21,7 @@ export class MenuComponent implements AfterViewInit {
   private loadPanel: boolean;
   private menu: Menu;
   public esHome: boolean;
+  public logueado: string;
 
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
@@ -32,6 +33,7 @@ export class MenuComponent implements AfterViewInit {
 
     this.initialiseModules();
     this.menu = "menu";
+    this.logueado = localStorage.getItem("login");
   }
 
   ngOnInit() {
@@ -49,13 +51,14 @@ export class MenuComponent implements AfterViewInit {
   }
 
  logout(){
-   localStorage.removeItem('userId');
-   localStorage.clear();
-   localStorage.removeItem('esAdmin');
-   localStorage.clear();
-   this.router.navigate(['/inicio','login']);
+  localStorage.setItem("login","false");
+  localStorage.clear();
+  location.reload();
+  this.router.navigate(['/login']);
  }
-
+ login(){
+    localStorage.setItem("login","true");
+ }
  setHome(){
    this.esHome = true;
  }

@@ -1,0 +1,69 @@
+<mat-card class="col-md-12">
+  <mat-card-title>Tarifas de transporte marítimo</mat-card-title>
+  <form class="example-form">
+    <div class="row container">
+    <mat-form-field appearance="standard" class="example-full-width">
+      <label>ORIGEN DE LA CARGA</label>
+      <input type="text" placeholder="País, Ciudad, Puerto o codigo Postal" aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="example-full-width">
+      <label>DESTINO DE LA CARGA</label>
+      <input type="text" placeholder="País, Ciudad, Puerto o codigo Postal" aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="example-full-width">
+      <label>¿CONTENEDOR COMPLETO O COMPARTIDO?</label>
+     <!-- <input type="text" placeholder="" aria-label="" matInput>-->
+      <mat-select placeholder="Favorite animal">
+          <mat-option>
+            Contenedor Completo FCL
+          </mat-option>
+          <mat-option>
+             Contenedor Compartido LCL
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard" class="example-full-width">
+        <label>¿T?</label>
+       <!-- <input type="text" placeholder="" aria-label="" matInput>-->
+        <mat-select placeholder="Favorite animal">
+            <mat-option style="width: 800px; height:80px; ">
+                <label>CONTENEDOR 20 PIES</label>
+                <label>20'X 8'x 8'6''</label>
+                <img src="../../../assets/img/20ftcontainer_v2.png">
+            </mat-option>
+            <mat-option  style="width: 800px; height:100px; ">
+                <label>CONTENEDOR 40 PIES</label>
+                <label>40'X 8'x 8'6''</label>
+                <img src="../../../assets/img/40ftcontainer_v2.png">
+            </mat-option>
+            <mat-option  style="width: 800px; height:100px; ">
+                <label>CONTENEDOR 40 PIES HC</label>
+                <label>40'X 8'x 9'6''</label>
+                <img src="../../../assets/img/40fthighcube_v2.png">
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <button type="button" mat-button aria-label = "Toogle sidenav">
+          COTIZAR
+      </button>
+
+      
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Cantidad" value="Sushi">
+        </mat-form-field>
+      
+      
+  </div>
+  </form>
+</mat-card>
