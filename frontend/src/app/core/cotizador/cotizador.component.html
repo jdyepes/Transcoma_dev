@@ -23,7 +23,7 @@
     <mat-form-field appearance="standard" class="example-full-width">
       <label>¿CONTENEDOR COMPLETO O COMPARTIDO?</label>
      <!-- <input type="text" placeholder="" aria-label="" matInput>-->
-      <mat-select placeholder="Favorite animal">
+      <mat-select placeholder="Completo/Compartido">
           <mat-option>
             Contenedor Completo FCL
           </mat-option>
@@ -34,36 +34,86 @@
     </mat-form-field>
 
     <mat-form-field appearance="standard" class="example-full-width">
-        <label>¿T?</label>
-       <!-- <input type="text" placeholder="" aria-label="" matInput>-->
-        <mat-select placeholder="Contenedor">
-            <mat-option style="width: 800px; height:80px; " value="Contenedor1">
-                <label>CONTENEDOR 20 PIES</label>
+        <label>TAMAÑO DEL CONTENEDOR</label>
+        <mat-select placeholder="Contenedor" multiple>
+            <mat-option style="width: 800px; height:80px;" value="Contenedor1">
+                <label> 20 PIES</label>
                 <label>20'X 8'x 8'6''</label>
-                <img src="../../../assets/img/20ftcontainer_v2.png">
+                <img src="../../../assets/img/20ftcontainer_v2.png" style="width: 75px; height: 42px; float:right;">
             </mat-option>
             <mat-option  style="width: 800px; height:100px; " value="Contenedor2">
-                <label>CONTENEDOR 40 PIES</label>
+                <label> 40 PIES</label>
                 <label>40'X 8'x 8'6''</label>
-                <img src="../../../assets/img/40ftcontainer_v2.png" style="width: 75px; height: 42px;">
+                <img src="../../../assets/img/40ftcontainer_v2.png" style="width: 150px; height: 42px; float:right;">
             </mat-option>
             <mat-option  style="width: 800px; height:100px; " value="Contenedor3">
-                <label>CONTENEDOR 40 PIES HC</label>
+                <label> 40 PIES HC</label>
                 <label>40'X 8'x 9'6''</label>
-                <img src="../../../assets/img/40fthighcube_v2.png">
+                <img src="../../../assets/img/40fthighcube_v2.png" style="width: 135px; height: 52px; float:right;">
             </mat-option>
           </mat-select>
       </mat-form-field>
-      <button type="button" mat-button aria-label = "Toogle sidenav">
-          COTIZAR
-      </button>
-
-      
-      <mat-form-field class="example-full-width">
-          <input matInput placeholder="Cantidad" value="Sushi">
+      <mat-form-field  appearance="standard" style="width:50px;">
+          <label>CANTIDAD</label>
+          <input matInput placeholder="" type=number>
         </mat-form-field>
+        <mat-form-field  appearance="standard" style="width:100px;">
+            <label>PESO</label>
+            <input matInput placeholder="0" type=number>
+        </mat-form-field>
+        <mat-form-field  appearance="standard" style="width:100px;">
+            <label>unidad</label>
+          <mat-select placeholder="">
+              <mat-option value="Kg">
+                Lbs
+              </mat-option>
+              <mat-option value="Kg">
+                Kg
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field  appearance="standard" style="width:100px;">
+              <label>VOLUMEN</label>
+              <input matInput placeholder="0" type=number>
+        </mat-form-field>     
+        <mat-form-field  appearance="standard"  style="width:100px;"> 
+            <label>Unidad</label>
+                <mat-select placeholder="" >
+                    <mat-option value="CFT">
+                       CFT
+                     </mat-option>
+                    <mat-option value="CBM">
+                       CBM
+                    </mat-option>
+                    <mat-option value="CIN">
+                        CIN
+                     </mat-option>
+                  </mat-select>
+        </mat-form-field>
+           
+        <button type="button" mat-button aria-label = "Toogle sidenav">
+            COTIZAR
+        </button>
       
       
   </div>
   </form>
 </mat-card>
+<!--<mat-card class="col-md-12">
+    <mat-card-title>Detalles Cotización </mat-card-title>
+    <div class="row">
+        <table>
+            <tr>
+                <th><label>Ocean Vessel</label></th>
+                <th><label>Port Of Loading</label></th>
+            </tr>
+            <tr>
+                <td>
+                    <textarea rows="2" cols="34" placeholder=""></textarea>
+                </td>
+                <td>
+                        <textarea rows="2" cols="33" placeholder=""></textarea>
+                </td>
+            </tr>             
+    </table>
+  </mat-card>-->
