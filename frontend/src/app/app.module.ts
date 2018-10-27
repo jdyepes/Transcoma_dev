@@ -23,6 +23,7 @@ import { MatButtonModule,
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { HomeComponent } from './core/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MenuComponent,
     BlComponent,
     BlDetailsComponent,
-    TrackingComponent
+    TrackingComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
