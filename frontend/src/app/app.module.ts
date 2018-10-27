@@ -18,7 +18,6 @@ import { MatButtonModule,
          MatInputModule,
          MatPaginatorModule,
          MatOptionModule,
-         MatSelectModule,
          MatAutocompleteModule,
          MatSelectModule,
          MatGridListModule} from '@angular/material';
@@ -36,8 +35,7 @@ import { LoginComponent } from './core/login/login.component';
     BlComponent,
     BlDetailsComponent,
     TrackingComponent,
-    HomeComponent
-    TrackingComponent,
+    HomeComponent,
     CotizadorComponent,
     LoginComponent
   ],
@@ -59,14 +57,10 @@ import { LoginComponent } from './core/login/login.component';
     MatGridListModule,
     MatTabsModule,
     MatOptionModule,
-    MatSelectModule
-    MatTabsModule,
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
