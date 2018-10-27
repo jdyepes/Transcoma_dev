@@ -4,6 +4,8 @@ import { BlComponent } from './core/bl/bl.component';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { HomeComponent } from './core/home/home.component';
+import { CotizadorComponent } from './core/cotizador/cotizador.component';
+import { LoginComponent } from './core/login/login.component';
 
 const routes: Routes = [
   {
@@ -11,9 +13,15 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+
+   {
      path: 'bl',
      component: BlComponent
   },
+  {
+    path: 'login',
+    component: LoginComponent
+ },
   {
     path: 'bl-details',
     component: BlDetailsComponent
@@ -21,6 +29,10 @@ const routes: Routes = [
   {
     path: 'tracking',
     component: TrackingComponent
+  },
+  {
+    path: 'cotizador',
+    component: CotizadorComponent
   }
 ];
 

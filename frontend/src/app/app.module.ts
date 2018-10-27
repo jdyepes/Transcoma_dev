@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app.routing';
@@ -19,11 +19,15 @@ import { MatButtonModule,
          MatPaginatorModule,
          MatOptionModule,
          MatSelectModule,
+         MatAutocompleteModule,
+         MatSelectModule,
          MatGridListModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './core/home/home.component';
+import { CotizadorComponent } from './core/cotizador/cotizador.component';
+import { LoginComponent } from './core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,9 @@ import { HomeComponent } from './core/home/home.component';
     BlDetailsComponent,
     TrackingComponent,
     HomeComponent
+    TrackingComponent,
+    CotizadorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +60,13 @@ import { HomeComponent } from './core/home/home.component';
     MatTabsModule,
     MatOptionModule,
     MatSelectModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

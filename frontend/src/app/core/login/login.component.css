@@ -1,0 +1,17 @@
+.mat-card{
+    border: 2px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.103);
+    margin-top: 20px;
+    margin-left: 210px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    height: 100%;
+    border-radius: 1px;
+    
+}
+
+.mat-card-title{
+    color: #676a6c;
+    font-size: 18px;
+    margin-left:20px;
+}

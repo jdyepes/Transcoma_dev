@@ -1,0 +1,75 @@
+.mat-card{
+    border: 2px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.103);
+    margin-top: 20px;
+    margin-left: 210px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    height: 100%;
+    border-radius: 1px;
+    background-image: url("../../../assets/img/boat-bg.jpg");
+    background-size: 1550px 500px; 
+    /*color: #ffffff;*/
+   
+}
+
+.container{
+    margin-top: 100px;
+    margin-bottom: 150px;
+    margin-left: 80px;
+}
+
+.container button{
+    margin-top: 20px;
+}
+
+.mat-card-title{
+    color: #ffff;/* #676a6c;*/
+    font-size: 28px;
+    margin-left:20px;
+    text-align: center;
+}
+
+.mat-form-field{
+    width: 300px;
+    margin-right: 20px;
+    text-align: center;
+    
+    font-size: 14px;
+
+}
+
+.mat-form-field label{
+    color: #ffffff;
+}
+
+input{
+    margin-top: 30px;
+    text-align: left;
+    padding: 10px 0px;
+    background-color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.mat-select{
+    margin-top: 30px;
+    text-align: left;
+    padding: 10px 0px;
+    background-color: #ffffff;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.mat-autocomplete{
+    width: 200px;
+    margin-top: 20px;
+    
+}
+
+
+button{
+    background-color: #ec6729;
+    margin-top: 20px;
+
+}
