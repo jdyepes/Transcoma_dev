@@ -38,5 +38,4 @@ export class Shipper extends EntidadBase {
     public set $nif(value: string) {
         this._nif = value;
     }
-
 }
