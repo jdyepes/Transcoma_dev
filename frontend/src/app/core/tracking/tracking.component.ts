@@ -36,6 +36,8 @@ export class TrackingComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSourceEntrada.filter = filterValue.trim().toLowerCase();
+    this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
+    this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
   }
 }
 
