@@ -6,9 +6,10 @@ import { TrackingComponent } from './core/tracking/tracking.component';
 import { HomeComponent } from './core/home/home.component';
 import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
-  {
+   {
     path: 'home',
     component: HomeComponent
   },
@@ -16,10 +17,6 @@ const routes: Routes = [
      path: 'bl',
      component: BlComponent
   },
-  {
-    path: 'login',
-    component: LoginComponent
- },
   {
     path: 'bl-details',
     component: BlDetailsComponent

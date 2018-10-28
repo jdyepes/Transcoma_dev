@@ -21,7 +21,8 @@ import { MatButtonModule,
          MatAutocompleteModule,
          MatSelectModule,
          MatGridListModule,
-         MatDialogModule} from '@angular/material';
+         MatDialogModule,
+         MatProgressSpinnerModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -66,7 +67,8 @@ import { TrackingModalComponent } from './components/tracking-modal/tracking-mod
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     ShipperModalComponent,

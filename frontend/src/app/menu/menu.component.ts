@@ -5,7 +5,7 @@ import { MODULES } from '../consts/consts.enum';
 import { Module } from '../models/modules';
 import { Observable } from 'rxjs';
 
-type Menu = "menu";
+type Menu = 'menu';
 
  @Component({
   selector: 'app-menu',
@@ -25,56 +25,54 @@ export class MenuComponent implements AfterViewInit {
 
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
-  constructor(private router: Router, private _zone: NgZone, private breakpointObserver: BreakpointObserver) { 
+  constructor(private router: Router, private _zone: NgZone, private breakpointObserver: BreakpointObserver) {
 
     this.moduleArray = [
-          new Module(MODULES.BL, "Bl")
+          new Module(MODULES.BL, 'Bl')
     ];
 
     this.initialiseModules();
-    this.menu = "menu";
-    this.logueado = localStorage.getItem("login");
+    this.menu = 'menu';
+    this.logueado = localStorage.getItem('login');
   }
 
   ngOnInit() {
-    if(window.location.href == window.location.origin + "/home")
+    if (window.location.href == window.location.origin + '/home') {
       this.esHome = false;
-    else
+    } else {
       this.esHome = true;
+    }
   }
 
-  initialiseModules(){
+  initialiseModules() {
 
-    for(var i=0; i< this.moduleArray.length; i++){
+    for (var i = 0 ; i < this.moduleArray.length; i++) {
       this.moduleMap.set(this.moduleArray[i].name, this.moduleArray[i]);
     }
   }
 
- logout(){
-  localStorage.setItem("login","false");
+ logout() {
+  localStorage.setItem('login', 'false');
   localStorage.clear();
   location.reload();
-  this.router.navigate(['/login']);
+  this.router.navigate(['/']);
  }
- login(){
-    localStorage.setItem("login","true");
+ login() {
+    localStorage.setItem('login', 'true');
  }
- setHome(){
+ setHome() {
    this.esHome = true;
  }
 
- toggleUserPanel(){
+ toggleUserPanel() {
    this.loadPanel = !this.loadPanel;
-   if(this.loadPanel){
-      this.menu = "menu";
-   }
-   else{
-     this.menu = "menu";
+   if (this.loadPanel) {
+      this.menu = 'menu';
+   } else {
+     this.menu = 'menu';
    }
  }
-  ngAfterViewInit(){
-  
-  }
-  
+  ngAfterViewInit() {
 
+  }
 }
