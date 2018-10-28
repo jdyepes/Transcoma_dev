@@ -29,6 +29,7 @@ import { HomeComponent } from './core/home/home.component';
 import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
 import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.component';
+import { TrackingModalComponent } from './components/tracking-modal/tracking-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.
     HomeComponent,
     CotizadorComponent,
     LoginComponent,
-    ShipperModalComponent
+    ShipperModalComponent,
+    TrackingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +69,8 @@ import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.
     MatDialogModule
   ],
   entryComponents: [
-    ShipperModalComponent
+    ShipperModalComponent,
+    TrackingModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
