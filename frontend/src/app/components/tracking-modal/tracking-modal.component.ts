@@ -8,6 +8,7 @@ import { EntradaElements } from 'src/app/core/tracking/tracking.component';
   styleUrls: ['./tracking-modal.component.css']
 })
 export class TrackingModalComponent {
+  Posicion = 'Entrada';
   constructor(
     public dialogRef: MatDialogRef<TrackingModalComponent>,
     @Inject(MAT_DIALOG_DATA) public entrada: EntradaElements ) { }

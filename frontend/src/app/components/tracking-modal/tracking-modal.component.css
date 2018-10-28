@@ -21,3 +21,23 @@
     color: darkgreen; 
 }
 
+.titulo {
+    background: darkgreen;
+    padding: 10px;
+    color: white;
+    border-radius: 2px 2px 15px 2px;
+    margin-bottom: 20px;
+    font: 500 18px/22px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.btn-detalle {
+    margin-right: 75%;
+    background-color: #0f440a;
+}
+
+.btn-detalle:hover{
+    background-color: #0f440a;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
