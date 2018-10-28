@@ -3,7 +3,7 @@
     padding: 40px;
     border-radius: 10px;
     /*box-sizing: border-box;*/
-    overflow: auto;
+    overflow: hidden;
     outline: 0;
     width: 4000px;
     height: 600px;
@@ -31,13 +31,18 @@
 }
 
 .btn-detalle {
-    margin-right: 75%;
-    background-color: #0f440a;
+    margin-left: 80%;
+    background-color: #0f440a; 
+    color: white;
 }
 
 .btn-detalle:hover{
-    background-color: #0f440a;
+    background-color: #309427;
     color: #FFFFFF;
-    padding-top: 0.5px;
-    padding-bottom: 0.5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+::ng-deep .cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.911);
 }

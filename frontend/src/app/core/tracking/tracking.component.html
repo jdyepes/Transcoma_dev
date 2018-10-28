@@ -25,7 +25,7 @@
             <!-- Position Column -->
             <ng-container matColumnDef="codClienteEntrada">
               <th mat-header-cell *matHeaderCellDef> Cod. </th>
-              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialogEntrada()">{{element.codClienteEntrada}} </button></td>
+              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialog('Entrada')">{{element.codClienteEntrada}} </button></td>
             </ng-container>
           
             <!-- Name Column -->
@@ -43,7 +43,7 @@
             <!-- Symbol Column -->
             <ng-container matColumnDef="descripcion">
               <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialogEntrada()">{{element.descripcion}}</button> </td>
+              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialog('Entrada')">{{element.descripcion}}</button> </td>
             </ng-container>
 
             <!-- Symbol Column -->
@@ -84,7 +84,7 @@
         <!-- Position Column -->
         <ng-container matColumnDef="codClienteSalida">
           <th mat-header-cell *matHeaderCellDef> Cod. </th>
-          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialogSalida()">{{element.codClienteSalida}} </button></td>
+          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialog('Salida')">{{element.codClienteSalida}} </button></td>
         </ng-container>
       
         <!-- Name Column -->
@@ -102,7 +102,7 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="descripcion">
           <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialogSalida()">{{element.descripcion}}</button> </td>
+          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialog('Salida')">{{element.descripcion}}</button> </td>
         </ng-container>
       
         <!-- Symbol Column -->
@@ -141,7 +141,7 @@
             <!-- Position Column -->
             <ng-container matColumnDef="codClientePedido">
               <th mat-header-cell *matHeaderCellDef> Cod. </th>
-              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialogPedido()">{{element.codClientePedido}} </button></td>
+              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialog('Pedido')">{{element.codClientePedido}} </button></td>
             </ng-container>      
         <!-- Name Column -->
         <ng-container matColumnDef="fechaSolicitud">
@@ -176,7 +176,7 @@
         <!-- Symbol Column -->
         <ng-container matColumnDef="descripcion">
           <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialogPedido()">{{element.descripcion}}</button> </td>
+          <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialog('Pedido')">{{element.descripcion}}</button> </td>
         </ng-container>
 
         <!-- Symbol Column -->

@@ -143,9 +143,10 @@ export class TrackingComponent implements OnInit, AfterViewInit {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialogEntrada(): void {
+  openDialog(valor: string): void {
+    localStorage.setItem('posicion', valor);
     const dialogRef = this.dialog.open(TrackingModalComponent, {
-      data: {  }
+      data: { valor }
     });
 
     dialogRef.afterClosed().subscribe(result => {
