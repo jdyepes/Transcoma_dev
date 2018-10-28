@@ -124,3 +124,54 @@ tr{
 hr{
   padding: 5px;
 }
+
+a:-webkit-any-link {
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-detalle{
+    background-color: #2f9726;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
+
+.btn-detalle:hover{
+    background-color: #0f440a;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
+
+.btn-descripcion:hover{
+    background-color: #0f440a;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
+
+.mat-button, .mat-flat-button, .mat-icon-button, .mat-stroked-button {
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 64px;
+    line-height: 25px;
+    padding: 0 10px;
+    border-radius: 4px;
+    overflow: visible;
+}

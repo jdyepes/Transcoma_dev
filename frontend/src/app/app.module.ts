@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app.routing';
 import { BlComponent } from './core/bl/bl.component';
-import { MatButtonModule, 
-         MatToolbarModule, 
-         MatSidenavModule, 
-         MatIconModule, 
+import { MatButtonModule,
+         MatToolbarModule,
+         MatSidenavModule,
+         MatIconModule,
          MatListModule,
          MatTableModule,
          MatCheckboxModule,
@@ -20,13 +20,16 @@ import { MatButtonModule,
          MatOptionModule,
          MatAutocompleteModule,
          MatSelectModule,
-         MatGridListModule} from '@angular/material';
+         MatGridListModule,
+         MatDialogModule} from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './core/home/home.component';
 import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
+import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.component';
+import { TrackingModalComponent } from './components/tracking-modal/tracking-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { LoginComponent } from './core/login/login.component';
     TrackingComponent,
     HomeComponent,
     CotizadorComponent,
-    LoginComponent
+    LoginComponent,
+    ShipperModalComponent,
+    TrackingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,12 @@ import { LoginComponent } from './core/login/login.component';
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    ShipperModalComponent,
+    TrackingModalComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

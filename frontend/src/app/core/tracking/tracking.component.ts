@@ -1,47 +1,11 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, ViewEncapsulation} from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { AfterViewInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { TrackingModalComponent } from 'src/app/components/tracking-modal/tracking-modal.component';
+import { Entrada } from 'src/app/models/Entrada';
 
-@Component({
-  selector: 'app-tracking',
-  templateUrl: './tracking.component.html',
-  styleUrls: ['./tracking.component.css']
-})
-export class TrackingComponent implements OnInit {
-
-  constructor() { }
-
-  displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
-  'descripcion', 'lote', 'estadoCalidad', 'disponible'];
-  dataSourceEntrada = new MatTableDataSource<EntradaElements>(ENTRADA_DATA);
-  
-  displayedColumnsSalida: string[] = ['codClienteSalida', 'fechaSalida', 'codProducto',
-    'descripcion', 'lote', 'estadoCalidad', 'disponible'];
-  dataSourceSalida = new MatTableDataSource<SalidaElements>(SALIDA_DATA);
-
-  displayedColumnsPedido: string[] = ['codClientePedido', 'fechaSolicitud', 'fechaEntrega',
-    'estadoPedido', 'destinatario', 'codProducto', 'descripcion', 'lote', 'estadoCalidad', 'disponible'];
-  dataSourcePedido = new MatTableDataSource<PedidoElements>(PEDIDO_DATA);
-
-  rolesList = ROL_DATA;
-
-  @ViewChild(MatPaginator) paginatorEntrada: MatPaginator;
-  @ViewChild(MatPaginator) paginatorSalida: MatPaginator;
-  @ViewChild(MatPaginator) paginatorPedido: MatPaginator;
-
-  ngOnInit() {
-    this.dataSourceEntrada.paginator = this.paginatorEntrada;
-    this.dataSourceSalida.paginator = this.paginatorSalida;
-    this.dataSourcePedido.paginator = this.paginatorPedido;
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSourceEntrada.filter = filterValue.trim().toLowerCase();
-    this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
-    this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
-  }
-}
-
-export interface  EntradaElements {
+export interface EntradaElements {
   codClienteEntrada: number;
   fechaEntrada: string;
   codProducto: number;
@@ -84,9 +48,111 @@ export interface PedidoElements {
 }
 
 const ROL_DATA: String[] = [
-   'Administrador',
-   'Cliente'
+   '-',
+   '-'
 ];
+export interface EntradaElements {
+  codClienteEntrada: number;
+  fechaEntrada: string;
+  codProducto: number;
+  descripcion: string;
+  lote: string;
+  estadoCalidad: string;
+  disponible: string;
+  codAlmacen: number;
+  nombreAlmacen: string;
+  direccionAlmacen: string;
+}
+
+export interface SalidaElements {
+  codClienteSalida: number;
+  fechaSalida: string;
+  codProducto: number;
+  descripcion: string;
+  lote: string;
+  estadoCalidad: string;
+  disponible: string;
+  codAlmacen: number;
+  nombreAlmacen: string;
+  direccionAlmacen: string;
+}
+
+export interface PedidoElements {
+  codClientePedido: number;
+  fechaSolicitud: string;
+  fechaEntrega: string;
+  estadoPedido: string;
+  destinatario: string;
+  codProducto: number;
+  descripcion: string;
+  lote: string;
+  estadoCalidad: string;
+  disponible: string;
+  codAlmacen: number;
+  nombreAlmacen: string;
+  direccionAlmacen: string;
+}
+
+@Component({
+  selector: 'app-tracking',
+  templateUrl: './tracking.component.html',
+  styleUrls: ['./tracking.component.css']
+})
+
+export class TrackingComponent implements OnInit, AfterViewInit {
+
+  /*constructor() { }*/
+
+  mostrar = false; // si es admin muestra la lista de clientes
+  margen: any = '500px';
+
+  displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
+  'descripcion', 'lote', 'estadoCalidad', 'disponible'];
+  dataSourceEntrada = new MatTableDataSource<EntradaElements>(ENTRADA_DATA);
+
+  displayedColumnsSalida: string[] = ['codClienteSalida', 'fechaSalida', 'codProducto',
+    'descripcion', 'lote', 'estadoCalidad', 'disponible'];
+  dataSourceSalida = new MatTableDataSource<SalidaElements>(SALIDA_DATA);
+
+  displayedColumnsPedido: string[] = ['codClientePedido', 'fechaSolicitud', 'fechaEntrega',
+    'estadoPedido', 'destinatario', 'codProducto', 'descripcion', 'lote', 'estadoCalidad', 'disponible'];
+  dataSourcePedido = new MatTableDataSource<PedidoElements>(PEDIDO_DATA);
+
+  rolesList = ROL_DATA;
+
+  @ViewChild(MatPaginator) paginatorEntrada: MatPaginator;
+  @ViewChild(MatPaginator) paginatorSalida: MatPaginator;
+  @ViewChild(MatPaginator) paginatorPedido: MatPaginator;
+
+  ngOnInit() {
+    this.dataSourceEntrada.paginator = this.paginatorEntrada;
+    this.dataSourceSalida.paginator = this.paginatorSalida;
+    this.dataSourcePedido.paginator = this.paginatorPedido;
+  }
+
+  ngAfterViewInit() {
+    this.dataSourceEntrada.paginator = this.paginatorEntrada;
+    this.dataSourceSalida.paginator = this.paginatorSalida;
+    this.dataSourcePedido.paginator = this.paginatorPedido;
+  }
+  applyFilter(filterValue: string) {
+    this.dataSourceEntrada.filter = filterValue.trim().toLowerCase();
+    this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
+    this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
+  }
+
+  constructor(public dialog: MatDialog) { }
+
+  openDialogEntrada(): void {
+    const dialogRef = this.dialog.open(TrackingModalComponent, {
+      data: {  }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+}
 
 const ENTRADA_DATA: EntradaElements[] = [
   { codClienteEntrada: 29 ,fechaEntrada:'06/07/2018' ,codProducto:3133 ,descripcion: 'BIDÓN DE ACERO' ,lote: 'TPP1633' ,estadoCalidad:'NUEVO' ,disponible:'si' ,codAlmacen: 4 ,nombreAlmacen:'HOSPITALET DE LLOBREGAT' },

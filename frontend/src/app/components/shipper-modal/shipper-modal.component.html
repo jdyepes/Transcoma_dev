@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Shipper</h1>
+<div mat-dialog-content>
+  <p>Nombre</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="shipper.$nombre">
+  </mat-form-field>
+  <p>Empresa</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="shipper.$empresa">
+  </mat-form-field>
+  <p>Nif</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="shipper.$nif">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="saveShipper()">Ok</button>
+</div>

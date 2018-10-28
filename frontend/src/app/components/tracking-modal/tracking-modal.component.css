@@ -1,0 +1,43 @@
+::ng-deep .mat-dialog-container {
+    display: block;
+    padding: 40px;
+    border-radius: 10px;
+    /*box-sizing: border-box;*/
+    overflow: auto;
+    outline: 0;
+    width: 4000px;
+    height: 600px;
+    min-height: inherit;
+    max-height: inherit;
+}
+
+::ng-deep  .mat-dialog-container {
+    box-shadow: 0 11px 15px 7px rgba(0, 0, 0, 0.288), 0 24px 38px 3px rgba(0, 0, 0, 0.76), 0 9px 46px 8px rgba(0,0,0,.12);    background: rgba(248, 243, 243, 0.973);
+    color: black;
+}
+
+::ng-deep .mat-dialog-title {
+    text-align: center;
+    color: darkgreen; 
+}
+
+.titulo {
+    background: darkgreen;
+    padding: 10px;
+    color: white;
+    border-radius: 2px 2px 15px 2px;
+    margin-bottom: 20px;
+    font: 500 18px/22px Roboto,"Helvetica Neue",sans-serif;
+}
+
+.btn-detalle {
+    margin-right: 75%;
+    background-color: #0f440a;
+}
+
+.btn-detalle:hover{
+    background-color: #0f440a;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}

@@ -1,0 +1,39 @@
+<label class="titulo">{{Posicion}} </label>
+<h1 mat-dialog-title><b>Detalle</b></h1>
+<mat-card>
+<div mat-dialog-content>
+  <mat-icon>home</mat-icon>
+    <ul>
+      <li><b>Codigo del Producto: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Producto: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Fecha de Entrada: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Descripcion: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Lote: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Calidad en que se encuentra: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Disponible: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Aduana: </b>------------------------</li>
+    </ul>
+    <ul>
+      <li><b>Almacen: </b>------------------------</li>
+    </ul>
+  
+</div>
+<div mat-dialog-actions>
+    <button mat-button class="btn-detalle" (click)="onNoClick()"></button>
+    <button mat-button [mat-dialog-close]="entrada.descripcion" cdkFocusInitial>Aceptar</button>
+</div>
+</mat-card>
