@@ -15,6 +15,8 @@ namespace TranscomaAPI.Comun.Entidades
         private string _nombre;
         private Direccion _direccion;
 
+
+        public Puerto() { }
         /// <summary>
         /// Constructor de la EntidadPuerto
         /// </summary>

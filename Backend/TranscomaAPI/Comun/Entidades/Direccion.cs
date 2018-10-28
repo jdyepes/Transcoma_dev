@@ -15,14 +15,16 @@ namespace TranscomaAPI.Comun.Entidades
         private string _ciudad;
         private string _provincia;
         private string _estado;
-        private Pais _pais;
+        private string _pais;
 
+
+        public Direccion() { }
         public Direccion(int id)
         {
             Id = id;
         }
 
-        public Direccion(string codigoZip, string ciudad, string provincia, string estado, Pais pais)
+        public Direccion(string codigoZip, string ciudad, string provincia, string estado, string pais)
         {
             _codigoZip = codigoZip;
             _ciudad = ciudad;
@@ -35,6 +37,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string Ciudad { get => _ciudad; set => _ciudad = value; }
         public string Provincia { get => _provincia; set => _provincia = value; }
         public string Estado { get => _estado; set => _estado = value; }
-        public Pais Pais { get => _pais; set => _pais = value; }
+        public string Pais { get => _pais; set => _pais = value; }
     }
 }

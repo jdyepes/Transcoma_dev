@@ -1364,3 +1364,47 @@ DROP FUNCTION agregarProductoEntrada();
 DROP FUNCTION agregarProductoSalida();
 DROP FUNCTION agregarProductoPedido();
 */
+
+--------------------------------SP Consultar BL por Cliente---------------------------------------
+CREATE OR REPLACE FUNCTION consultarBlporCliente(idCliente int)
+RETURNS TABLE
+	(_id int, _notifyparty varchar, _lugarrecepcion varchar, _buqueoceno varchar,
+     _fkpol int, _fkpod int, _lugarentrega varchar, _fletepagoen varchar, _numpaquetes int,
+    _descripcion varchar, _pesocarga float, _fkcotizacion int, _fkcliente int, _cliente varchar, _volumen int)
+AS $$
+BEGIN 
+	RETURN QUERY 
+    	SELECT b._id, b._notifyparty, b._lugarrecepcion, b._buqueoceno,
+          	   b._fkpol, b._fkpod, b._lugarentrega, b._fletepagoen, b._numpaquetes,
+               b._descripcion, b._pesocarga, b._fkcotizacion, b._fkcliente, c._nombre, b._volumen
+        FROM BL as b INNER JOIN Cliente as c ON b._fkcliente = c._id WHERE b._id = idCliente;
+END;
+$$ LANGUAGE plpgsql;
+
+----------------------------SP Consultar todos los puertos----------------------------------------
+CREATE OR REPLACE FUNCTION consultarTodosPuertos()
+RETURNS TABLE
+	(puertoId int, codigo varchar, nombre varchar, direccionId int, codigozip varchar,
+     ciudad varchar, provincia varchar, estado varchar, pais varchar)
+AS $$
+BEGIN 
+	RETURN QUERY 
+    	SELECT pu._id, pu._codigo, pu._nombre, dir._id, dir._codigozip, dir._ciudad, dir._provincia, dir._estado, dir._pais FROM PUERTO AS pu  
+        INNER JOIN DIRECCION AS dir ON pu._fkdireccion = dir._id;
+END;
+$$ LANGUAGE plpgsql;
+
+----------------------------SP consultar Puerto por Id--------------------------------------------
+CREATE OR REPLACE FUNCTION consultarPuertoporId(idPuerto int)
+RETURNS TABLE
+	(puertoId int, codigo varchar, nombre varchar, direccionId int, codigozip varchar,
+     ciudad varchar, provincia varchar, estado varchar, pais varchar)
+AS $$
+BEGIN 
+	RETURN QUERY 
+    	SELECT pu._id, pu._codigo, pu._nombre, dir._id, dir._codigozip, dir._ciudad, dir._provincia, dir._estado, dir._pais FROM PUERTO AS pu  
+        INNER JOIN DIRECCION AS dir ON pu._fkdireccion = dir._id WHERE pu._id= idPuerto;
+END;
+$$ LANGUAGE plpgsql;
+
+

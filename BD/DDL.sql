@@ -93,21 +93,7 @@ CREATE TABLE DIRECCION (
     _ciudad varchar(100) NOT NULL,
     _provincia varchar(100) NOT NULL,
     _estado varchar(100) NOT NULL,
-    _fkPais int4,
-    PRIMARY KEY(_id)
-);
-
-CREATE TABLE PAIS (
-	_id SERIAL,
-    _nombre varchar(100) NOT NULL,
-    PRIMARY KEY(_id)
-);
-
-CREATE TABLE SHIPPER (
-	_id SERIAL,
-    _nombre varchar(10) NOT NULL,
-    _empresa varchar(100),
-    _nif varchar(10) NOT NULL,
+    _pais varchar(20) NOT NULL,
     PRIMARY KEY(_id)
 );
 
@@ -115,11 +101,12 @@ CREATE TABLE SHIPPER (
 CREATE TABLE TIPO_CONTAINER (
 	_id SERIAL,
     _nombre varchar(10) NOT NULL,
-    _tarifa varchar(100),
+    _tarifa float,
     _dimension varchar(10) NOT NULL,
     _alto int4,
     _ancho int4,
-    _profundidad int4,
+    _profundidad float,
+	_tipo varchar(15),
     PRIMARY KEY(_id)
 );
 
@@ -146,13 +133,6 @@ CREATE TABLE COTIZACION (
     PRIMARY KEY(_id)
 );
 
-CREATE TABLE INCOTERM (
-	_id SERIAL,
-    _nombre varchar(20) NOT NULL,
-    _tarifa float8,
-    PRIMARY KEY(_id)
-);
-
 CREATE TABLE BL (
 	_id SERIAL,
     _notifyParty VARCHAR(50) Not null,
@@ -165,12 +145,23 @@ CREATE TABLE BL (
     _numPaquetes int4,
     _descripcion VARCHAR(100),
     _pesoCarga float8,
-  	_volumen VARCHAR(10),
+  	_volumen int4,
     _fkCotizacion int4,
-    _fkIncoterm int4,
     _fkCliente int4,
     PRIMARY KEY(_id)
 );
+
+CREATE TABLE EMBARQUE (
+	_id SERIAL, 
+    _puertoEmbarque int4,
+    _puertoRecepcion int4,
+    _fechaSalida date,
+    _duracion int4,
+    PRIMARY KEY(_id)
+)
+
+ALTER TABLE EMBARQUE add constraint Ref_puertoEm_puerto FOREIGN KEY (_puertoEmbarque)
+REFERENCES puerto(_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE BL ADD CONSTRAINT Ref_Cliente_to_Bl FOREIGN KEY (_fkCliente)
 	REFERENCES Cliente(_id) ON DELETE CASCADE ON UPDATE CASCADE;

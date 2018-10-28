@@ -14,6 +14,8 @@ namespace TranscomaAPI.Comun.Entidades
         private float _duracion;
         private float _total;
 
+        public Cotizacion() { }
+
         public Cotizacion(float flete, float recargo, float gastosAdmin, string fechaSalida, float duracion, float total)
         {
             _flete = flete;

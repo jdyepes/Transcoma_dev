@@ -66,6 +66,8 @@ namespace TranscomaAPI.Comun.Entidades
             _correo = correo;
         }
 
+        public Cliente() { }
+
         /// <summary>
         /// Getters y Setters
         /// </summary>        

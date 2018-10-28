@@ -146,5 +146,40 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         {
             return new Cliente(id, nombre, nombreUsuario, correo, fechaRegistro, administrador);
         }
+
+        public static Cliente CrearCliente()
+        {
+            return new Cliente();
+        }
+
+        public static BL CrearBl()
+        {
+            return new BL();
+        }
+
+        public static Cotizacion CrearCotizacion()
+        {
+            return new Cotizacion();
+        }
+
+        public static Puerto CrearPuerto()
+        {
+            return new Puerto();
+        }
+
+        public static Container CrearContainer()
+        {
+            return new Container();
+        }
+
+        public static Embarque CrearEmbarque()
+        {
+            return new Embarque();
+        }
+
+        public static Direccion CrearDireccion()
+        {
+            return new Direccion();
+        }
     }
 }

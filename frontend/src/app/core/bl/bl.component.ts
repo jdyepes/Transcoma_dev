@@ -11,8 +11,6 @@ export interface Bl {
   consignatario: string;
   pod: string;
   pol: string;
-  incoterm: string;
-  cliente: string;
   trabajando: string;
   fecha: string;
 }
@@ -24,8 +22,6 @@ const ELEMENT_DATA: Bl[] = [
     consignatario: 'A L ORDRE DE LA SOCIETE GENERAL',
     pod: 'PORT D ALGER',
     pol: 'VALENCIA',
-    incoterm: 'CFR',
-    cliente: '',
     trabajando: '',
     fecha: '14/09/2018 19:44:18'
   },
@@ -35,8 +31,6 @@ const ELEMENT_DATA: Bl[] = [
     consignatario: 'A L ORDRE DE LA SOCIETE GENERAL 2',
     pod: 'PORT D ALGER 2',
     pol: 'BARCELONA',
-    incoterm: 'CFR 2',
-    cliente: '',
     trabajando: '',
     fecha: '15/09/2018 19:44:18'
   }
@@ -53,7 +47,7 @@ export class BlComponent implements OnInit {
 
   displayedColumns: string[] = ['acciones','referencia','estado', 
                                  'shipper','consignatario','pod',
-                                 'pol','incoterm','cliente','trabajando',
+                                 'pol','trabajando',
                                  'fecha'];
   dataSource = new MatTableDataSource<Bl>(ELEMENT_DATA);
   selection = new SelectionModel<Bl>(true, []);
