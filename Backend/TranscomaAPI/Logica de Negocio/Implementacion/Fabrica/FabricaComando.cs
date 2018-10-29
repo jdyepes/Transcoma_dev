@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Usuarios;
+using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl;
+using TranscomaAPI.Comun.Entidades;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
 {
@@ -102,6 +104,37 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         public static ComandoConsultarClientes CrearComandoConsultarClientes(int id)
         {
             return new ComandoConsultarClientes(id);
+        }
+
+        /// <summary>
+        /// Consulta todos los bl de un cliente por su id
+        /// </summary>
+        /// <param name="cliente">recibe la entidad cliente</param>
+        /// <returns></returns>
+        public static ComandoConsultarBLporCliente CrearComandoConsultarBLporCliente(Entidad cliente)
+        {
+            return new ComandoConsultarBLporCliente(cliente);
+        }
+
+        /// <summary>
+        /// Consulta un puerto por su id
+        /// </summary>
+        /// <param name="puerto"></param>
+        /// <returns></returns>
+        public static ComandoConsultarPuertoporId CrearComandoConsultarPuertoporId(Entidad puerto)
+        {
+            return new ComandoConsultarPuertoporId(puerto);
+        }
+
+
+        /// <summary>
+        /// Obtiene la lista de bl de un cliente con los datos completos
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public static ComandoObtenerBLsCLiente CrearComandoObtenerBLsCLiente(Entidad cliente)
+        {
+            return new ComandoObtenerBLsCLiente(cliente);
         }
     }
 }

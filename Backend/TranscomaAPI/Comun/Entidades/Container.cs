@@ -15,6 +15,9 @@ namespace TranscomaAPI.Comun.Entidades
         private Tipo_Container _tipoContainer;
         private Cotizacion _cotizacion;
 
+
+        public Container() { }
+
         public Container(int peso, string dimPeso, int volumen, string dimVolum, int numBultos, Tipo_Container tipoContainer, Cotizacion cotizacion)
         {
             _peso = peso;

@@ -820,3 +820,44 @@ insert into SALIDA (_fechaSalida,_fkAlmacenSalida) values ('22/09/2018',20);
 insert into SALIDA (_fechaSalida,_fkAlmacenSalida) values ('07/03/2018',20);
 insert into SALIDA (_fechaSalida,_fkAlmacenSalida) values ('20/06/2018',20);
 
+
+
+------------------------------------INSERTS DIRECCION-----------------------------------------------------
+INSERT INTO DIRECCION(_codigozip, _ciudad, _provincia, _estado, _pais) VALUES ('08','BARCELONA', 'PROVINCIA BARCELONA','BARCELONA','ESPAÑA');
+INSERT INTO DIRECCION(_codigozip, _ciudad, _provincia, _estado, _pais) VALUES ('46001','VALENCIA', 'PROVINCIA VALENCIA','VALENCIA','ESPAÑA');
+INSERT INTO DIRECCION(_codigozip, _ciudad, _provincia, _estado, _pais) VALUES ('4603','MADRID', 'PROVINCIA MADRID','MADRID','ESPAÑA');
+
+
+------------------------------------INSERTS PUERTO----------------------------------------------------------
+INSERT INTO PUERTO(_codigo, _nombre, _fkdireccion) VALUES ('001','PUERTO DE BARCELONA',1);
+INSERT INTO PUERTO(_codigo, _nombre, _fkdireccion) VALUES ('002','PUERTO DE VALENCIA',2);
+INSERT INTO PUERTO(_codigo, _nombre, _fkdireccion) VALUES ('003','PUERTO DE MADRID',3);
+
+------------------------------------INSERTS TIPO_CONTAINER-------------------------------------------------
+INSERT INTO TIPO_CONTAINER(_nombre, _tarifa, _dimension, _alto, _ancho, _profundidad, _tipo)
+VALUES ('20 PIES',100, 'pies', 20, 8, 8.6,'completo');
+INSERT INTO TIPO_CONTAINER(_nombre, _tarifa, _dimension, _alto, _ancho, _profundidad, _tipo)
+VALUES ('40 PIES',200, 'pies', 40, 8, 8.6,'completo');
+INSERT INTO TIPO_CONTAINER(_nombre, _tarifa, _dimension, _alto, _ancho, _profundidad, _tipo)
+VALUES ('40 PIES HC',300, 'pies', 40, 8, 9.6,'completo');
+INSERT INTO TIPO_CONTAINER(_nombre, _tarifa, _dimension,_tipo)
+VALUES ('LCL',50, 'pies','compartido');
+
+------------------------------------INSERTS EMBARQUE---------------------------------------------------------
+INSERT INTO EMBARQUE(_puertoEmbarque, _puertoRecepcion, _fechaSalida, _duracion) VALUES (1,2,'08/11/2018',4);
+INSERT INTO EMBARQUE(_puertoEmbarque, _puertoRecepcion, _fechaSalida, _duracion) VALUES (2,1,'15/11/2018',4);
+INSERT INTO EMBARQUE(_puertoEmbarque, _puertoRecepcion, _fechaSalida, _duracion) VALUES (2,3,'17/11/2018',5);
+
+------------------------------------INSERTS COTIZACION------------------------------------------------------
+INSERT INTO COTIZACION(_flete, _recargo, _gastosAdmin, _fechaSalida, _duracion, _total) VALUES (45,10,485,'15/11/2018',5,540);
+INSERT INTO COTIZACION(_flete, _recargo, _gastosAdmin, _fechaSalida, _duracion, _total) VALUES (25,10,485,'11/11/2018',5,520);
+
+-------------------------------------INSERTS CONTAINER--------------------------------------------
+INSERT INTO CONTAINER(_numBultos, _fkTipoContainer, _fkcotizacion) VALUES (56,1,1);
+
+-------------------------------------INSERTS BL---------------------------------------------------
+INSERT INTO BL(_notifyParty,_lugarRecepcion, _buqueoceno, _fkpol, _fkpod, _lugarEntrega, _fletepagoen,
+               _numpaquetes, _descripcion, _pesocarga, _fkcotizacion, _fkcliente, _volumen)
+VALUES ('A LORDRE DE
+ALGERIA GOLF BANK
+', 'BARCELONA','Vessel',1,2,'BARCELONA','ORIGIN',2,'S.T.C. - 24 PACKG MARCHE Nº23/2014-REALISATION ET EXPLOITATION DE LA STATION', 100, 1,1,300)
