@@ -42,8 +42,8 @@ namespace TranscomaAPI.Persistencia.Dao
                 
                 for (int i = 0; i < cantidadRegistros; i++)
                 {
-                    producto = new Producto(GetInt(i, 5), GetString(i, 6), GetString(i, 7), GetString(i, 8), GetBool(i, 9));
-                    almacen = new Almacen(GetInt(i, 10), GetString(i, 11), GetString(i, 12));
+                    producto = FabricaEntidades.CrearProducto(GetInt(i, 5), GetString(i, 6), GetString(i, 7), GetString(i, 8), GetBool(i, 9));
+                    almacen = FabricaEntidades.CrearAlmacen(GetInt(i, 10), GetString(i, 11), GetString(i, 12));
 
                     pedidoARetornar = FabricaEntidades.CrearPedido(GetInt(i, 0), GetDateTime(i, 1), GetDateTime(i, 2), GetString(i, 3), GetString(i, 4), producto, almacen);
                     _pedidos.Add(pedidoARetornar);
@@ -93,9 +93,9 @@ namespace TranscomaAPI.Persistencia.Dao
 
                 for (int i = 0; i < cantidadRegistros; i++)
                 {
-                    producto = new Producto(GetInt(i, 5), GetString(i, 6), GetString(i, 7), GetString(i, 8), GetBool(i, 9));
-                    cliente = new Cliente(GetInt(i, 0), GetString(i, 10), GetString(i, 11));
-                    almacen = new Almacen(GetInt(i, 12), GetString(i, 13), GetString(i, 14));
+                    producto = FabricaEntidades.CrearProducto(GetInt(i, 5), GetString(i, 6), GetString(i, 7), GetString(i, 8), GetBool(i, 9));
+                    cliente = FabricaEntidades.CrearCliente(GetInt(i, 0), GetString(i, 10), GetString(i, 11));
+                    almacen = FabricaEntidades.CrearAlmacen(GetInt(i, 12), GetString(i, 13), GetString(i, 14));
                     
                     pedidoARetornar = FabricaEntidades.CrearPedido(GetInt(i, 0), GetDateTime(i, 1), GetDateTime(i, 2), GetString(i, 3), GetString(i, 4), producto, almacen, cliente);
                     _pedidos.Add(pedidoARetornar);

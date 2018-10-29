@@ -44,7 +44,7 @@ namespace TranscomaAPI.Comun.Entidades
         /// <param name="administrador"></param>
         public Cliente(int id, string nombre,  string nombreUsuario, string correo, DateTime fechaRegistro, Administrador administrador)
         {
-            Id = Id;
+            Id = id;
             _nombre = nombre;      
             _correo = correo;
             _nombreUsuario = nombreUsuario;           

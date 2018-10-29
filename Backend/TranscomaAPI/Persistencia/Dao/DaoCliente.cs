@@ -41,7 +41,7 @@ namespace TranscomaAPI.Persistencia.Dao
 
                 for (int i = 0; i < cantidadRegistros; i++)
                 {
-                    administrador = new Administrador(GetInt(i, 0), GetString(i, 1));
+                    administrador = FabricaEntidades.CrearAdministrador(GetInt(i, 0), GetString(i, 1));
                     clienteARetornar = FabricaEntidades.CrearCliente(GetInt(i, 2), GetString(i, 3), GetString(i, 4), GetString(i, 5), GetDateTime(i, 6), administrador);
                     _clientes.Add(clienteARetornar);
                 }
