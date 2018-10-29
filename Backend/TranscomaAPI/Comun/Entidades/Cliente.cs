@@ -25,7 +25,7 @@ namespace TranscomaAPI.Comun.Entidades
         /// <param name="fechaRegistro"></param>
         public Cliente(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
         {
-            Id = Id;
+            Id = id;
             _nombre = nombre;
             _nombreUsuario = nombreUsuario;
             _correo = correo;
@@ -61,7 +61,7 @@ namespace TranscomaAPI.Comun.Entidades
 
         public Cliente(int id, string nombre, string correo)
         {
-            Id = Id;
+            Id = id;
             _nombre = nombre;
             _correo = correo;
         }

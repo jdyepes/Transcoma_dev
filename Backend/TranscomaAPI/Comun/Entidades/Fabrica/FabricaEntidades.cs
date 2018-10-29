@@ -153,6 +153,21 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         /// <param name="id"></param>
         /// <param name="nombre"></param>
         /// <param name="nombreUsuario"></param>
+        /// <param name="correo"></param>
+        /// <param name="pass"></param>
+        /// <param name="fechaRegistro"></param>
+        /// <returns></returns>
+        public static Cliente CrearCliente(int id, string nombre, string nombreUsuario, string correo, string pass, DateTime fechaRegistro)
+        {
+            return new Cliente(id, nombre, nombreUsuario, correo,pass, fechaRegistro);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreUsuario"></param>
         /// <returns></returns>
         public static Cliente CrearCliente(int id, string nombre, string nombreUsuario)
         {

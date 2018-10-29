@@ -8,6 +8,9 @@ namespace TranscomaAPI.Persistencia.Dao.Contrato
 {
     public interface IDaoCliente
     {        
-        List<Entidad> ConsultarClientes(int idAdminstrador);        
+        List<Entidad> ConsultarClientes(int idAdminstrador);
+        
+        Entidad verificarNombreUsuarioCliente(string userName);
+
     }
 }

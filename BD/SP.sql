@@ -1410,7 +1410,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -----------------------Validaciones de usuarios -------------------
-CREATE OR REPLACE FUNCTION verificarCorreoCliente(nombreUsuario varchar)
+CREATE OR REPLACE FUNCTION verificarLoginCliente(nombreUsuario varchar)
 RETURNS TABLE
   (idCliente int, nombre varchar, nombUsuario varchar, correo varchar ,contraseña varchar, fecha date )
 AS $$
@@ -1423,7 +1423,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 ----------------------------------------------------
-CREATE OR REPLACE FUNCTION verificarCorreoAdministrador(nombreUsuario varchar)
+CREATE OR REPLACE FUNCTION verificarLoginAdministrador(nombreUsuario varchar)
 RETURNS TABLE
   (idAdmin int,  nombre varchar, nomUsuario varchar, correo varchar ,contraseña varchar, fecha date )
 AS $$

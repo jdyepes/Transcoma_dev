@@ -47,6 +47,34 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
             }
         }
 
+        /// <summary>
+        /// Verificar si existe el Administrador mediante su nombre de usuario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("verificarCliente/{userName}")]
+        public ActionResult verificarUsuarioCliente(string userName)
+        {
+            try
+            {
+                Comando comando = FabricaComando.CrearComandoVerificarUsuarioCliente(userName);
+                comando.Ejecutar();
+                Entidad respuesta = comando.GetEntidad();
+
+                return Ok(respuesta);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
+        }
+
         // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)

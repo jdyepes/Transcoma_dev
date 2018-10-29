@@ -235,25 +235,27 @@ $$ LANGUAGE plpgsql;
 
 ----------- Validar si un cliente exste buscando su nombre de usuario
 
-CREATE OR REPLACE FUNCTION verificarCorreoCliente(nombreUsuario varchar)
+CREATE OR REPLACE FUNCTION verificarLoginCliente(nombreUsuario varchar)
 RETURNS TABLE
-  (idCliente int, contraseña varchar)
+  (idCliente int, nombre varchar, nombUsuario varchar, correo varchar ,contraseña varchar, fecha date )
 AS $$
 BEGIN	
 	RETURN QUERY
-	   select c."_id", c."_password" from "CLIENTE" c where c."_nombreUsuario" like nombreUsuario; 	
+	   select c."_id", c."_nombre",c."_nombreUsuario", c."_correo", c."_password", c."_fechaRegistro" 
+	   from "CLIENTE" c where c."_nombreUsuario" like nombreUsuario; 	
 	
 END;
 $$ LANGUAGE plpgsql;
 
 ----------------------------------------------------
-CREATE OR REPLACE FUNCTION verificarCorreoAdministrador(nombreUsuario varchar)
+CREATE OR REPLACE FUNCTION verificarLoginAdministrador(nombreUsuario varchar)
 RETURNS TABLE
-  (idAdmin int,  contraseña varchar)
+  (idAdmin int,  nombre varchar, nomUsuario varchar, correo varchar ,contraseña varchar, fecha date )
 AS $$
 BEGIN	
 	RETURN QUERY
-	   select a."_id", a."_password" from "ADMINISTRADOR" a where a."_nombreUsuario" like upper(nombreUsuario);
+	   select a."_id", a."_nombre", a."_nombreUsuario", a."_correo", a."_password", a."_fechaRegistro"  
+	   from "ADMINISTRADOR" a where a."_nombreUsuario" like upper(nombreUsuario);
 	
 END;
 $$ LANGUAGE plpgsql;
@@ -270,7 +272,7 @@ DROP FUNCTION verificarcorreoadministrador(character varying);
 -- CONSULTAS Y LLAMADA A LAS FUNCIONES
 
 select * from verificarCorreoCliente('cmc');
-select * from verificarCorreoAdministrador('jyepesd');
+select * from verificarCorreoAdministrador('jyepes');
 select * from consultarAlmacenesAduana(2);
 select * from consultarAduana(2);
 select * from consultarTodasAduana();

@@ -27,8 +27,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Usuarios
             _dao = FabricaDao.CrearDaoAdministrador();
         }
 
-        
-
+       
         public override void Ejecutar()
         {
             try

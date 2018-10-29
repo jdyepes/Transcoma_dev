@@ -146,5 +146,15 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         {
             return new ComandoVerificarUsuarioAdministrador(userName);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public static ComandoVerificarUsuarioCliente CrearComandoVerificarUsuarioCliente(string userName)
+        {
+            return new ComandoVerificarUsuarioCliente(userName);
+        }
     }
 }

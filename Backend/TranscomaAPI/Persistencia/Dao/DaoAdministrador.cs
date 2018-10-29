@@ -43,7 +43,7 @@ namespace TranscomaAPI.Persistencia.Dao
                 Administrador administrador;
                 int _resultado;
                 Conectar();
-                StoredProcedure("verificarCorreoAdministrador(@nombreUsuario)");
+                StoredProcedure("verificarLoginAdministrador(@nombreUsuario)");
                 AgregarParametro("nombreUsuario", userName);
                 EjecutarReader();
 

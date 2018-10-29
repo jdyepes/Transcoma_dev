@@ -83,5 +83,47 @@ namespace TranscomaAPI.Persistencia.Dao
         {
             throw new NotImplementedException();
         }
+
+        public Entidad verificarNombreUsuarioCliente(string userName)
+        {
+            try
+            {
+                Cliente cliente;
+                int _resultado;
+                Conectar();
+                StoredProcedure("verificarLoginCliente(@nombreUsuario)");
+                AgregarParametro("nombreUsuario", userName);
+                EjecutarReader();
+
+                _resultado = GetInt(0, 0);
+                cliente = FabricaEntidades.CrearCliente(_resultado, GetString(0, 1), GetString(0, 2), GetString(0, 3), GetString(0, 4), GetDateTime(0, 5));
+
+                return cliente;
+            }
+            catch (NullReferenceException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionObjetoNulo(e, "Parametros nulos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (InvalidCastException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionCasteoIncorrecto(e, "Casteo no correcto en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
     }
 }
