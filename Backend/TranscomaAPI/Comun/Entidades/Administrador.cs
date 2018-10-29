@@ -16,7 +16,7 @@ namespace TranscomaAPI.Comun.Entidades
 
         public Administrador(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
         {
-            Id = Id;
+            Id = id;
             _nombre = nombre;
             _nombreUsuario = nombreUsuario;
             _correo = correo;
@@ -24,6 +24,18 @@ namespace TranscomaAPI.Comun.Entidades
             _fechaRegistro = fechaRegistro;
         }
 
+        /// <summary>
+        /// Para la validacion de usuario para el login
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="password"></param>
+        /// <param name="correo"></param>
+        public Administrador(int id, string password, string correo)
+        {
+            Id = id;
+            _correo = correo;
+            _password = password;
+        }
         /// <summary>
         /// Constructor para la consulta de clientes de un administrador
         /// </summary>
@@ -33,6 +45,15 @@ namespace TranscomaAPI.Comun.Entidades
         {
             Id = id;
             _nombre = nombre;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        public Administrador(int id)
+        {
+            Id = id;
         }
 
         /// <summary>

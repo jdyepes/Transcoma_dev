@@ -170,6 +170,21 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
             return new Administrador(id, nombre);
         }
 
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="id"></param>
+      /// <param name="nombre"></param>
+      /// <param name="nombreUsuario"></param>
+      /// <param name="correo"></param>
+      /// <param name="password"></param>
+      /// <param name="fechaRegistro"></param>
+      /// <returns></returns>
+        public static Administrador CrearAdministrador(int id, string nombre, string nombreUsuario, string correo, string password, DateTime fechaRegistro)
+        {
+            return new Administrador(id, nombre, nombreUsuario, correo, password, fechaRegistro);
+        }
+
         /// <summary>
         /// Consulta de entradas con sus productos
         /// </summary>

@@ -137,3 +137,7 @@ where p."_fechaEntrega" ='18/10/2018'
 update "PEDIDO" p
 set "_fechaEntrega" ='18/10/2018'
 where p."_fechaEntrega" IS null
+
+--- Validacion de los usuarios ---
+
+select * from "CLIENTE" c where c."_nombreUsuario" like 'cmc'; 

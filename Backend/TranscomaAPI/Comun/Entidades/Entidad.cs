@@ -13,5 +13,10 @@ namespace TranscomaAPI.Comun.Entidades
         /// Getters y Setters del atributo id
         /// </summary>
         public int Id { get => _id; set => _id = value; }
+
+        public static implicit operator Entidad(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,4 @@
-----------------------  SP PARA DATOS DE MUESTRA PARA USO DENTRO DE PSQL -------------------------------
+﻿----------------------  SP PARA DATOS DE MUESTRA PARA USO DENTRO DE PSQL -------------------------------
 
 -------------- PRODUCTO Y PEDIDO
 ------------------------------------- Insercion de los Productos ---------------------------------
@@ -1356,6 +1356,8 @@ $$ LANGUAGE plpgsql;
 SELECT agregarAdministrador('wilmer perez', 'wperez', 'wperez@transcoma.com', 'wPerez');
 SELECT agregarCliente('GLOBAL TRAVELING SEA SRL', 'GTRAVEL', 'GTRAVEL@transcoma.com', 'GTr4v3L',9);
 SELECT * FROM agregarProductoPedido();
+select * from verificarCorreoCliente('cmc');
+select * from verificarCorreoAdministrador('jyepesd');
 
 ---------------------- DROPS DE LAS DUNCIONES------------------------------------------------------
 /*
@@ -1407,4 +1409,28 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-----------------------Validaciones de usuarios -------------------
+CREATE OR REPLACE FUNCTION verificarCorreoCliente(nombreUsuario varchar)
+RETURNS TABLE
+  (idCliente int, nombre varchar, nombUsuario varchar, correo varchar ,contraseña varchar, fecha date )
+AS $$
+BEGIN	
+	RETURN QUERY
+	   select c._id, c._nombre,c._nombreUsuario, c._correo, c._password, c._fechaRegistro 
+	   from CLIENTE c where c._nombreUsuario like nombreUsuario; 	
+	
+END;
+$$ LANGUAGE plpgsql;
 
+----------------------------------------------------
+CREATE OR REPLACE FUNCTION verificarCorreoAdministrador(nombreUsuario varchar)
+RETURNS TABLE
+  (idAdmin int,  nombre varchar, nomUsuario varchar, correo varchar ,contraseña varchar, fecha date )
+AS $$
+BEGIN	
+	RETURN QUERY
+	   select a._id, a._nombre, a._nombreUsuario, a._correo, a._password, a._fechaRegistro  
+	   from ADMINISTRADOR a where a._nombreUsuario like upper(nombreUsuario);
+	
+END;
+$$ LANGUAGE plpgsql;

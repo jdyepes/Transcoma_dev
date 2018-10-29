@@ -126,8 +126,14 @@ namespace TranscomaAPI.Persistencia.Fabrica
             return new DaoTipoContainer();
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static DaoAdministrador CrearDaoAdministrador()
+        {
+            return new DaoAdministrador();
+        }
 
     }
 }

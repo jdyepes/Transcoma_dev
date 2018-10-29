@@ -9,34 +9,48 @@ using TranscomaAPI.Comun.Entidades;
 using TranscomaAPI.Comun.Entidades.Fabrica;
 using TranscomaAPI.Comun.Excepciones;
 using TranscomaAPI.Persistencia.Dao.Contrato;
-using TranscomaAPI.Persistencia.Fabrica;
 
-namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Usuarios
+namespace TranscomaAPI.Persistencia.Dao
 {
-    public class ComandoVerificarUsuarioAdministrador : Comando
+    public class DaoAdministrador : Dao, IDaoAdministrador
     {
-
         Logger logger = LogManager.GetLogger("fileLogger");//logger
-        private IDaoAdministrador _dao; //Dao
-        private Entidad _respuesta; // retorna el id si existe el usuario
-        private string _userName;
 
-        public ComandoVerificarUsuarioAdministrador(string userName)
+        public void Actualizar(Entidad entidad)
         {
-            _userName = userName;
-            _dao = FabricaDao.CrearDaoAdministrador();
+            throw new NotImplementedException();
         }
 
-        
+        public void Agregar(Entidad entidad)
+        {
+            throw new NotImplementedException();
+        }
 
-        public override void Ejecutar()
+        public List<Entidad> ConsultarTodos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Eliminar(Entidad entidad)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Entidad verificarNombreUsuarioAdministrador(string userName)
         {
             try
-            {               
-                _respuesta = _dao.verificarNombreUsuarioAdministrador (_userName);
-               
-                //if (_respuesta.Id <= 0)
-                //    throw new ExcepcionUsuarioNoExiste("El usuario no se encuentra registrado");
+            {
+                Administrador administrador;
+                int _resultado;
+                Conectar();
+                StoredProcedure("verificarCorreoAdministrador(@nombreUsuario)");
+                AgregarParametro("nombreUsuario", userName);
+                EjecutarReader();
+
+                _resultado = GetInt(0, 0);
+                administrador = FabricaEntidades.CrearAdministrador(_resultado,GetString(0,1), GetString(0,2), GetString(0, 3), GetString(0, 4), GetDateTime(0, 5));
+
+                return administrador;
             }
             catch (NullReferenceException e)
             {
@@ -58,17 +72,10 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Usuarios
                 logger.Error(e, e.Message);
                 throw new ExcepcionGeneral(e, DateTime.Now);
             }
+            finally
+            {
+                Desconectar();
+            }
         }
-
-        public override Entidad GetEntidad()
-        {
-            return _respuesta;
-        }
-
-        public override List<Entidad> GetEntidades()
-        {
-            throw new NotImplementedException();
-        }
- 
     }
 }

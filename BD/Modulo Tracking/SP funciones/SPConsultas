@@ -230,7 +230,33 @@ BEGIN
 		ORDER BY C._NOMBRE;
 		END;
 $$ LANGUAGE plpgsql;
+--
+------- Validaciones de usuarios
 
+----------- Validar si un cliente exste buscando su nombre de usuario
+
+CREATE OR REPLACE FUNCTION verificarCorreoCliente(nombreUsuario varchar)
+RETURNS TABLE
+  (idCliente int, contraseña varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	   select c."_id", c."_password" from "CLIENTE" c where c."_nombreUsuario" like nombreUsuario; 	
+	
+END;
+$$ LANGUAGE plpgsql;
+
+----------------------------------------------------
+CREATE OR REPLACE FUNCTION verificarCorreoAdministrador(nombreUsuario varchar)
+RETURNS TABLE
+  (idAdmin int,  contraseña varchar)
+AS $$
+BEGIN	
+	RETURN QUERY
+	   select a."_id", a."_password" from "ADMINISTRADOR" a where a."_nombreUsuario" like upper(nombreUsuario);
+	
+END;
+$$ LANGUAGE plpgsql;
 ----------------------------------------------------------------------------------------------
 -- DROPS FUNCTION
 DROP FUNCTION consultaralmacenesaduana(integer);
@@ -238,9 +264,13 @@ DROP FUNCTION consultarentradascliente(integer);
 DROP FUNCTION consultarsalidascliente(integer);
 DROP FUNCTION consultarPedidosCliente(integer);
 DROP FUNCTION consultartodosalmacenes();
-DROP FUNCTION consultarclientesadministrador(integer)
+DROP FUNCTION consultarclientesadministrador(integer);
+DROP FUNCTION verificarcorreocliente(character varying);
+DROP FUNCTION verificarcorreoadministrador(character varying);
 -- CONSULTAS Y LLAMADA A LAS FUNCIONES
 
+select * from verificarCorreoCliente('cmc');
+select * from verificarCorreoAdministrador('jyepesd');
 select * from consultarAlmacenesAduana(2);
 select * from consultarAduana(2);
 select * from consultarTodasAduana();
