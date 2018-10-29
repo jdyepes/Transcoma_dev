@@ -34,6 +34,7 @@
 </div>
 <div mat-dialog-actions>
     <button mat-button class="btn-detalle" (click)="onNoClick()"></button>
-    <button mat-button [mat-dialog-close]="entrada.descripcion" cdkFocusInitial>Aceptar</button>
+    <button mat-button class="btn-detalle" [mat-dialog-close]="entrada.descripcion" cdkFocusInitial>
+      <mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon>Volver</button>
 </div>
 </mat-card>

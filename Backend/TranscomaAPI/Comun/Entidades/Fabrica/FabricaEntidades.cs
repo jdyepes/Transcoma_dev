@@ -147,11 +147,43 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
             return new Cliente(id, nombre, nombreUsuario, correo, fechaRegistro);
         }
 
-        public static Cliente CrearCliente()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreUsuario"></param>
+        /// <returns></returns>
+        public static Cliente CrearCliente(int id, string nombre, string nombreUsuario)
         {
-            return new Cliente();
+            return new Cliente(id, nombre, nombreUsuario);
         }
 
+        /// <summary>
+        /// Fabrica para la consulta de los clientes con su adminstrador a cargo 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
+        public static Administrador CrearAdministrador(int id, string nombre)
+        {
+            return new Administrador(id, nombre);
+        }
+
+        /// <summary>
+        /// Consulta de entradas con sus productos
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="lote"></param>
+        /// <param name="estadoCalidad"></param>
+        /// <param name="disponible"></param>
+        /// <returns></returns>
+        public static Producto CrearProducto(int id, string descripcion, string lote, string estadoCalidad, bool disponible)
+        {
+            return new Producto(id, descripcion, lote, estadoCalidad, disponible);
+        }
+      
         public static BL CrearBl()
         {
             return new BL();
@@ -180,6 +212,11 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         public static Direccion CrearDireccion()
         {
             return new Direccion();
+        }
+
+        public static Cliente CrearCliente()
+        {
+            return new Cliente();
         }
     }
 }

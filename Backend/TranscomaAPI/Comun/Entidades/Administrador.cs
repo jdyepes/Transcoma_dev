@@ -31,7 +31,7 @@ namespace TranscomaAPI.Comun.Entidades
         /// <param name="nombre"></param>
         public Administrador(int id, string nombre)
         {
-            Id = Id;
+            Id = id;
             _nombre = nombre;
         }
 

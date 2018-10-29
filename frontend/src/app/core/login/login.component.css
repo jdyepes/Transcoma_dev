@@ -1,17 +1,103 @@
 .mat-card{
     border: 2px solid transparent;
     border-top-color: rgba(0, 0, 0, 0.103);
-    margin-top: 20px;
-    margin-left: 210px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    height: 100%;
-    border-radius: 1px;
-    
+    margin-top: 100px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 50px;
+    border-radius: 8px; 
+    padding: 5px 100px 30px 80px;
+    width: 200px;
+    /*box-shadow: 100px 11px 105px 700px rgba(0, 0, 0, 0.288), 0 1px 1px 1px rgba(0, 0, 0, 0.76), 0 9px 46px 8px rgba(0,0,0,.12);    background: rgba(248, 243, 243, 0.973);*/
+  
 }
 
-.mat-card-title{
-    color: #676a6c;
-    font-size: 18px;
-    margin-left:20px;
+
+.mat-card-actions {
+   margin-left: 45px;
+}
+
+.btn-login:hover {
+    background-color: #0f440a;
+    color: #FFFFFF;
+    padding-top: 0.5px;
+    padding-bottom: 0.5px;
+}
+
+
+.btn-login {
+    background: #197563;
+    color:white;
+    box-sizing: border-box;
+    position: relative;
+    width: 150px;
+    vertical-align: center;
+    text-align: center;
+    margin: 0;
+    min-width: 70px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    overflow: visible;
+    transform: translate3d(0,0,0);
+}
+
+.mat-card-header {
+    /* display: flex; */
+    flex-direction: row;
+    text-align: center;
+    display: inline;    
+}
+
+.mat-card-title
+{
+    color: darkgreen;
+    font-size: 20px;
+    margin-block-start: 20px;
+    text-align: center;
+}
+
+::ng-deep .mat-card-content, .mat-card-subtitle {
+    font-size: 14px;
+}
+
+::ng-deep.mat-form-field-infix {
+    display: list-item;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 300px;
+}
+
+::ng-deep .mat-form-field-infix {
+    padding: .5em 0;
+    border-top: .84375em solid transparent;
+    margin-right: 1px;
+}
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    font-size: 15px;
+}
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: .4375em 0 5px 50px; 
+}
+
+::ng-deep .mat-input-element {
+     caret-color: darkgreen; 
+}
+
+.mat-input-element {
+    font: inherit;
+    color: currentColor;
+    border: none;
+    outline: 0;
+    padding: 20;
+    margin-left: -50px;
+    width: 200px;
+    /*max-width: 100%;*/
+   /*vertical-align: bottom;*/
+    text-align: inherit;
 }

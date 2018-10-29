@@ -41,7 +41,7 @@ namespace TranscomaAPI.Persistencia.Dao
 
                 for (int i = 0; i < cantidadRegistros; i++)
                 {
-                    almacen = new Almacen(GetInt(i, 3), GetString(i, 4), GetString(i, 5));
+                    almacen = FabricaEntidades.CrearAlmacen(GetInt(i, 3), GetString(i, 4), GetString(i, 5));
                     aduanaARetornar = FabricaEntidades.CrearAduana(GetInt(i, 0), GetString(i, 1), GetString(i, 2), almacen);
                     _aduanas.Add(aduanaARetornar);
                 }

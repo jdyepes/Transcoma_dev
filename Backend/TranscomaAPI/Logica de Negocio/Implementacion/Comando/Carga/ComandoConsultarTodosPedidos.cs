@@ -17,7 +17,6 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Carga
         private List<Entidad> _pedidos;
         Logger logger = LogManager.GetLogger("fileLogger");//logger
         private IDaoPedido _dao; //Dao
-        private int _idUsuario;
 
         /// <summary>
         /// Contructor para la consulta de los pedidos de un cliente

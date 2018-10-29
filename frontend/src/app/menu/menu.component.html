@@ -1,4 +1,4 @@
-<ng-container *ngIf="logueado != 'true'">
+<ng-container *ngIf="logueado == 'false' || logueado == undefined">
     <app-login></app-login>
 </ng-container>
 <ng-container *ngIf="logueado == 'true'">

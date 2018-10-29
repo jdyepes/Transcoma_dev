@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NLog;
+using Npgsql;
 using TranscomaAPI.Comun.Entidades;
+using TranscomaAPI.Comun.Excepciones;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
 
@@ -13,19 +17,34 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
     public class AduanaController : Controller
-    {  
+    {
+        Logger logger = LogManager.GetLogger("fileLogger");
+
         /// <summary>
         /// Se obtiene las aduanas pasando el id del almacen
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("obtener/{id}")]
-        public ActionResult<List<Comun.Entidades.Entidad>> ObtenerAduana(int id)
+        public ActionResult ObtenerAduana(int id)
         {
-            Comando comando = FabricaComando.CrearComandoConsultarAduanaAlmacen(id);
-            comando.Ejecutar();
-            List<Entidad> aduanas = comando.GetEntidades();
-            return aduanas;
+            try
+            {
+                Comando comando = FabricaComando.CrearComandoConsultarAduanaAlmacen(id);
+                comando.Ejecutar();
+                List<Entidad> aduanas = comando.GetEntidades();
+                return Ok(aduanas);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
         }
 
         /// <summary>
@@ -34,12 +53,25 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("obtener/")]
-        public ActionResult<List<Entidad>> ObtenerTodasAduana()
+        public ActionResult ObtenerTodasAduana()
         {
-            Comando comando = FabricaComando.CrearComandoConsultarTodasAduanas();
-            comando.Ejecutar();
-            List<Entidad> aduanas = comando.GetEntidades();
-            return aduanas;
+            try
+            {
+                Comando comando = FabricaComando.CrearComandoConsultarTodasAduanas();
+                comando.Ejecutar();
+                List<Entidad> aduanas = comando.GetEntidades();
+                return Ok(aduanas);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
         }
     }
 }
