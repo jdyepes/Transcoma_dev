@@ -1,16 +1,17 @@
 <mat-card class="col-md-12">
-    <mat-card-title>BLS</mat-card-title>
+    <mat-card-title>Lista de BLs del Cliente</mat-card-title>
     <mat-divider></mat-divider>
       <mat-form-field class="search-input">
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
       </mat-form-field> 
       <button mat-button class="btn-refresh"><mat-icon>autorenew</mat-icon>Refresh</button>
+
 <table mat-table [dataSource]="dataSource"> <!--class="mat-elevation-z8"-->
       <!-- Acciones Column -->
       <ng-container  matColumnDef="acciones" class="accionColumn"><!---->
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let row">
-          <button mat-button class="mat-icon-find" (click)="goToBlDetails()"><mat-icon>find_in_page</mat-icon></button>
+          <button mat-button class="mat-icon-find" (click)="goToBlDetails(element.referencia)"><mat-icon>find_in_page</mat-icon></button>
         </td>
       </ng-container>
     
@@ -19,14 +20,6 @@
         <th mat-header-cell *matHeaderCellDef> Referencia </th>
         <td mat-cell *matCellDef="let element"> 
             <button mat-button class="btn-referencia">{{element.referencia}}</button>
-        </td>
-      </ng-container>
-    
-      <!-- Estado Column -->
-      <ng-container matColumnDef="estado">
-        <th mat-header-cell *matHeaderCellDef> Estado </th>
-        <td mat-cell *matCellDef="let element"> 
-            <button mat-button class="btn-estado">{{element.estado}}</button>
         </td>
       </ng-container>
     
@@ -54,16 +47,10 @@
           <td mat-cell *matCellDef="let element"> {{element.pol}} </td>
         </ng-container>
 
-        <!-- Trabajando Column -->
-       <ng-container matColumnDef="trabajando">
-          <th mat-header-cell *matHeaderCellDef> Trabajando </th>
-          <td mat-cell *matCellDef="let element"> {{element.trabajando}} </td>
-        </ng-container>
-
        <!-- Fecha Column -->
-       <ng-container matColumnDef="fecha">
-          <th mat-header-cell *matHeaderCellDef> Fecha </th>
-          <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+       <ng-container matColumnDef="volumen">
+          <th mat-header-cell *matHeaderCellDef> Volumen </th>
+          <td mat-cell *matCellDef="let element"> {{element.volumen}} </td>
         </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

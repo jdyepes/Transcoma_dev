@@ -9,17 +9,19 @@ using TranscomaAPI.Comun.Entidades;
 using TranscomaAPI.Comun.Entidades.Fabrica;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Comando;
 using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAllHeaders")]///[DisableCors]
     public class BLController : Controller
     {  
        
        
-        [HttpGet("ObtenerBLCliente/{id}")]
+        [HttpGet("ObtenerBLsCliente/{id}")]
         public ActionResult<List<Comun.Entidades.Entidad>> ObtenerBLCliente(int id)
         {
             Entidad cliente = FabricaEntidades.CrearCliente();
