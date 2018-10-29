@@ -12,7 +12,7 @@ namespace TranscomaAPI.Comun.Entidades
         private string _correo;
         private string _password;
         private DateTime _fechaRegistro;
-        private Administrador _administrador;
+        //private Administrador _administrador;
 
         /// <summary>
         /// 
@@ -42,14 +42,14 @@ namespace TranscomaAPI.Comun.Entidades
         /// <param name="correo"></param>
         /// <param name="fechaRegistro"></param>
         /// <param name="administrador"></param>
-        public Cliente(int id, string nombre,  string nombreUsuario, string correo, DateTime fechaRegistro, Administrador administrador)
+        public Cliente(int id, string nombre,  string nombreUsuario, string correo, DateTime fechaRegistro)
         {
             Id = Id;
             _nombre = nombre;      
             _correo = correo;
             _nombreUsuario = nombreUsuario;           
             _fechaRegistro = fechaRegistro;
-            _administrador = administrador;
+          //  _administrador = administrador;
         }
 
         /// <summary>
@@ -76,6 +76,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string Correo { get => _correo; set => _correo = value; }
         public string Contraseña { get => _password; set => _password = value; }
         public DateTime FechaRegistro { get => _fechaRegistro; set => _fechaRegistro = value; }
-        public Administrador Administrador { get => _administrador; set => _administrador = value; }
+        //public Administrador Administrador { get => _administrador; set => _administrador = value; }
     }
 }

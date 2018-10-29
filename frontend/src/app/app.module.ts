@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app.routing';
 import { BlComponent } from './core/bl/bl.component';
+import {HttpModule, Http} from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule,
          MatToolbarModule,
          MatSidenavModule,
@@ -30,6 +32,7 @@ import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
 import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.component';
 import { TrackingModalComponent } from './components/tracking-modal/tracking-modal.component';
+import { BLService } from '../app/shared/BL.Service';
 
 @NgModule({
   declarations: [
@@ -66,13 +69,18 @@ import { TrackingModalComponent } from './components/tracking-modal/tracking-mod
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpModule,
+    HttpClientModule
   ],
   entryComponents: [
     ShipperModalComponent,
     TrackingModalComponent
   ],
-  providers: [],
+  providers: [
+    {provide: Http},
+    BLService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

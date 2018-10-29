@@ -13,13 +13,13 @@ export class Administrador extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$nombre = data._nombre;
-            this.$nombreUsuario = data._nombreUsuario;
-            this.$correo = data._correo;
-            this.$password = data._password;
-            this.$fechaRegistro = data._fechaRegistro;
-            this.$cliente = data._cliente;
+            this.$id = data.id;
+            this.$nombre = data.nombre;
+            this.$nombreUsuario = data.nombreUsuario;
+            this.$correo = data.correo;
+            this.$password = data.password;
+            this.$fechaRegistro = data.fechaRegistro;
+            this.$cliente = data.cliente;
         }
     }
 

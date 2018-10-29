@@ -8,18 +8,25 @@ export class Cliente extends EntidadBase {
     private _correo: string;
     private _password: string;
     private _fechaRegistro: string;
-    private _administrador: Administrador;
+   // private _administrador: Administrador;
 
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$nombre = data._nombre;
-            this.$nombreUsuario = data._nombreUsuario;
-            this.$correo = data._correo;
-            this.$password = data._password;
-            this.$fechaRegistro = data._fechaRegistro;
-            this.$administrador = data._administrador;
+            this.$id = data.id;
+            this.$nombre = data.nombre;
+            this.$nombreUsuario = data.nombreUsuario;
+            this.$correo = data.correo;
+            this.$password = data.password;
+           /* if(data.administrador !== undefined){
+                this.$administrador =  new Administrador(data.administrador);
+            }
+            else{
+                this.$administrador = null;
+            }
+            */
+            this.$fechaRegistro = data.fechaRegistro;
+            
         }
     }
 
@@ -64,11 +71,11 @@ export class Cliente extends EntidadBase {
         this._fechaRegistro = value;
     }
 
-    public get $administrador(): Administrador {
+  /*  public get $administrador(): Administrador {
         return this._administrador;
     }
 
     public set $administrador(value: Administrador) {
         this._administrador = value;
-    }
+    }*/
 }

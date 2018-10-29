@@ -144,7 +144,7 @@ namespace TranscomaAPI.Comun.Entidades.Fabrica
         /// <returns></returns>
         public static Cliente CrearCliente(int id, string nombre, string nombreUsuario, string correo, DateTime fechaRegistro, Administrador administrador)
         {
-            return new Cliente(id, nombre, nombreUsuario, correo, fechaRegistro, administrador);
+            return new Cliente(id, nombre, nombreUsuario, correo, fechaRegistro);
         }
 
         public static Cliente CrearCliente()
