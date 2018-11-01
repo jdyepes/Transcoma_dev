@@ -1,17 +1,20 @@
-export const Path={
+export const Path = {
 
     ADMINISTRADOR: '/Administrador',
-    Cliente: '/Cliente',
+    CLIENTE: '/Cliente',
     BL : '/BL',
     ADUANA: '/Aduana',
     ENTRADA: '/Entrada',
-    SALIDA: '/Salida'
-}
+    SALIDA: '/Salida',
+    ALMACEN: '/Almacen',
+    PEDIDO: '/Pedido'
+};
 
-export const method={
-    ObtenerBLCliente: '/ObtenerBLsCliente/'
-}
-export const   AppUrlBase={
+export const method = {
+    ObtenerBLCliente: '/ObtenerBLsCliente/',
+    ObtenerEntradaCliente: '/obtenerEntradaCliente/'
+};
+export const   AppUrlBase = {
 
     appUrlBase: 'https://localhost:44309/api'
-}
+};

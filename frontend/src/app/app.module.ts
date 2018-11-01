@@ -72,7 +72,7 @@ import { BLService } from '../app/shared/BL.Service';
     MatSelectModule,
     MatDialogModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
     MatProgressSpinnerModule
   ],
   entryComponents: [

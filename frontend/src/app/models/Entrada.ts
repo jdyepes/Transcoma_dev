@@ -5,7 +5,7 @@ import { Cliente } from "./Cliente";
 
 export class Entrada extends EntidadBase {
 
-    private _fechaEntrada: string ;
+    private _fechaEntrada: Date ;
     private _producto: Producto ;
     private _almacen: Almacen ;
     private _cliente: Cliente ;
@@ -22,11 +22,11 @@ export class Entrada extends EntidadBase {
     }
 
     /** Getters y setters */
-    public get $fechaEntrada(): string {
+    public get $fechaEntrada(): Date {
         return this._fechaEntrada;
     }
 
-    public set $fechaEntrada(value: string) {
+    public set $fechaEntrada(value: Date) {
         this._fechaEntrada = value;
     }
 

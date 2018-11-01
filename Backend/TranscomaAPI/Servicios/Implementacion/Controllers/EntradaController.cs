@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Web;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using NLog;
@@ -18,7 +19,7 @@ using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
 namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [EnableCors("AllowAllHeaders")]///[DisableCors]
     public class EntradaController : Controller
     {
         Logger logger = LogManager.GetLogger("fileLogger");
@@ -28,7 +29,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("obtener/{id}")]
+        [HttpGet("obtenerEntradaCliente/{id}")]
         public ActionResult ObtenerEntrada(int id)
         {
             try
@@ -54,7 +55,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         /// Se obtiene todas las entradas cuando es rol Administrador
         /// </summary>
         /// <returns></returns>
-        [HttpGet("obtener/")]
+        [HttpGet("obtenerEntradaCliente/")]
         public ActionResult ObtenerTodasEntrada()
         {
             try

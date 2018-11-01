@@ -5,9 +5,35 @@ select * from "ALMACEN";
 select * from "ENTRADA";
 select * from "SALIDA";
 select * from "PEDIDO";
+select * from "PRODUCTO";
 select * from "PRODUCTO" as p where p."_fkPedidoProducto">0;
 select COUNT (*) from "PRODUCTO";
 select distinct "_nombreAlmacen" from "ALMACEN";
+
+select * from "PRODUCTO" p 
+where p."_fkEntradaProducto" = and p."_disponible"=false and 
+p."_estadoCalidad" = 'NUEVO SEMIDESARMADO' ; 
+
+DELETE from "PRODUCTO" p  WHERE
+--where p."_fkEntradaProducto" =1 
+--and 
+--p."_disponible"=true AND P."_id" >300
+p."_estadoCalidad" = 'USADO AVERIADO' ; 
+
+select * from "PRODUCTO" p 
+where p."_fkEntradaProducto" =1 
+and p."_descripcion" = 'PINTURA ACRILICA DUPONT FULL DESIGN'
+
+select * from "PRODUCTO" p where p."_fkEntradaProducto" =1 ; 
+
+select count (*) from "PRODUCTO" p where p."_fkEntradaProducto" =1 ; 
+select * from "PRODUCTO" p 
+where p."_fkEntradaProducto" =2 and p."_disponible"=false and 
+p."_estadoCalidad" = 'NUEVO ARMADO' ; 
+
+delete from "PRODUCTO" p
+where p."_fkEntradaProducto" =1 and p."_disponible"=false and 
+p."_id" > 40;
 
 --CONSULTAR TIEMPO ACTUAL
 SELECT to_timestamp(to_char(CURRENT_DATE,'DD/MM/YYYY ') || to_char(now(),'hh:mi:ss'),'DD/MM/YYYY HH:MI:SS') ;
@@ -141,3 +167,4 @@ where p."_fechaEntrega" IS null
 --- Validacion de los usuarios ---
 
 select * from "CLIENTE" c where c."_nombreUsuario" like 'cmc'; 
+select * from "ADMINISTRADOR" a where a."_nombreUsuario" like 'cmc'; 
