@@ -18,6 +18,8 @@ export class Cliente extends EntidadBase {
             this.$nombreUsuario = data.nombreUsuario;
             this.$correo = data.correo;
             this.$password = data.password;
+            this.$fechaRegistro = data.fechaRegistro;
+
            /* if(data.administrador !== undefined){
                 this.$administrador =  new Administrador(data.administrador);
             }
@@ -25,8 +27,7 @@ export class Cliente extends EntidadBase {
                 this.$administrador = null;
             }
             */
-            this.$fechaRegistro = data.fechaRegistro;
-            
+
         }
     }
 

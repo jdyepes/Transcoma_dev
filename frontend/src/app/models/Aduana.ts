@@ -6,13 +6,20 @@ export class Aduana extends EntidadBase {
     private _nombre: string;
     private _codigo: string;
     private _almacen: Almacen;
+
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$nombre = data._nombre;
-            this.$codigo = data._codigo;
-            this.$almacen = data._almacen;
+            this.$id = data.id;
+            this.$nombre = data.nombre;
+            this.$codigo = data.codigo;
+
+            if (data.almacen !== undefined) {
+                this.$almacen = new Almacen(data.almacen);
+            }
+            else {
+                this.$almacen = null;
+            }
         }
     }
 

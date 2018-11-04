@@ -14,12 +14,30 @@ export class Almacen extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$nombre = data._nombre;
-            this.$direccion = data._direccion;
-            this.$entrada = data._entrada;
-            this.$salida = data._salida;
-            this.$pedido = data._pedido;
+            this.$id = data.id;
+            this.$nombre = data.nombre;
+            this.$direccion = data.direccionAlmacen;
+
+            if (data.entrada !== undefined) {
+                this.$entrada = new Entrada(data.entrada);
+            }
+            else {
+                this.$entrada = null;
+            }
+
+            if (data.salida !== undefined) {
+                this.$salida = new Salida(data.salida);
+            }
+            else {
+                this.$salida = null;
+            }
+
+            if (data.pedido !== undefined) {
+                this.$pedido = new Pedido(data.pedido);
+            }
+            else {
+                this.$pedido = null;
+            }
         }
     }
 

@@ -4,31 +4,32 @@
 <div mat-dialog-content>
   <mat-icon>home</mat-icon>
     <ul>
-      <li><b>Codigo del Producto: </b>------------------------</li>
+      <li><b>Fecha de Entrada: </b>{{entrada.entradas.fechaEntrada | date: 'dd/MM/yyyy'}}</li>
     </ul>
     <ul>
-      <li><b>Producto: </b>------------------------</li>
+      <li><b>Codigo del Producto: </b>{{entrada.entradas.producto.id }}</li>
     </ul>
     <ul>
-      <li><b>Fecha de Entrada: </b>------------------------</li>
+      <li><b>Producto: </b>{{entrada.entradas.producto.$descripcion}}</li>
+    </ul>   
+    <ul>
+      <li><b>Lote: </b>{{entrada.entradas.producto.$lote }}</li>
     </ul>
     <ul>
-      <li><b>Descripcion: </b>------------------------</li>
+      <li><b>Calidad en que se encuentra: </b>{{entrada.entradas.producto.$estadoCalidad }}</li>
     </ul>
     <ul>
-      <li><b>Lote: </b>------------------------</li>
+      <li *ngIf="entrada.entradas.producto.$disponible===true"><b> Disponible: </b> <label *ngIf="entrada.entradas.producto.$disponible===true"> si</label></li>
+      <li *ngIf="entrada.entradas.producto.$disponible===false"><b> Disponible: </b><label *ngIf="entrada.entradas.producto.$disponible===false"> no </label></li>
     </ul>
     <ul>
-      <li><b>Calidad en que se encuentra: </b>------------------------</li>
+      <li><b>Codigo del almacen: </b>{{entrada.entradas.almacen.id }}</li>
     </ul>
     <ul>
-      <li><b>Disponible: </b>------------------------</li>
+      <li><b>Nombre del Almacen: </b>{{entrada.entradas.almacen.$nombre }}</li>
     </ul>
     <ul>
-      <li><b>Aduana: </b>------------------------</li>
-    </ul>
-    <ul>
-      <li><b>Almacen: </b>------------------------</li>
+      <li><b>Direccion: </b>{{entrada.entradas.almacen.$direccion }}</li>
     </ul>
   
 </div>

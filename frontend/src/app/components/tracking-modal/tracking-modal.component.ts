@@ -9,9 +9,10 @@ import { EntradaElements } from 'src/app/core/tracking/tracking.component';
 })
 export class TrackingModalComponent {
   Posicion = localStorage.getItem('posicion');
+
   constructor(
     public dialogRef: MatDialogRef<TrackingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public entrada: EntradaElements ) { }
+    @Inject(MAT_DIALOG_DATA) public entrada: EntradaElements) { console.log(entrada); }
 
   onNoClick(): void {
     this.dialogRef.close();
