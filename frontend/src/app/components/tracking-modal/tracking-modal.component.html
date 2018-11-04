@@ -1,42 +1,94 @@
 <label class="titulo">{{Posicion}} </label>
 <h1 mat-dialog-title><b>Detalle</b></h1>
-<mat-card>
-<div mat-dialog-content>
-  <mat-icon>home</mat-icon>
+<mat-card *ngIf="Posicion!='Pedido'">
+<div mat-dialog-content >
+  <mat-icon>store</mat-icon>
     <ul>
-      <li *ngIf="Posicion==='Entrada'"><b>Fecha de Entrada: </b>{{entrada.entradas.fechaEntrada | date: 'dd/MM/yyyy'}}</li>
-      <li *ngIf="Posicion==='Salida'"><b>Fecha de Salida: </b>{{entrada.entradas.fechaSalida | date: 'dd/MM/yyyy'}}</li>
+      <li *ngIf="Posicion==='Entrada'"><b>Fecha de Entrada: </b>{{data.datos.fechaEntrada | date: 'dd/MM/yyyy'}}</li>
+      <li *ngIf="Posicion==='Salida'"><b>Fecha de Salida: </b>{{data.datos.fechaSalida | date: 'dd/MM/yyyy'}}</li>
     </ul>
     <ul>
-      <li><b>Codigo del Producto: </b>{{entrada.entradas.producto.id }}</li>
+      <li><b>Codigo del Producto: </b>{{data.datos.producto.id }}</li>
     </ul>
     <ul>
-      <li><b>Producto: </b>{{entrada.entradas.producto.$descripcion}}</li>
+      <li><b>Producto: </b>{{data.datos.producto.$descripcion}}</li>
     </ul>   
     <ul>
-      <li><b>Lote: </b>{{entrada.entradas.producto.$lote }}</li>
+      <li><b>Lote: </b>{{data.datos.producto.$lote }}</li>
     </ul>
     <ul>
-      <li><b>Calidad en que se encuentra: </b>{{entrada.entradas.producto.$estadoCalidad }}</li>
+      <li><b>Calidad en que se encuentra: </b>{{data.datos.producto.$estadoCalidad }}</li>
     </ul>
     <ul>
-      <li *ngIf="entrada.entradas.producto.$disponible===true"><b> Disponible: </b> <label *ngIf="entrada.entradas.producto.$disponible===true"> si</label></li>
-      <li *ngIf="entrada.entradas.producto.$disponible===false"><b> Disponible: </b><label *ngIf="entrada.entradas.producto.$disponible===false"> no </label></li>
+      <li *ngIf="data.datos.producto.$disponible===true"><b> Disponible: </b> <label *ngIf="data.datos.producto.$disponible===true"> si</label></li>
+      <li *ngIf="data.datos.producto.$disponible===false"><b> Disponible: </b><label *ngIf="data.datos.producto.$disponible===false"> no </label></li>
     </ul>
     <ul>
-      <li><b>Codigo del almacen: </b>{{entrada.entradas.almacen.id }}</li>
+      <li><b>Codigo del almacen: </b>{{data.datos.almacen.id }}</li>
     </ul>
     <ul>
-      <li><b>Nombre del Almacen: </b>{{entrada.entradas.almacen.$nombre }}</li>
+      <li><b>Nombre del Almacen: </b>{{data.datos.almacen.$nombre }}</li>
     </ul>
     <ul>
-      <li><b>Direccion: </b>{{entrada.entradas.almacen.$direccion }}</li>
+      <li><b>Direccion: </b>{{data.datos.almacen.$direccion }}</li>
     </ul>
   
 </div>
 <div mat-dialog-actions>
+  <button mat-button class="btn-detalle" (click)="onNoClick()"></button>
+  <button mat-button class="btn-detalle" [mat-dialog-close]="data.descripcion" cdkFocusInitial>
+    <mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon>Volver
+  </button>
+</div>
+</mat-card>
+
+<mat-card *ngIf="Posicion==='Pedido'">
+  <div mat-dialog-content >
+    <mat-icon>store</mat-icon>
+    <ul>
+      <li ><b>Fecha de Solicitud: </b>{{data.datos.fechaSolicitud | date: 'dd/MM/yyyy'}}</li>     
+    </ul>
+    <ul>
+      <li><b>Fecha de Entrega: </b>{{data.datos.fechaEntrega | date: 'dd/MM/yyyy'}}</li>
+    </ul>
+    <ul>
+      <li><b>Estado del Pedido: </b>{{data.datos.estadoPedido }}</li>
+    </ul>
+    <ul>
+      <li><b>Destino: </b>{{data.datos.destinatario }}</li>
+    </ul>
+    <ul>
+      <li><b>Codigo del Producto: </b>{{data.datos.producto.id }}</li>
+    </ul>
+    <ul>
+      <li><b>Producto: </b>{{data.datos.producto.$descripcion}}</li>
+    </ul>
+    <ul>
+      <li><b>Lote: </b>{{data.datos.producto.$lote }}</li>
+    </ul>
+    <ul>
+      <li><b>Calidad en que se encuentra: </b>{{data.datos.producto.$estadoCalidad }}</li>
+    </ul>
+    <ul>
+      <li *ngIf="data.datos.producto.$disponible===true"><b> Disponible: </b> <label *ngIf="data.datos.producto.$disponible===true">
+          si</label></li>
+      <li *ngIf="data.datos.producto.$disponible===false"><b> Disponible: </b><label *ngIf="data.datos.producto.$disponible===false">
+          no </label></li>
+    </ul>
+    <ul>
+      <li><b>Codigo del almacen: </b>{{data.datos.almacen.id }}</li>
+    </ul>
+    <ul>
+      <li><b>Nombre del Almacen: </b>{{data.datos.almacen.$nombre }}</li>
+    </ul>
+    <ul>
+      <li><b>Direccion: </b>{{data.datos.almacen.$direccion }}</li>
+    </ul>
+
+  </div>
+<div mat-dialog-actions>
     <button mat-button class="btn-detalle" (click)="onNoClick()"></button>
-    <button mat-button class="btn-detalle" [mat-dialog-close]="entrada.descripcion" cdkFocusInitial>
+    <button mat-button class="btn-detalle" [mat-dialog-close]="data.descripcion" cdkFocusInitial>
       <mat-icon class="arrow-back-icon">arrow_back_ios</mat-icon>Volver</button>
 </div>
 </mat-card>

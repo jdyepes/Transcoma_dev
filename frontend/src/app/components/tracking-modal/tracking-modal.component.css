@@ -6,7 +6,7 @@
     overflow: hidden;
     outline: 0;
     width: 4000px;
-    height: 600px;
+    height: auto;
     min-height: inherit;
     max-height: inherit;
 }

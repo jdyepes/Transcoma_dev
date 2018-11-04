@@ -13,7 +13,8 @@ export const Path = {
 export const method = {
     ObtenerBLCliente: '/ObtenerBLsCliente/',
     ObtenerEntradaCliente: '/obtenerEntradaCliente/',
-    ObtenerSalidaCliente: '/obtenerSalidaCliente/'
+    ObtenerSalidaCliente: '/obtenerSalidaCliente/',
+    ObtenerPedidoCliente: '/obtenerPedidoCliente/'
 };
 export const   AppUrlBase = {
 

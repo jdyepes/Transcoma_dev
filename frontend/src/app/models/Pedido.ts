@@ -11,7 +11,6 @@ export class Pedido extends EntidadBase {
     private _destinatario: string;
     private _producto: Producto;
     private _almacen: Almacen;
-    private _cliente: Cliente;
 
 
 
@@ -22,7 +21,7 @@ export class Pedido extends EntidadBase {
             this.$fechaSolicitud = data.fechaSolicitud;
             this.$fechaEntrega = data.fechaEntrega;
             this.$estadoPedido = data.estadoPedido;
-            this.$destinatario = data.destinatario;
+            this.$destinatario = data.destino;
             if (data.producto !== undefined) {
                 this.$producto = new Producto(data.producto);
             }
@@ -34,15 +33,15 @@ export class Pedido extends EntidadBase {
                 this.$almacen = new Almacen(data.almacen);
             }
             else {
-                this.$almacen = data.almacen;
+                this.$almacen = null;
             }
 
-            if (data.cliente !== undefined) {
+          /*  if (data.cliente !== undefined) {
                 this.$cliente = new Cliente(data.cliente);
             }
             else {
-                this.$cliente = data.cliente;
-            }
+                this.$cliente = null;
+            }*/
         }
     }
 
@@ -95,11 +94,11 @@ export class Pedido extends EntidadBase {
         this._almacen = value;
     }
 
-    public get $cliente(): Cliente {
+ /*   public get $cliente(): Cliente {
         return this._cliente;
     }
 
     public set $cliente(value: Cliente) {
         this._cliente = value;
-    }
+    }*/
 }

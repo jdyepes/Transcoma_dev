@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { EntradaElements } from 'src/app/core/tracking/tracking.component';
+
 
 @Component({
   selector: 'app-tracking-modal',
@@ -12,7 +12,7 @@ export class TrackingModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TrackingModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public entrada: EntradaElements) { console.log(entrada); }
+    @Inject(MAT_DIALOG_DATA) public data: any) { console.log(data); }
 
   onNoClick(): void {
     this.dialogRef.close();

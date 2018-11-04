@@ -8,7 +8,7 @@ export class Entrada extends EntidadBase {
     private _fechaEntrada: Date ;
     private _producto: Producto ;
     private _almacen: Almacen ;
-    private _cliente: Cliente ;
+     private _cliente: Cliente ;
 
     constructor(data?: any) {
         super();

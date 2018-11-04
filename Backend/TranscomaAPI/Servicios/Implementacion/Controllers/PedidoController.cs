@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Npgsql;
@@ -16,6 +17,7 @@ using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
 namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAllHeaders")]///[DisableCors]
     public class PedidoController : Controller
     {
         Logger logger = LogManager.GetLogger("fileLogger");
@@ -25,7 +27,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("obtener/{id}")]
+        [HttpGet("obtenerPedidoCliente/{id}")]
         public ActionResult ObtenerPedido(int id)
         {
             try

@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { Entrada } from '../models/Entrada';
 import { Salida } from '../models/Salida';
 import { Cliente } from '../models/Cliente';
+import { Pedido } from '../models/Pedido';
 
 
 const httpOptions = {
@@ -21,9 +22,11 @@ export class TrackingService {
 
     apiUrlEntrada = AppUrlBase.appUrlBase + Path.ENTRADA;
     apiUrlSalida = AppUrlBase.appUrlBase + Path.SALIDA;
+    apiUrlPedido = AppUrlBase.appUrlBase + Path.PEDIDO;
 
     public listaEntrada: Entrada[];
     public listaSalida: Salida[];
+    public listaPedido: Pedido[];
 
     constructor(private http: HttpClient) {
     }
@@ -72,6 +75,29 @@ export class TrackingService {
             );
     }
 
+
+    ObtenerPedidoClientes(idCliente: number): Promise<any> {
+        const url = this.apiUrlPedido + method.ObtenerPedidoCliente + idCliente;
+
+        return this.http.get<Pedido>(url, httpOptions).toPromise()
+            .then((res) => {
+
+                // const res = this.extractData(data);
+                console.log(res);
+                let pedido: Pedido[] = this.transformarDataToArrayPedido(res);
+                console.log(pedido);
+                this.listaPedido = pedido;
+                //return bls; 
+                return this.listaPedido;
+
+            },
+                (error) => {
+                    console.log(error);
+                    return null;
+                }
+            );
+    }
+
     extractData(res: any) {
         const data = res.json();
         return data;
@@ -91,6 +117,15 @@ export class TrackingService {
         data.forEach((object => {
             let salida = new Salida(object);
             list.push(salida);
+        }));
+        return list;
+    }
+
+    transformarDataToArrayPedido(data) {
+        let list: Pedido[] = [];
+        data.forEach((object => {
+            let pedido = new Pedido(object);
+            list.push(pedido);
         }));
         return list;
     }
