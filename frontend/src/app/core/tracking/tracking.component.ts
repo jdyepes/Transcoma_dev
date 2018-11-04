@@ -14,47 +14,6 @@ import { Cliente } from 'src/app/models/Cliente';
 import { Salida } from 'src/app/models/Salida';
 import { Pedido } from 'src/app/models/Pedido';
 
-export interface EntradaElements {
-  codClienteSalida: number;
-  fechaSalida: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
-}
-
-export interface SalidaElements {
-  codClienteSalida: number;
-  fechaSalida: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
-}
-
-export interface PedidoElements {
-  codClientePedido: number;
-  fechaSolicitud: string;
-  fechaEntrega: string;
-  estadoPedido: string;
-  destinatario: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
-}
 
 const ROL_DATA: String[] = [
    '-',
@@ -85,21 +44,6 @@ export class PedidoDef {
   cliente: Cliente;
 }
 
-export interface PedidoElements {
-  codClientePedido: number;
-  fechaSolicitud: string;
-  fechaEntrega: string;
-  estadoPedido: string;
-  destinatario: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
-}
 
 @Component({
   selector: 'app-tracking',
@@ -112,7 +56,7 @@ export class TrackingComponent implements OnInit, AfterViewInit {
   /*constructor() { }*/
 
   mostrar = false; // si es admin muestra la lista de clientes
-  margen: any = '500px';
+  margen: any = '600px';
 
   displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
   'descripcion', 'lote', 'estado', 'disponible'];
