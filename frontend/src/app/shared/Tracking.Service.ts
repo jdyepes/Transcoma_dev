@@ -25,7 +25,7 @@ export class TrackingService {
     constructor(private http: HttpClient) {
     }
 
-    ObtenerEntradaCliente(idCliente: number): Promise<any> {
+    ObtenerEntradaClientes(idCliente: number): Promise<any> {
         const url = this.apiUrlEntrada + method.ObtenerEntradaCliente + idCliente;
 
         return this.http.get<Entrada>(url, httpOptions).toPromise()

@@ -11,11 +11,11 @@ export class Producto extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$descripcion = data._descripcion;
-            this.$lote = data._lote;
-            this.$estadoCalidad = data._estadoCalidad;
-            this.$disponible = data._disponible;
+            this.$id = data.id;
+            this.$descripcion = data.descripcion;
+            this.$lote = data.lote;
+            this.$estadoCalidad = data.estado;
+            this.$disponible = data.disponible;
         }
     }
 

@@ -20,6 +20,12 @@ export class Administrador extends EntidadBase {
             this.$password = data.password;
             this.$fechaRegistro = data.fechaRegistro;
             this.$cliente = data.cliente;
+            if (data.cliente != undefined) {
+                this.$cliente = new Cliente(data.cliente);
+            }
+            else {
+                this.$cliente = null;
+            }
         }
     }
 
@@ -63,7 +69,7 @@ export class Administrador extends EntidadBase {
     public set $fechaRegistro(value: string) {
         this._fechaRegistro = value;
     }
-    
+
     public get $cliente(): Cliente {
         return this._cliente;
     }

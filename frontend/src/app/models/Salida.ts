@@ -13,11 +13,32 @@ export class Salida extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$fechaSalida = data._fechaSalida;
-            this.$producto = data._producto;
-            this.$almacen = data._almacen;
-            this.$cliente = data._cliente;
+            this.$id = data.id;
+            this.$fechaSalida = data.fechaSalida;
+            // this.$producto = data.producto;
+            // this.$almacen = data.almacen;
+            // this.$cliente = data.cliente;
+
+            if (data.producto != undefined) {
+                this.$producto = new Producto(data.producto);
+            }
+            else {
+                this.$producto = null;
+            }
+
+            if (data.almacen != undefined) {
+                this.$almacen = new Almacen(data.almacen);
+            }
+            else {
+                this.$almacen = null;
+            }
+
+            if (data.cliente != undefined) {
+                this.$cliente = new Cliente(data.cliente);
+            }
+            else {
+                this.$cliente = null;
+            }
         }
     }
 

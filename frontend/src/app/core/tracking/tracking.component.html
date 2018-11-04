@@ -25,43 +25,44 @@
             <!-- Position Column -->
             <ng-container matColumnDef="codClienteEntrada">
               <th mat-header-cell *matHeaderCellDef> Cod. </th>
-              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-detalle"(click)="openDialog('Entrada')">{{element.codClienteEntrada}} </button></td>
+              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion"(click)="openDialog('Entrada', element)"><b>{{element.almacen.$id}} </b></button></td>
             </ng-container>
           
             <!-- Name Column -->
             <ng-container matColumnDef="fechaEntrada">
               <th mat-header-cell *matHeaderCellDef> Fecha </th>
-              <td mat-cell *matCellDef="let element"> {{element.fechaEntrada}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.fechaEntrada | date: 'dd/MM/yyyy'}} </td>
             </ng-container>
           
             <!-- Weight Column -->
             <ng-container matColumnDef="codProducto">
               <th mat-header-cell *matHeaderCellDef> Cod. Prod </th>
-              <td mat-cell *matCellDef="let element"> {{element.codProducto}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.producto.$id}} </td>
             </ng-container>
           
             <!-- Symbol Column -->
             <ng-container matColumnDef="descripcion">
               <th mat-header-cell *matHeaderCellDef> Descripcion </th>
-              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialog('Entrada')">{{element.descripcion}}</button> </td>
+              <td mat-cell *matCellDef="let element"> <button mat-button class="btn-descripcion" (click)="openDialog('Entrada', element)">{{element.producto.$descripcion}}</button> </td>
             </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="lote">
               <th mat-header-cell *matHeaderCellDef> Lote </th>
-              <td mat-cell *matCellDef="let element"> {{element.lote}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.producto.$lote}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="estadoCalidad">
+            <ng-container matColumnDef="estado">
               <th mat-header-cell *matHeaderCellDef> Calidad </th>
-              <td mat-cell *matCellDef="let element"> {{element.estadoCalidad}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.producto.$estadoCalidad}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="disponible">
               <th mat-header-cell *matHeaderCellDef> Disponible </th>
-              <td mat-cell *matCellDef="let element"> {{element.disponible}} </td>
+              <td mat-cell *matCellDef="let element" > <p *ngIf="element.producto.$disponible===true"> disponible </p></td>
+              <td mat-cell *matCellDef="let element" > <p *ngIf="element.producto.$disponible===false"> no disponible </p></td>
             </ng-container>           
           
             <tr mat-header-row *matHeaderRowDef="displayedColumnsEntrada"></tr>

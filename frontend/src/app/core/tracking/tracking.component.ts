@@ -3,7 +3,7 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TrackingModalComponent } from 'src/app/components/tracking-modal/tracking-modal.component';
-import { Entrada } from 'src/app/models/Entrada';
+import { Entrada } from '../../models/Entrada';
 import { TrackingService } from '../../shared/Tracking.Service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { RouterModule, Router, RouterLink } from '@angular/router';
@@ -74,10 +74,10 @@ export interface EntradaElements {
 }*/
 
 export class EntradaDef {
-  _fechaEntrada: Date;
-  _producto: Producto;
-  _almacen: Almacen;
-  _cliente: Cliente;
+  fechaEntrada: Date;
+  producto: Producto;
+  almacen: Almacen;
+  cliente: Cliente;
 }
 
 export interface SalidaElements {
@@ -123,7 +123,7 @@ export class TrackingComponent implements OnInit {
   margen: any = '500px';
 
   displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
-  'descripcion', 'lote', 'estadoCalidad', 'disponible'];
+  'descripcion', 'lote', 'estado', 'disponible'];
 
   dataSourceEntrada: MatTableDataSource<EntradaDef>; // new MatTableDataSource<EntradaElements>(ENTRADA_DATA);
 /*
@@ -142,16 +142,16 @@ export class TrackingComponent implements OnInit {
   selection = new SelectionModel<EntradaDef>(true, []);
   servicioTracking = new TrackingService(this.http);
 
-  // constructor(public dialog: MatDialog) { }
-  constructor(public dialog: MatDialog, private router: Router, public http: HttpClient) {
-    this.listInterface = new Array<EntradaDef>();
-  }
 
 
   @ViewChild(MatPaginator) paginatorEntrada: MatPaginator;
   @ViewChild(MatPaginator) paginatorSalida: MatPaginator;
   @ViewChild(MatPaginator) paginatorPedido: MatPaginator;
 
+  // constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private router: Router, public http: HttpClient) {
+    this.listInterface = new Array<EntradaDef>();
+  }
 
   ngOnInit() {
    // this.dataSourceEntrada.paginator = this.paginatorEntrada;
@@ -159,6 +159,21 @@ export class TrackingComponent implements OnInit {
    // this.dataSourcePedido.paginator = this.paginatorPedido;
     this.initializeTable();
   }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSourceEntrada.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSourceEntrada.data.forEach(row => this.selection.select(row));
+  }
+
 /*
   ngAfterViewInit() {
     this.dataSourceEntrada.paginator = this.paginatorEntrada;
@@ -171,39 +186,7 @@ export class TrackingComponent implements OnInit {
    // this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(valor: string): void {
-    localStorage.setItem('posicion', valor);
-    const dialogRef = this.dialog.open(TrackingModalComponent, {
-      data: { valor }
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
-
-
-/** Whether the number of selected elements matches the total number of rows. */
-isAllSelected() {
-  const numSelected = this.selection.selected.length;
-  const numRows = this.dataSourceEntrada.data.length;
-  return numSelected === numRows;
-}
-
-/** Selects all rows if they are not all selected; otherwise clear selection. */
-masterToggle() {
-  this.isAllSelected() ?
-    this.selection.clear() :
-    this.dataSourceEntrada.data.forEach(row => this.selection.select(row));
-}
-
-
-goToBlDetails(ref) {
-  console.log(ref);
-  //localStorage.setItem("bl",);
-  this.router.navigate(['/bl-details']);
-}
 
 fillListInterface() {
 
@@ -211,10 +194,10 @@ fillListInterface() {
 
     let _entrada = new EntradaDef();
 
-      _entrada._fechaEntrada = object.$fechaEntrada;
-      _entrada._almacen = object.$almacen;
-      _entrada._cliente = object.$cliente;
-      _entrada. _producto = object.$producto;
+      _entrada.fechaEntrada = object.$fechaEntrada;
+      _entrada.almacen = object.$almacen;
+      _entrada.cliente = object.$cliente;
+      _entrada.producto = object.$producto;
       this.listInterface.push(_entrada);
   }));
 }
@@ -223,7 +206,7 @@ fillListInterface() {
 
 async initializeTable()
  {
-  await this.servicioTracking.ObtenerEntradaCliente(1)
+  await this.servicioTracking.ObtenerEntradaClientes(2)
     .then(
       res => {
         if (res.error) {
@@ -243,6 +226,18 @@ async initializeTable()
       }
     );
 
+  }
+
+  openDialog(valor: string, entradas: any): void {
+    localStorage.setItem('posicion', valor);
+    console.log(entradas);
+    const dialogRef = this.dialog.open(TrackingModalComponent, {
+      data: { valor, entradas }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
 

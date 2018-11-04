@@ -18,14 +18,31 @@ export class Pedido extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$fechaSolicitud = data._fechaSolicitud;
-            this.$fechaEntrega = data._fechaEntrega;
-            this.$estadoPedido = data._estadoPedido;
-            this.$destinatario = data._destinatario;
-            this.$producto = data._producto;
-            this.$almacen = data._almacen;
-            this.$cliente = data._cliente;
+            this.$id = data.id;
+            this.$fechaSolicitud = data.fechaSolicitud;
+            this.$fechaEntrega = data.fechaEntrega;
+            this.$estadoPedido = data.estadoPedido;
+            this.$destinatario = data.destinatario;
+            if (data.producto !== undefined) {
+                this.$producto = new Producto(data.producto);
+            }
+            else {
+                this.$producto = null;
+            }
+
+            if (data.almacen !== undefined){
+                this.$almacen = new Almacen(data.almacen);
+            }
+            else {
+                this.$almacen = data.almacen;
+            }
+
+            if (data.cliente !== undefined) {
+                this.$cliente = new Cliente(data.cliente);
+            }
+            else {
+                this.$cliente = data.cliente;
+            }
         }
     }
 
