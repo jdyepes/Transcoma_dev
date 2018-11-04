@@ -5,7 +5,7 @@ import { Almacen } from "./Almacen";
 
 export class Salida extends EntidadBase {
 
-    private _fechaSalida: string;
+    private _fechaSalida: Date;
     private _producto: Producto;
     private _almacen: Almacen;
     private _cliente: Cliente;
@@ -15,9 +15,9 @@ export class Salida extends EntidadBase {
         if (data !== undefined) {
             this.$id = data.id;
             this.$fechaSalida = data.fechaSalida;
-            // this.$producto = data.producto;
-            // this.$almacen = data.almacen;
-            // this.$cliente = data.cliente;
+            this.$producto = data.producto;
+            this.$almacen = data.almacen;
+            this.$cliente = data.cliente;
 
             if (data.producto != undefined) {
                 this.$producto = new Producto(data.producto);
@@ -43,11 +43,11 @@ export class Salida extends EntidadBase {
     }
 
     /** Getters y setters */
-    public get $fechaSalida(): string {
+    public get $fechaSalida(): Date {
         return this._fechaSalida;
     }
 
-    public set $fechaSalida(value: string) {
+    public set $fechaSalida(value: Date) {
         this._fechaSalida = value;
     }
 

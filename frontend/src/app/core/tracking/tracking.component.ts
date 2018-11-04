@@ -11,11 +11,11 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Producto } from 'src/app/models/Producto';
 import { Almacen } from 'src/app/models/Almacen';
 import { Cliente } from 'src/app/models/Cliente';
-
+import { Salida } from 'src/app/models/Salida';
 
 export interface EntradaElements {
-  codClienteEntrada: number;
-  fechaEntrada: string;
+  codClienteSalida: number;
+  fechaSalida: string;
   codProducto: number;
   descripcion: string;
   lote: string;
@@ -59,19 +59,6 @@ const ROL_DATA: String[] = [
    '-',
    '-'
 ];
-/*
-export interface EntradaElements {
-  codClienteEntrada: number;
-  fechaEntrada: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
-}*/
 
 export class EntradaDef {
   fechaEntrada: Date;
@@ -80,17 +67,11 @@ export class EntradaDef {
   cliente: Cliente;
 }
 
-export interface SalidaElements {
-  codClienteSalida: number;
-  fechaSalida: string;
-  codProducto: number;
-  descripcion: string;
-  lote: string;
-  estadoCalidad: string;
-  disponible: string;
-  codAlmacen: number;
-  nombreAlmacen: string;
-  direccionAlmacen: string;
+export class SalidaDef {
+  fechaSalida: Date;
+  producto: Producto;
+  almacen: Almacen;
+  cliente: Cliente;
 }
 
 export interface PedidoElements {
@@ -115,7 +96,7 @@ export interface PedidoElements {
   styleUrls: ['./tracking.component.css']
 })
 
-export class TrackingComponent implements OnInit {
+export class TrackingComponent implements OnInit, AfterViewInit {
 
   /*constructor() { }*/
 
@@ -126,11 +107,12 @@ export class TrackingComponent implements OnInit {
   'descripcion', 'lote', 'estado', 'disponible'];
 
   dataSourceEntrada: MatTableDataSource<EntradaDef>; // new MatTableDataSource<EntradaElements>(ENTRADA_DATA);
-/*
+
   displayedColumnsSalida: string[] = ['codClienteSalida', 'fechaSalida', 'codProducto',
     'descripcion', 'lote', 'estadoCalidad', 'disponible'];
-  dataSourceSalida = new MatTableDataSource<SalidaElements>(SALIDA_DATA);
 
+  dataSourceSalida: MatTableDataSource<SalidaDef>;
+/*
   displayedColumnsPedido: string[] = ['codClientePedido', 'fechaSolicitud', 'fechaEntrega',
     'estadoPedido', 'destinatario', 'codProducto', 'descripcion', 'lote', 'estadoCalidad', 'disponible'];
   dataSourcePedido = new MatTableDataSource<PedidoElements>(PEDIDO_DATA);
@@ -142,15 +124,21 @@ export class TrackingComponent implements OnInit {
   selection = new SelectionModel<EntradaDef>(true, []);
   servicioTracking = new TrackingService(this.http);
 
+  /* Modulo de salida */
+  listSalida: Salida[];
+  listInterfaceSalida: SalidaDef[];
+  selectionSalida = new SelectionModel<SalidaDef>(true, []);
 
 
-  @ViewChild(MatPaginator) paginatorEntrada: MatPaginator;
-  @ViewChild(MatPaginator) paginatorSalida: MatPaginator;
+
+  @ViewChild('paginatorEntrada') paginatorEntrada: MatPaginator;
+  @ViewChild('paginatorSalida') paginatorSalida: MatPaginator;
   @ViewChild(MatPaginator) paginatorPedido: MatPaginator;
 
   // constructor(public dialog: MatDialog) { }
   constructor(public dialog: MatDialog, private router: Router, public http: HttpClient) {
     this.listInterface = new Array<EntradaDef>();
+    this.listInterfaceSalida = new Array<SalidaDef>();
   }
 
   ngOnInit() {
@@ -172,21 +160,33 @@ export class TrackingComponent implements OnInit {
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSourceEntrada.data.forEach(row => this.selection.select(row));
+      this.dataSourceSalida.data.forEach(row => this.selectionSalida.select(row));
   }
 
-/*
+
   ngAfterViewInit() {
     this.dataSourceEntrada.paginator = this.paginatorEntrada;
-   // this.dataSourceSalida.paginator = this.paginatorSalida;
+    this.dataSourceSalida.paginator = this.paginatorSalida;
   //  this.dataSourcePedido.paginator = this.paginatorPedido;
-  }*/
+  }
+
   applyFilter(filterValue: string) {
     this.dataSourceEntrada.filter = filterValue.trim().toLowerCase();
-   // this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
+    this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
    // this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
   }
 
-
+  _setDataSource(indexNumber) {
+    setTimeout(() => {
+      switch (indexNumber) {
+        case 0:
+          !this.dataSourceEntrada.paginator ? this.dataSourceEntrada.paginator = this.paginatorEntrada : null;
+          break;
+        case 1:
+          !this.dataSourceSalida.paginator ? this.dataSourceSalida.paginator = this.paginatorSalida : null;
+      }
+    });
+  }
 
 fillListInterface() {
 
@@ -200,9 +200,21 @@ fillListInterface() {
       _entrada.producto = object.$producto;
       this.listInterface.push(_entrada);
   }));
+
 }
 
+  fillListInterfaceSalida() {
 
+    this.listSalida.forEach((object => {
+      let _salida = new SalidaDef();
+
+      _salida.fechaSalida = object.$fechaSalida;
+      _salida.almacen = object.$almacen;
+      _salida.cliente = object.$cliente;
+      _salida.producto = object.$producto;
+      this.listInterfaceSalida.push(_salida);
+    }));
+  }
 
 async initializeTable()
  {
@@ -217,6 +229,26 @@ async initializeTable()
           this.fillListInterface();
           this.dataSourceEntrada = new MatTableDataSource<EntradaDef>(this.listInterface);
           this.dataSourceEntrada.paginator = this.paginatorEntrada;
+
+        }
+      },
+      error => {
+        console.log(error);
+        alert('Error cargando la lista de ');
+      }
+    );
+
+  await this.servicioTracking.ObtenerSalidaClientes(1)
+    .then(
+      res => {
+        if (res.error) {
+          console.log('en caso de error', res.error);
+          alert('Error con el servicio');
+        } else {
+          this.listSalida = res;
+          this.fillListInterfaceSalida();
+          this.dataSourceSalida = new MatTableDataSource<SalidaDef>(this.listInterfaceSalida);
+          this.dataSourceSalida.paginator = this.paginatorSalida;
 
         }
       },

@@ -20,7 +20,10 @@ const httpOptions = {
 export class TrackingService {
 
     apiUrlEntrada = AppUrlBase.appUrlBase + Path.ENTRADA;
+    apiUrlSalida = AppUrlBase.appUrlBase + Path.SALIDA;
+
     public listaEntrada: Entrada[];
+    public listaSalida: Salida[];
 
     constructor(private http: HttpClient) {
     }
@@ -45,8 +48,29 @@ export class TrackingService {
                     return null;
                 }
             );
-        }
+    }
 
+    ObtenerSalidaClientes(idCliente: number): Promise<any> {
+        const url = this.apiUrlSalida + method.ObtenerSalidaCliente + idCliente;
+
+        return this.http.get<Salida>(url, httpOptions).toPromise()
+            .then((res) => {
+
+                // const res = this.extractData(data);
+                console.log(res);
+                let salida: Salida[] = this.transformarDataToArraySalida(res);
+                console.log(salida);
+                this.listaSalida = salida;
+                //return bls; 
+                return this.listaSalida;
+
+            },
+                (error) => {
+                    console.log(error);
+                    return null;
+                }
+            );
+    }
 
     extractData(res: any) {
         const data = res.json();
@@ -58,6 +82,15 @@ export class TrackingService {
         data.forEach((object => {
             let entrada = new Entrada(object);
             list.push(entrada);
+        }));
+        return list;
+    }
+
+    transformarDataToArraySalida(data) {
+        let list: Salida[] = [];
+        data.forEach((object => {
+            let salida = new Salida(object);
+            list.push(salida);
         }));
         return list;
     }

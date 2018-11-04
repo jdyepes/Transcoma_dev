@@ -12,7 +12,8 @@ export const Path = {
 
 export const method = {
     ObtenerBLCliente: '/ObtenerBLsCliente/',
-    ObtenerEntradaCliente: '/obtenerEntradaCliente/'
+    ObtenerEntradaCliente: '/obtenerEntradaCliente/',
+    ObtenerSalidaCliente: '/obtenerSalidaCliente/'
 };
 export const   AppUrlBase = {
 

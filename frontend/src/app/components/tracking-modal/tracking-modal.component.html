@@ -4,7 +4,8 @@
 <div mat-dialog-content>
   <mat-icon>home</mat-icon>
     <ul>
-      <li><b>Fecha de Entrada: </b>{{entrada.entradas.fechaEntrada | date: 'dd/MM/yyyy'}}</li>
+      <li *ngIf="Posicion==='Entrada'"><b>Fecha de Entrada: </b>{{entrada.entradas.fechaEntrada | date: 'dd/MM/yyyy'}}</li>
+      <li *ngIf="Posicion==='Salida'"><b>Fecha de Salida: </b>{{entrada.entradas.fechaSalida | date: 'dd/MM/yyyy'}}</li>
     </ul>
     <ul>
       <li><b>Codigo del Producto: </b>{{entrada.entradas.producto.id }}</li>
