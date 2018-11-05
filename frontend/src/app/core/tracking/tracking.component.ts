@@ -57,6 +57,7 @@ export class TrackingComponent implements OnInit, AfterViewInit {
 
   mostrar = false; // si es admin muestra la lista de clientes
   margen: any = '600px';
+  showSpinner = true;
 
   displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
   'descripcion', 'lote', 'estado', 'disponible'];
@@ -105,7 +106,7 @@ export class TrackingComponent implements OnInit, AfterViewInit {
    // this.dataSourceEntrada.paginator = this.paginatorEntrada;
    // this.dataSourceSalida.paginator = this.paginatorSalida;
    // this.dataSourcePedido.paginator = this.paginatorPedido;
-    this.initializeTable();
+   this.initializeTable();
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -198,7 +199,7 @@ fillListInterface() {
   }
 
 async initializeTable() {
-  await this.servicioTracking.ObtenerEntradaClientes(1)
+  await this.servicioTracking.ObtenerEntradaClientes(4)
     .then(
       res => {
         if (res.error) {
@@ -218,7 +219,7 @@ async initializeTable() {
       }
     );
 
-  await this.servicioTracking.ObtenerSalidaClientes(1)
+  await this.servicioTracking.ObtenerSalidaClientes(4)
     .then(
       res => {
         if (res.error) {
@@ -238,7 +239,7 @@ async initializeTable() {
       }
     );
 
-  await this.servicioTracking.ObtenerPedidoClientes(1)
+  await this.servicioTracking.ObtenerPedidoClientes(4)
     .then(
       res => {
         if (res.error) {
@@ -257,6 +258,7 @@ async initializeTable() {
         alert('Error cargando la lista de ListaPedido');
       }
     );
+  this.showSpinner = false;
   }
 
   openDialog(valor: string, datos: any): void {

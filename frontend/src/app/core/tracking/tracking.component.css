@@ -175,3 +175,17 @@ a:-webkit-any-link {
     border-radius: 4px;
     overflow: visible;
 }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #27d127;
+    width: 100px;
+    height: 100px;
+}
+
+::ng-deep .mat-spinner {
+position: fixed;
+margin-left: 500px;
+margin-right: 500px;
+fill: #000;
+}
+

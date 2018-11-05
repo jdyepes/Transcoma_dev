@@ -1,3 +1,4 @@
+
 <mat-card class="col-md-12">
   <mat-card-title>Almacenes de Carga</mat-card-title>
   <br>
@@ -16,9 +17,9 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
-
+<mat-spinner *ngIf="showSpinner"> </mat-spinner>
 <mat-tab-group #tabGroup (selectedIndexChange)="_setDataSource($event)" >  
-  <mat-tab label="Entrada"> 
+  <mat-tab label="Entrada" *ngIf="!showSpinner"> 
   <!--Entradas -->
       <table mat-table [dataSource]="dataSourceEntrada" class="mat-elevation-z8">
          
@@ -80,7 +81,7 @@
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Salidas">
   <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>-->
-    <mat-tab label="Salida">
+    <mat-tab label="Salida" *ngIf="!showSpinner">
        
       <table mat-table [dataSource]="dataSourceSalida" class="mat-elevation-z8">
       
@@ -141,7 +142,7 @@
 
 <!--Pedidos -->
 
-    <mat-tab label="Pedido">
+    <mat-tab label="Pedido" *ngIf="!showSpinner">
     
       <table mat-table [dataSource]="dataSourcePedido" class="mat-elevation-z8">
       
