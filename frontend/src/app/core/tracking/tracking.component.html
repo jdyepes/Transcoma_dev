@@ -3,7 +3,7 @@
   <mat-card-title>Almacenes de Carga</mat-card-title>
   <br>
   <div class="row" id="menu">
-    <mat-form-field style="margin-bottom: 100px; margin-left:20px; " *ngIf="mostrar">
+      <mat-form-field style="margin-bottom: 100px; margin-left:20px; " *ngIf="mostrar">
       <mat-select placeholder="Clientes">
         <mat-option *ngFor="let roles of rolesList" [value]="roles">{{roles}}</mat-option>
       </mat-select>
@@ -16,8 +16,8 @@
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
+    <mat-spinner *ngIf="showSpinner"> </mat-spinner>
   </div>
-<mat-spinner *ngIf="showSpinner"> </mat-spinner>
 <mat-tab-group #tabGroup (selectedIndexChange)="_setDataSource($event)" >  
   <mat-tab label="Entrada" *ngIf="!showSpinner"> 
   <!--Entradas -->

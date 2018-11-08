@@ -23,10 +23,12 @@ export class TrackingService {
     apiUrlEntrada = AppUrlBase.appUrlBase + Path.ENTRADA;
     apiUrlSalida = AppUrlBase.appUrlBase + Path.SALIDA;
     apiUrlPedido = AppUrlBase.appUrlBase + Path.PEDIDO;
+    apiUrlCliente = AppUrlBase.appUrlBase + Path.CLIENTE;
 
     public listaEntrada: Entrada[];
     public listaSalida: Salida[];
     public listaPedido: Pedido[];
+    public listaCliente: Cliente[];
 
     constructor(private http: HttpClient) {
     }
@@ -98,6 +100,28 @@ export class TrackingService {
             );
     }
 
+    ObtenerClienteAdmin(idAdmin: number): Promise<any> {
+        const url = this.apiUrlCliente + method.ObtenerClienteAdministrador + idAdmin;
+
+        return this.http.get<Cliente>(url, httpOptions).toPromise()
+            .then((res) => {
+
+                // const res = this.extractData(data);
+                console.log(res);
+                let cliente: Cliente[] = this.transformarDataToArrayCliente(res);
+                console.log(cliente);
+                this.listaCliente = cliente;
+                //return bls; 
+                return this.listaCliente;
+
+            },
+                (error) => {
+                    console.log(error);
+                    return null;
+                }
+            );
+    }
+
     extractData(res: any) {
         const data = res.json();
         return data;
@@ -126,6 +150,15 @@ export class TrackingService {
         data.forEach((object => {
             let pedido = new Pedido(object);
             list.push(pedido);
+        }));
+        return list;
+    }
+
+    transformarDataToArrayCliente(data) {
+        let list: Cliente[] = [];
+        data.forEach((object => {
+            let cliente = new Cliente(object);
+            list.push(cliente);
         }));
         return list;
     }

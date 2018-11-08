@@ -7,6 +7,7 @@ import { HomeComponent } from './core/home/home.component';
 import { CotizadorComponent } from './core/cotizador/cotizador.component';
 import { LoginComponent } from './core/login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { UserComponent } from './core/user/user.component';
 
 const routes: Routes = [
    {
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'tracking',
     component: TrackingComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   },
   {
     path: 'cotizador',

@@ -16,8 +16,10 @@ import { Pedido } from 'src/app/models/Pedido';
 
 
 const ROL_DATA: String[] = [
-   '-',
-   '-'
+  'SILVERTRANS TRANSITOS Y ADUANAS S.A.',
+  'BERYL CRIGHTEN',
+  'CARLOS TARGETTER',
+  'BRODY MUM'
 ];
 
 export class EntradaDef {
@@ -55,7 +57,7 @@ export class TrackingComponent implements OnInit, AfterViewInit {
 
   /*constructor() { }*/
 
-  mostrar = false; // si es admin muestra la lista de clientes
+  mostrar = true; // si es admin muestra la lista de clientes
   margen: any = '600px';
   showSpinner = true;
 
@@ -210,7 +212,6 @@ async initializeTable() {
           this.fillListInterface();
           this.dataSourceEntrada = new MatTableDataSource<EntradaDef>(this.listInterface);
           this.dataSourceEntrada.paginator = this.paginatorEntrada;
-
         }
       },
       error => {

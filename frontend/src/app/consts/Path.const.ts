@@ -14,7 +14,8 @@ export const method = {
     ObtenerBLCliente: '/ObtenerBLsCliente/',
     ObtenerEntradaCliente: '/obtenerEntradaCliente/',
     ObtenerSalidaCliente: '/obtenerSalidaCliente/',
-    ObtenerPedidoCliente: '/obtenerPedidoCliente/'
+    ObtenerPedidoCliente: '/obtenerPedidoCliente/',
+    ObtenerClienteAdministrador: '/obtenerClientesAdmin/'
 };
 export const   AppUrlBase = {
 

@@ -34,6 +34,8 @@ import { LoginComponent } from './core/login/login.component';
 import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.component';
 import { TrackingModalComponent } from './components/tracking-modal/tracking-modal.component';
 import { BLService } from '../app/shared/BL.Service';
+import { UserComponent } from './core/user/user.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { BLService } from '../app/shared/BL.Service';
     CotizadorComponent,
     LoginComponent,
     ShipperModalComponent,
-    TrackingModalComponent
+    TrackingModalComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
