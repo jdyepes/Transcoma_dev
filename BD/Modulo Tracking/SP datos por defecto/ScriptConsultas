@@ -24,6 +24,8 @@ select * from "PRODUCTO" p
 where p."_fkEntradaProducto" =1 
 and p."_descripcion" = 'PINTURA ACRILICA DUPONT FULL DESIGN'
 
+select * from "PRODUCTO" p where p._id = 295;
+
 select * from "PRODUCTO" p where p."_fkEntradaProducto" =1 ; 
 
 select count (*) from "PRODUCTO" p where p."_fkEntradaProducto" =1 ; 
@@ -164,7 +166,23 @@ update "PEDIDO" p
 set "_fechaEntrega" ='18/10/2018'
 where p."_fechaEntrega" IS null
 
+select * from "PRODUCTO" p 
+where p."_descripcion" ='EMBALAJE COMPUESTO, RECIPIENTE DE VIDRIO, CON EMBALAJE EXTERIOR DE PLÁSTICO RÍGIDO';
+
+update "PRODUCTO" p
+set "_descripcion" = 'RECIPIENTE DE VIDRIO, CON CAJA EXTERIOR DE ALUMINIO'
+where p."_descripcion" ='EMBALAJE COMPUESTO, RECIPIENTE DE VIDRIO, CON CAJA EXTERIOR DE ALUMINIO';
+
+update "PRODUCTO" p
+set "_descripcion"
+
+update "CLIENTE"
+set "_nombreUsuario" = 'COMERCIAL'
+where _id =4;
 --- Validacion de los usuarios ---
 
 select * from "CLIENTE" c where c."_nombreUsuario" like 'cmc'; 
 select * from "ADMINISTRADOR" a where a."_nombreUsuario" like 'cmc'; 
+
+select *from verificarlogincliente('cmc');
+select *from verificarloginAdministrador('PGOMEZ');

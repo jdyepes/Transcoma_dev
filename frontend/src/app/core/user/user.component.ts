@@ -35,6 +35,8 @@ export class UserComponent implements OnInit {
   listCliente: Cliente[];
   listInterface: ClienteDef[];
   selection = new SelectionModel<ClienteDef>(true, []);
+  rol: string;
+  idUsuario: string;
 
   @ViewChild('paginatorCliente') paginatorCliente: MatPaginator;
 
@@ -44,7 +46,15 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeUser();
+    this.idUsuario = localStorage.getItem('idUsuario');
+    this.rol = localStorage.getItem('rol');
+    console.log(this.rol);
+    if (this.rol === 'admin') {
+      this.initializeUser();
+    } else {
+        alert('Ud no es Administrador');
+        this.router.navigate(['/app-menu']);
+    }
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -62,7 +72,7 @@ export class UserComponent implements OnInit {
   }
 
   async initializeUser() {
-    await this.servicioTracking.ObtenerClienteAdmin(1)
+    await this.servicioTracking.ObtenerClienteAdmin((parseInt)(this.idUsuario))
       .then(
         res => {
           if (res.error) {

@@ -8,6 +8,7 @@ import { Entrada } from '../models/Entrada';
 import { Salida } from '../models/Salida';
 import { Cliente } from '../models/Cliente';
 import { Pedido } from '../models/Pedido';
+import { Administrador } from '../models/Administrador';
 
 
 const httpOptions = {
@@ -24,6 +25,8 @@ export class TrackingService {
     apiUrlSalida = AppUrlBase.appUrlBase + Path.SALIDA;
     apiUrlPedido = AppUrlBase.appUrlBase + Path.PEDIDO;
     apiUrlCliente = AppUrlBase.appUrlBase + Path.CLIENTE;
+    apiUrlLoginAdmin = AppUrlBase.appUrlBase + Path.ADMINISTRADOR;
+    apiUrlLoginCliente = AppUrlBase.appUrlBase + Path.CLIENTE;
 
     public listaEntrada: Entrada[];
     public listaSalida: Salida[];
@@ -39,12 +42,10 @@ export class TrackingService {
         return this.http.get<Entrada>(url, httpOptions).toPromise()
             .then((res) => {
 
-                // const res = this.extractData(data);
                 console.log(res);
                 let entrada: Entrada[] = this.transformarDataToArray(res);
                 console.log(entrada);
                 this.listaEntrada = entrada;
-                //return bls; 
                 return this.listaEntrada;
 
             },
@@ -61,12 +62,10 @@ export class TrackingService {
         return this.http.get<Salida>(url, httpOptions).toPromise()
             .then((res) => {
 
-                // const res = this.extractData(data);
                 console.log(res);
                 let salida: Salida[] = this.transformarDataToArraySalida(res);
                 console.log(salida);
                 this.listaSalida = salida;
-                //return bls; 
                 return this.listaSalida;
 
             },
@@ -84,12 +83,11 @@ export class TrackingService {
         return this.http.get<Pedido>(url, httpOptions).toPromise()
             .then((res) => {
 
-                // const res = this.extractData(data);
                 console.log(res);
                 let pedido: Pedido[] = this.transformarDataToArrayPedido(res);
                 console.log(pedido);
                 this.listaPedido = pedido;
-                //return bls; 
+
                 return this.listaPedido;
 
             },
@@ -106,12 +104,11 @@ export class TrackingService {
         return this.http.get<Cliente>(url, httpOptions).toPromise()
             .then((res) => {
 
-                // const res = this.extractData(data);
                 console.log(res);
                 let cliente: Cliente[] = this.transformarDataToArrayCliente(res);
                 console.log(cliente);
                 this.listaCliente = cliente;
-                //return bls; 
+
                 return this.listaCliente;
 
             },
@@ -122,9 +119,42 @@ export class TrackingService {
             );
     }
 
-    extractData(res: any) {
-        const data = res.json();
-        return data;
+    LoginAdmin(userName: string): Promise<any> {
+        const url = this.apiUrlLoginAdmin + method.verificarLoginAdmin + userName;
+
+        return this.http.get<Administrador>(url, httpOptions).toPromise()
+            .then((res) => {
+
+                console.log(res);
+                let admin: Administrador = res;
+                console.log(admin);
+                return res;
+
+            },
+                (error) => {
+                    console.log(error);
+                    return null;
+                }
+            );
+    }
+
+    LoginCliente(userName: string): Promise<any> {
+        const url = this.apiUrlLoginCliente + method.verificarLoginCliente + userName;
+
+        return this.http.get<Cliente>(url, httpOptions).toPromise()
+            .then((res) => {
+
+                console.log(res);
+                let cliente: Cliente = res;
+                console.log(cliente);
+                return res;
+
+            },
+                (error) => {
+                    console.log(error);
+                    return null;
+                }
+            );
     }
 
     transformarDataToArray(data) {

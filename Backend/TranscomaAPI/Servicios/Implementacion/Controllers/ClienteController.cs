@@ -50,7 +50,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
         }
 
         /// <summary>
-        /// Verificar si existe el Administrador mediante su nombre de usuario
+        /// Verificar si existe el cliente mediante su nombre de usuario
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
             catch (Exception e)
             {
                 logger.Error(e, e.Message);
-                throw new ExcepcionGeneral(e, DateTime.Now);
+                return BadRequest();
             }
         }
 

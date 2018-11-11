@@ -101,3 +101,14 @@
    /*vertical-align: bottom;*/
     text-align: inherit;
 }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #27d127;
+    width: 100px;
+    height: 100px;
+}
+
+::ng-deep .mat-spinner {
+position: fixed;
+fill: #000;
+}

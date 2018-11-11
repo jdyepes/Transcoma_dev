@@ -15,7 +15,9 @@ export const method = {
     ObtenerEntradaCliente: '/obtenerEntradaCliente/',
     ObtenerSalidaCliente: '/obtenerSalidaCliente/',
     ObtenerPedidoCliente: '/obtenerPedidoCliente/',
-    ObtenerClienteAdministrador: '/obtenerClientesAdmin/'
+    ObtenerClienteAdministrador: '/obtenerClientesAdmin/',
+    verificarLoginCliente: '/verificarCliente/',
+    verificarLoginAdmin: '/verificarAdministrador/'
 };
 export const   AppUrlBase = {
 

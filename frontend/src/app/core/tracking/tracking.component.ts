@@ -55,7 +55,6 @@ export class PedidoDef {
 
 export class TrackingComponent implements OnInit, AfterViewInit {
 
-  /*constructor() { }*/
 
   mostrar = true; // si es admin muestra la lista de clientes
   margen: any = '600px';
@@ -91,7 +90,9 @@ export class TrackingComponent implements OnInit, AfterViewInit {
   listInterfacePedido: PedidoDef[];
   selectionPedido = new SelectionModel<PedidoDef>(true, []);
 
-
+  /* Datos del usuario logueado */
+  idUsuario: string;
+  rol: string;
 
   @ViewChild('paginatorEntrada') paginatorEntrada: MatPaginator;
   @ViewChild('paginatorSalida') paginatorSalida: MatPaginator;
@@ -108,6 +109,8 @@ export class TrackingComponent implements OnInit, AfterViewInit {
    // this.dataSourceEntrada.paginator = this.paginatorEntrada;
    // this.dataSourceSalida.paginator = this.paginatorSalida;
    // this.dataSourcePedido.paginator = this.paginatorPedido;
+    this.idUsuario = localStorage.getItem('idUsuario');
+    this.rol = localStorage.getItem('rol');
    this.initializeTable();
   }
 
@@ -139,6 +142,12 @@ export class TrackingComponent implements OnInit, AfterViewInit {
     this.dataSourceSalida.filter = filterValue.trim().toLowerCase();
     this.dataSourcePedido.filter = filterValue.trim().toLowerCase();
   }
+
+  /*private _filter(name: string): User[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+  }*/
 
   _setDataSource(indexNumber) {
     setTimeout(() => {
@@ -201,7 +210,9 @@ fillListInterface() {
   }
 
 async initializeTable() {
-  await this.servicioTracking.ObtenerEntradaClientes(4)
+  this.idUsuario = localStorage.getItem('idUsuario');
+  this.rol = localStorage.getItem('rol');
+  await this.servicioTracking.ObtenerEntradaClientes((parseInt)(this.idUsuario))
     .then(
       res => {
         if (res.error) {
@@ -220,7 +231,7 @@ async initializeTable() {
       }
     );
 
-  await this.servicioTracking.ObtenerSalidaClientes(4)
+  await this.servicioTracking.ObtenerSalidaClientes((parseInt)(this.idUsuario))
     .then(
       res => {
         if (res.error) {
@@ -240,7 +251,7 @@ async initializeTable() {
       }
     );
 
-  await this.servicioTracking.ObtenerPedidoClientes(4)
+  await this.servicioTracking.ObtenerPedidoClientes((parseInt)(this.idUsuario))
     .then(
       res => {
         if (res.error) {

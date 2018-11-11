@@ -22,6 +22,7 @@ export class MenuComponent implements AfterViewInit {
   private menu: Menu;
   public esHome: boolean;
   public logueado: string;
+  public nombreUsuario: string;
 
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
@@ -34,9 +35,11 @@ export class MenuComponent implements AfterViewInit {
     this.initialiseModules();
     this.menu = 'menu';
     this.logueado = localStorage.getItem('login');
+    this.nombreUsuario = localStorage.getItem('usuarioLogueado');
   }
 
   ngOnInit() {
+    this.nombreUsuario = localStorage.getItem('usuarioLogueado').toUpperCase();
     if (window.location.href == window.location.origin + '/home') {
       this.esHome = false;
     } else {

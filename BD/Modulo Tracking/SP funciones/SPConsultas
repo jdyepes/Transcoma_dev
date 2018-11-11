@@ -278,7 +278,7 @@ select * from consultarAduana(2);
 select * from consultarTodasAduana();
 select * from consultarTodosAlmacenes();
 select * from consultarClientesAdministrador(10);
-select * from consultarEntradasCliente(29);
+select * from consultarEntradasCliente(1);
 select * from consultarTodasEntradas();
 select * from consultarSalidasCliente(10);
 select * from consultarTodasSalidas();

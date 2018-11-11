@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 using NLog;
 using Npgsql;
 using TranscomaAPI.Comun.Entidades;
@@ -16,6 +17,7 @@ using TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica;
 namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowAllHeaders")]///[DisableCors]
     public class AdministradorController : Controller
     {
         Logger logger = LogManager.GetLogger("fileLogger");
@@ -36,15 +38,10 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
                 
                 return Ok(respuesta);
             }
-            catch (NpgsqlException e)
-            {
-                logger.Error(e, e.Message);
-                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
-            }
             catch (Exception e)
             {
                 logger.Error(e, e.Message);
-                throw new ExcepcionGeneral(e, DateTime.Now);
+                return BadRequest();                
             }
         }
 
