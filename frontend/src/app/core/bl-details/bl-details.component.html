@@ -6,7 +6,7 @@
                         <section>
                             <label>Shipper</label>
                             <br>
-                            <textarea rows="4" cols="70" placeholder="" (click)="openDialog()" [(ngModel)]="shipper"></textarea>
+                            <textarea rows="4" cols="70" placeholder="" (click)="openDialog()"></textarea>
                            <!-- <button (click)="openDialog()">abrir </button> -->
                         </section>
                     </div>
@@ -14,7 +14,7 @@
                         <section>
                             <label>Consignee</label>
                             <br>
-                            <textarea rows="4" cols="70" placeholder=""></textarea>
+                            <textarea rows="4" cols="70" placeholder="" [(ngModel)]="consignee"></textarea>
                         </section>
                     </div>
                     <div class="row">
@@ -22,7 +22,7 @@
                                 <section>
                                     <label>Notify Party(No Claim Shall Attach For Failure To Notify)</label>
                                     <br>
-                                    <textarea rows="6" cols="70" placeholder=""></textarea>
+                                    <textarea rows="6" cols="70" placeholder="" [(ngModel)]="bl._notifyParty" [disabled]></textarea>
                                 </section>
                             </div>
                     </div>
@@ -35,7 +35,7 @@
                                     <tr>
                                         <td></td>
                                         <td>
-                                                <textarea rows="2" cols="34" placeholder=""></textarea>
+                                                <textarea rows="2" cols="34" placeholder="" [(ngModel)]="bl._lugarRecepcion" [disabled]></textarea>
                                         </td>
                                     </tr> 
                             </table>
@@ -48,10 +48,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <textarea rows="2" cols="34" placeholder=""></textarea>
+                                    <textarea rows="2" cols="34" placeholder="" [(ngModel)]="bl._buqueOceano" [disabled]></textarea>
                                 </td>
                                 <td>
-                                        <textarea rows="2" cols="33" placeholder=""></textarea>
+                                        <textarea rows="2" cols="33" placeholder="" [(ngModel)]="bl._pol._nombre" [disabled]></textarea>
                                 </td>
                             </tr>             
                     </table>
@@ -68,16 +68,16 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <textarea rows="2" cols="60" placeholder=""></textarea>
+                                    <textarea rows="2" cols="60" placeholder="" [(ngModel)]="bl._pod._nombre" [disabled]></textarea>
                                 </td>
                                 <td>
-                                    <textarea rows="2" cols="60" placeholder=""></textarea>
+                                    <textarea rows="2" cols="60" placeholder="" [(ngModel)]="bl._lugarEntrega" [disabled]></textarea>
                                 </td>
                                 <td>
-                                    <textarea rows="2" cols="40" placeholder=""></textarea>
+                                    <textarea rows="2" cols="40" placeholder="" [(ngModel)]="bl._fletePagoEn" [disabled]></textarea>
                                 </td>
                                 <td>
-                                    <textarea rows="2" cols="50" placeholder=""></textarea>
+                                    <textarea rows="2" cols="50" placeholder="" [(ngModel)]="bl._numPaquetes" [disabled]></textarea>
                                 </td>
                             </tr>             
                     </table>
@@ -99,7 +99,7 @@
                                     <textarea rows="5" cols="60" placeholder=""></textarea>
                                 </td>
                                 <td>
-                                    <textarea rows="5" cols="60" placeholder=""></textarea>
+                                    <textarea rows="5" cols="60" placeholder="" [(ngModel)]="bl._descripcion" [disabled]></textarea>
                                 </td>
                                 <td>
                                     <textarea rows="5" cols="40" placeholder=""></textarea>
@@ -116,7 +116,7 @@
                                     <td>
                                         <label>Volumen</label>
                                         <br>
-                                        <textarea rows="3" cols="40" placeholder=""></textarea>
+                                        <textarea rows="3" cols="40" placeholder="" [(ngModel)]="bl._volumen" disabled></textarea>
                                     </td> 
                             </tfoot>      
                     </table>
@@ -125,7 +125,7 @@
         </div>
         </mat-card>
         <div class="row validate-bar col-md-12 col-sm-12">
-              <button class="btnValidar">Validar</button>
+              <button class="btnValidar" (click)="agregarBL()">Validar</button>
                      
         </div>
         <div class="row footer">

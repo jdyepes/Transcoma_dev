@@ -23,7 +23,53 @@ namespace TranscomaAPI.Persistencia.Dao
 
         public void Agregar(Entidad entidad)
         {
-            throw new NotImplementedException();
+            try
+            {
+                BL bl = entidad as BL;
+
+                Conectar();
+
+                StoredProcedure("InsertarBL(@notifyParty,@lugarRecepcion,@buqueoceno,@fkpol,@fkpod,@lugarEntrega,@fletePagoEn,@numpaquetes,@descripcion,@pesocarga,@volumen,@fkcliente)");
+                AgregarParametro("notifyParty", bl.NotifyParty);
+                AgregarParametro("lugarRecepcion", bl.LugarRecepcion);
+                AgregarParametro("buqueoceno", bl.BuqueOceano);
+                AgregarParametro("fkpol", bl.Pol.Id);
+                AgregarParametro("fkpod", bl.Pod.Id);
+                AgregarParametro("lugarEntrega", bl.LugarEntrega);
+                AgregarParametro("fletePagoEn", bl.FletePagoEn);
+                AgregarParametro("numpaquetes", bl.NumPaquetes);
+                AgregarParametro("descripcion", bl.Descripcion);
+                AgregarParametro("pesocarga", bl.PesoCarga);
+                AgregarParametro("volumen", bl.Volumen);
+                AgregarParametro("fkcliente", bl.Cliente.Id);
+           
+
+                EjecutarQuery();
+            }
+            catch (NullReferenceException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionObjetoNulo(e, "Parametros nulos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (InvalidCastException e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionCasteoIncorrecto(e, "Casteo no correcto en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (NpgsqlException e)
+            {
+                logger.Error(e, e.Message);
+                throw new DaoException(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e, e.Message);
+                throw new ExcepcionGeneral(e, DateTime.Now);
+            }
+            finally
+            {
+                Desconectar();
+            }
         }
 
         public List<Entidad> ConsultarBLporCliente(Entidad idCliente)
@@ -81,7 +127,7 @@ namespace TranscomaAPI.Persistencia.Dao
             catch (NpgsqlException e)
             {
                 logger.Error(e, e.Message);
-                throw new ExcepcionBaseDeDatos(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+                throw new DaoException(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
             }
             catch (Exception e)
             {

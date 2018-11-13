@@ -3,13 +3,16 @@ export const Path={
     ADMINISTRADOR: '/Administrador',
     Cliente: '/Cliente',
     BL : '/BL',
+    PUERTO: '/Puerto',
     ADUANA: '/Aduana',
     ENTRADA: '/Entrada',
     SALIDA: '/Salida'
 }
 
 export const method={
-    ObtenerBLCliente: '/ObtenerBLsCliente/'
+    ObtenerBLCliente: '/ObtenerBLsCliente/',
+    ObtenerPuertos: '/ObtenerPuertos/',
+    AgregarBL: '/AgregarBL/'
 }
 export const   AppUrlBase={
 

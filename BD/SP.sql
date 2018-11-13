@@ -1408,3 +1408,22 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+------------------------SP insertar un bl--------------------------------------------------------
+CREATE OR REPLACE FUNCTION InsertarBL
+(notifyParty VARCHAR, lugarRecepcion VARCHAR, buqueoceno VARCHAR, fkpol integer, fkpod integer, 
+ lugarEntrega VARCHAR, fletePagoEn VARCHAR, numpaquetes integer, descripcion VARCHAR, pesocarga float,
+ volumen integer,fkcliente integer)
+RETURNS void AS
+$$
+BEGIN
+
+   INSERT INTO BL(_notifyParty, _lugarRecepcion, _buqueoceno, _fkpol, _fkpod, 
+                  _lugarEntrega, _fletePagoEn, _numpaquetes, _descripcion, _pesocarga,
+                 _volumen, _fkcliente) VALUES
+    (notifyParty, lugarRecepcion, buqueoceno, fkpol, fkpol, lugarEntrega, fletepagoen,
+     numpaquetes, descripcion, pesocarga, volumen,fkcliente);
+
+END;
+$$ LANGUAGE plpgsql;
+
+

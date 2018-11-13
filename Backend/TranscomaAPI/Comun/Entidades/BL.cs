@@ -22,7 +22,7 @@ namespace TranscomaAPI.Comun.Entidades
         private string _descripcion;
         private float _pesoCarga;
         private int _volumen;
-        private Cotizacion cotizacion;
+        private Cotizacion _cotizacion;
         private Cliente _cliente;
 
 
@@ -59,7 +59,7 @@ namespace TranscomaAPI.Comun.Entidades
             _descripcion = descripcion;
             _pesoCarga = pesoCarga;
             _volumen = volumen;
-            this.cotizacion = cotizacion;
+            this._cotizacion = cotizacion;
             _cliente = cliente;
         }
 
@@ -76,7 +76,7 @@ namespace TranscomaAPI.Comun.Entidades
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public float PesoCarga { get => _pesoCarga; set => _pesoCarga = value; }
         public int Volumen { get => _volumen; set => _volumen = value; }
-        public Cotizacion Cotizacion { get => cotizacion; set => cotizacion = value; }
+        public Cotizacion Cotizacion { get => _cotizacion; set => _cotizacion = value; }
         public Cliente Cliente { get => _cliente; set => _cliente = value; }
     }
 }

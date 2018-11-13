@@ -24,7 +24,9 @@ import { MatButtonModule,
          MatSelectModule,
          MatGridListModule,
          MatDialogModule,
-         MatProgressSpinnerModule} from '@angular/material';
+         MatProgressSpinnerModule,
+         MatExpansionModule
+        } from '@angular/material';
 import { BlDetailsComponent } from './core/bl-details/bl-details.component';
 import { TrackingComponent } from './core/tracking/tracking.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -34,6 +36,7 @@ import { LoginComponent } from './core/login/login.component';
 import { ShipperModalComponent } from './components/shipper-modal/shipper-modal.component';
 import { TrackingModalComponent } from './components/tracking-modal/tracking-modal.component';
 import { BLService } from '../app/shared/BL.Service';
+import {PuertoService} from '../app/shared/Puerto.Service';
 
 @NgModule({
   declarations: [
@@ -72,8 +75,9 @@ import { BLService } from '../app/shared/BL.Service';
     MatSelectModule,
     MatDialogModule,
     HttpModule,
-    HttpClientModule
-    MatProgressSpinnerModule
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule
   ],
   entryComponents: [
     ShipperModalComponent,
@@ -81,7 +85,8 @@ import { BLService } from '../app/shared/BL.Service';
   ],
   providers: [
     {provide: Http},
-    BLService
+    BLService,
+    PuertoService
   ],
   bootstrap: [AppComponent]
 })

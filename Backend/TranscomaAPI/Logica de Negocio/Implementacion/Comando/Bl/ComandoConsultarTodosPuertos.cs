@@ -1,5 +1,4 @@
 ﻿using NLog;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +11,36 @@ using TranscomaAPI.Persistencia.Fabrica;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
 {
-    public class ComandoConsultarBLporCliente: Comando
+    public class ComandoConsultarTodosPuertos: Comando
     {
+        private List<Entidad> _puertos;
+        Logger logger = LogManager.GetLogger("fileLogger");//logger
+        private IDaoPuerto _dao; //Dao
 
-        private Entidad _cliente;
-        private List<Entidad> _bls;
-        private IDaoBL _dao;
-
-        Logger logger = LogManager.GetLogger("fileLogger");
-
-        public ComandoConsultarBLporCliente(Entidad cliente)
+        /// <summary>
+        /// Contructor para la consulta de los pedidos de un cliente
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        public ComandoConsultarTodosPuertos()
         {
-            _bls = new List<Entidad>();
-            _dao = FabricaDao.CrearDaoBL();
-            _cliente = cliente;
+            _puertos = new List<Entidad>();
+            _dao = FabricaDao.CrearDaoPuerto();
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pedido"></param>
+        public ComandoConsultarTodosPuertos(Entidad puerto)
+        {
+            Entidad = puerto;
         }
 
         public override void Ejecutar()
         {
             try
             {
-                _bls = _dao.ConsultarBLporCliente(_cliente);
+                _puertos = _dao.ConsultarTodos();
             }
             catch (NullReferenceException e)
             {
@@ -52,16 +59,18 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
             }
         }
 
-       
         public override Entidad GetEntidad()
         {
-            return _cliente;
+            throw new NotImplementedException();
         }
-        
 
+        /// <summary>
+        /// Metodo que retorna una lista de tipo Entidad de la respuesta del metodo ejecutar().
+        /// </summary>
+        /// <returns>Una lista de tipo Entidad</returns>
         public override List<Entidad> GetEntidades()
         {
-            return _bls;
+            return _puertos;
         }
     }
 }

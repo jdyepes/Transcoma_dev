@@ -136,5 +136,24 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Fabrica
         {
             return new ComandoObtenerBLsCLiente(cliente);
         }
+
+        /// <summary>
+        /// Obtiene un lista de todos los puertos del sistema
+        /// </summary>
+        /// <returns></returns>
+        public static ComandoConsultarTodosPuertos CrearComandoConsultarTodosPuertos()
+        {
+            return new ComandoConsultarTodosPuertos();
+        }
+
+        /// <summary>
+        /// Agrega un bl 
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <returns></returns>
+        public static ComandoAgregarBL CrearComandoAgregarBL(Entidad bl)
+        {
+            return new ComandoAgregarBL(bl);
+        }
     }
 }

@@ -84,8 +84,16 @@ export class BlComponent implements OnInit {
 
   goToBlDetails(ref)
   { 
+    let blDetails: BL;
+    let listBlDetails: BL[]= [];
     console.log(ref);
-    //localStorage.setItem("bl",);
+    let blId = Number(ref);
+    console.log(blId)
+    listBlDetails = this.listBl.filter(element => element.$id === blId);
+
+    listBlDetails.forEach(row => blDetails = row)
+    localStorage.setItem("bl",JSON.stringify(blDetails));
+    
     this.router.navigate(['/bl-details']);
   }
 

@@ -15,22 +15,21 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAllHeaders")]
-    public class BLController : Controller
+    public class PuertoController : Controller
     {
         Logger logger = LogManager.GetLogger("fileLogger");
 
-        [HttpGet("ObtenerBLsCliente/{id}")]
-        public ActionResult<List<Comun.Entidades.Entidad>> ObtenerBLCliente(int id)
+        [HttpGet("ObtenerPuertos")]
+        public ActionResult<List<Comun.Entidades.Entidad>> ObtenerPuertos()
         {
             try
             {
-                Entidad cliente = FabricaEntidades.CrearCliente();
-                cliente.Id = id;
-                Comando comando = FabricaComando.CrearComandoObtenerBLsCLiente(cliente);
-                comando.Ejecutar();
-                List<Entidad> bls = comando.GetEntidades();
                 
-                return bls;
+                Comando comando = FabricaComando.CrearComandoConsultarTodosPuertos();
+                comando.Ejecutar();
+                List<Entidad> puertos = comando.GetEntidades();
+                
+                return puertos;
             } 
             catch(LogicaException e)
             {
@@ -45,28 +44,6 @@ namespace TranscomaAPI.Servicios.Implementacion.Controllers
            
         }
 
-        [HttpPost("AgregarBL")]
-        public ActionResult AgregarBL([FromBody]BL bl)
-        {
-            try
-            {
-                Comando comando = FabricaComando.CrearComandoAgregarBL(bl);
-                comando.Ejecutar();
-                return Ok();
-            }
-            catch(LogicaException e)
-            {
-                logger.Error(e, e.Message);
-                return BadRequest(e);
-            }
-            catch(Exception e)
-            {
-                logger.Error(e, e.Message);
-                return BadRequest(e);
-            }
-            
-        }
-
-
+        
     }
 }

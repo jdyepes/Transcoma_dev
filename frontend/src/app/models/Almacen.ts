@@ -1,7 +1,7 @@
 import { EntidadBase } from "./EntidadBase";
 import { Entrada } from "./Entrada";
 import { Salida } from "./Salida";
-import { Pedido } from "./Pedido";
+//import { Pedido } from "./Pedido";
 
 export class Almacen extends EntidadBase {
 
@@ -9,7 +9,7 @@ export class Almacen extends EntidadBase {
     private _direccion: string;
     private _entrada: Entrada;
     private _salida: Salida;
-    private _pedido: Pedido;
+    //private _pedido: Pedido;
 
     constructor(data?: any) {
         super();
@@ -19,7 +19,7 @@ export class Almacen extends EntidadBase {
             this.$direccion = data._direccion;
             this.$entrada = data._entrada;
             this.$salida = data._salida;
-            this.$pedido = data._pedido;
+           // this.$pedido = data._pedido;
         }
     }
 
@@ -55,12 +55,12 @@ export class Almacen extends EntidadBase {
     public set $salida(value: Salida) {
         this._salida = value;
     }
-
+/*
     public get $pedido(): Pedido {
         return this._pedido;
     }
 
     public set $pedido(value: Pedido) {
         this._pedido = value;
-    }
+    }*/
 }

@@ -13,6 +13,7 @@ namespace TranscomaAPI.Comun.Entidades
         private string _fechaSalida;
         private float _duracion;
         private float _total;
+        private List<Container> _container;
 
         public Cotizacion() { }
 
@@ -32,5 +33,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string FechaSalida { get => _fechaSalida; set => _fechaSalida = value; }
         public float Duracion { get => _duracion; set => _duracion = value; }
         public float Total { get => _total; set => _total = value; }
+        public List<Container> Container { get => _container; set => _container = value; }
     }
 }

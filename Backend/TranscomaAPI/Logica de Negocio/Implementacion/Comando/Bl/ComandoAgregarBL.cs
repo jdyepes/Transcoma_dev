@@ -1,5 +1,4 @@
 ﻿using NLog;
-using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,20 +11,20 @@ using TranscomaAPI.Persistencia.Fabrica;
 
 namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
 {
-    public class ComandoConsultarBLporCliente: Comando
+    public class ComandoAgregarBL: Comando
     {
 
-        private Entidad _cliente;
+        private Entidad _bl;
         private List<Entidad> _bls;
         private IDaoBL _dao;
 
         Logger logger = LogManager.GetLogger("fileLogger");
 
-        public ComandoConsultarBLporCliente(Entidad cliente)
+        public ComandoAgregarBL(Entidad bl)
         {
             _bls = new List<Entidad>();
             _dao = FabricaDao.CrearDaoBL();
-            _cliente = cliente;
+            _bl = bl;
 
         }
 
@@ -33,7 +32,7 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
         {
             try
             {
-                _bls = _dao.ConsultarBLporCliente(_cliente);
+                _dao.Agregar(_bl);
             }
             catch (NullReferenceException e)
             {
@@ -45,6 +44,11 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
                 logger.Error(e, e.Message);
                 throw new ExcepcionCasteoIncorrecto(e, "Casteo no correcto en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
             }
+            catch (DaoException e)
+            {
+                logger.Error(e, e.Message);
+                throw new LogicaException(e, "Error en la base de datos en: " + GetType().FullName + "." + MethodBase.GetCurrentMethod().Name + ". " + e.Message);
+            }
             catch (Exception e)
             {
                 logger.Error(e, e.Message);
@@ -52,16 +56,17 @@ namespace TranscomaAPI.Logica_de_Negocio.Implementacion.Comando.Bl
             }
         }
 
-       
+
         public override Entidad GetEntidad()
         {
-            return _cliente;
+            return _bl;
         }
-        
+
 
         public override List<Entidad> GetEntidades()
         {
             return _bls;
         }
-    }
+
+}
 }

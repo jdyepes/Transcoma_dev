@@ -13,7 +13,7 @@ import { Cliente } from '../models/Cliente';
 
 const httpOptions = {
   headers: new HttpHeaders({
-   // 'Content-Type':  'text/html',
+    'Content-Type':  'application/json',
     'Access-Control-Allow-Origin': '*'
   })
 };
@@ -57,6 +57,24 @@ export class BLService {
              this.listaBls = bls;
              //return bls; 
             return this.listaBls;
+
+         },
+         (error) => {
+             console.log(error);
+             return null;
+         }
+        );
+
+        
+        
+    }
+
+    AgregarBL(bl: BL): Promise<any> {
+        const url = this.apiUrl + method.AgregarBL;
+       return this.http.post<BL>(url,bl, {responseType: 'json'}).toPromise()
+        .then((res) =>{
+             console.log(res); 
+            return res;
 
          },
          (error) => {

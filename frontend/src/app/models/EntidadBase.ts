@@ -1,12 +1,12 @@
 export class EntidadBase {
 
-    private id: number;
+    private _id: number;
 
     public get $id(): number {
-        return this.id;
+        return this._id;
     }
 
     public set $id(value: number) {
-        this.id = value;
+        this._id = value;
     }
 }

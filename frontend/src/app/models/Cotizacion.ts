@@ -12,13 +12,13 @@ export class Cotizacion extends EntidadBase {
     constructor(data?: any) {
         super();
         if (data !== undefined) {
-            this.$id = data._id;
-            this.$Flete = data._flete;
-            this.$Recargo = data._recargo;
-            this.$GastosAdmin = data._gastosAdmin;
-            this.$FechaSalida = data._fechaSalida;
-            this.$Duracion = data._duracion;
-            this.$Total = data._total;
+            this.$id = data.id;
+            this.$Flete = data.flete;
+            this.$Recargo = data.recargo;
+            this.$GastosAdmin = data.gastosAdmin;
+            this.$FechaSalida = data.fechaSalida;
+            this.$Duracion = data.duracion;
+            this.$Total = data.total;
         }
     }
 

@@ -4,21 +4,19 @@
     <div class="row container">
     <mat-form-field appearance="standard" class="example-full-width">
       <label>ORIGEN DE LA CARGA</label>
-      <input type="text" placeholder="País, Ciudad, Puerto o codigo Postal" aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
+      <mat-select placeholder="País, Ciudad, Puerto o codigo Postal">
+          <mat-option *ngFor="let puerto of puertos" [value]="puerto" [(ngModel)]="bl._pol">
+            {{puerto._nombre}}
+          </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="standard" class="example-full-width">
       <label>DESTINO DE LA CARGA</label>
-      <input type="text" placeholder="País, Ciudad, Puerto o codigo Postal" aria-label="" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
+      <mat-select placeholder="País, Ciudad, Puerto o codigo Postal">
+          <mat-option *ngFor="let puerto of puertos" [value]="puerto" [(ngModel)]="bl._pod">
+            {{puerto._nombre}}
+          </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="standard" class="example-full-width">
       <label>¿CONTENEDOR COMPLETO O COMPARTIDO?</label>
@@ -99,21 +97,58 @@
   </div>
   </form>
 </mat-card>
-<!--<mat-card class="col-md-12">
-    <mat-card-title>Detalles Cotización </mat-card-title>
-    <div class="row">
-        <table>
-            <tr>
-                <th><label>Ocean Vessel</label></th>
-                <th><label>Port Of Loading</label></th>
-            </tr>
-            <tr>
-                <td>
-                    <textarea rows="2" cols="34" placeholder=""></textarea>
-                </td>
-                <td>
-                        <textarea rows="2" cols="33" placeholder=""></textarea>
-                </td>
-            </tr>             
-    </table>
-  </mat-card>-->
+<mat-card class="col-md-12">
+    <mat-card-title>Tarifas de Envío </mat-card-title>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>directions_boat</mat-icon> Puerto de BARCELONA (ESPAÑA)  ->
+              <mat-icon>directions_boat</mat-icon> Puerto de MADRID (ESPAÑA)  
+            </mat-panel-title>
+            <mat-panel-description>
+                216,50 €
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Siguiente salida 15/nov/2018</p>
+          <p>Duración: 7 días</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>directions_boat</mat-icon> Puerto de BARCELONA (ESPAÑA)  ->
+            <mat-icon>directions_boat</mat-icon> Puerto de MADRID (ESPAÑA)  
+          </mat-panel-title>
+          <mat-panel-description>
+            886,50 €
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+            <p>Siguiente salida 17/nov/2018</p>
+            <p>Duración: 4 días</p>
+            <p><b>Desglose de Precios</b></p>
+            <hr>
+            <p>Fletes y Recargos         206,50€</p>
+            <hr>
+            <p>Gastos Administrativos    680,00€</p>
+            <hr>
+            <p>                   TOTAL: 886,50€ <button style="float:right; color:white;" type="button" mat-button aria-label = "Toogle sidenav">
+                GENERAR BL</button></p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>directions_boat</mat-icon> Puerto de BARCELONA (ESPAÑA)  ->
+            <mat-icon>directions_boat</mat-icon> Puerto de VALENCIA (ESPAÑA)  
+          </mat-panel-title>
+          <mat-panel-description>
+          118,50 €
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+            <p>Siguiente salida 21/nov/2018</p>
+            <p>Duración: 10 días</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+  </mat-card>

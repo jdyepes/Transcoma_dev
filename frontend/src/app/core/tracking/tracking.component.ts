@@ -99,10 +99,10 @@ export interface PedidoElements {
   styleUrls: ['./tracking.component.css']
 })
 
-export class TrackingComponent implements OnInit, AfterViewInit {
+export class TrackingComponent {
 
   /*constructor() { }*/
-
+/*
   mostrar = false; // si es admin muestra la lista de clientes
   margen: any = '500px';
 
@@ -223,3 +223,4 @@ const PEDIDO_DATA: PedidoElements[] = [
   {codClientePedido: 29, fechaSolicitud: '28/01/2018', fechaEntrega: '06/02/2018', estadoPedido: 'NUEVO' ,destinatario:'A CORUÑA - C/ COPÉRNICO Nº6 (POL. IND. DE LA GRELA) EDIFICIO BCA 28. OFICINA: -1.1', codProducto: 202359, descripcion: 'EMBALAJE COMPUESTO, RECIPIENTE DE VIDRIO, CONestadoCalidad CAJA EcounterXTERIOR DE AcounterLUMINIO', lote: 'TPP0386', estadoCalidad: 'NUEVO', disponible: 'si', codAlmacen: 4, nombreAlmacen: 'HOSPITALET DE LLOBREGAT' },
   {codClientePedido: 29, fechaSolicitud: '28/01/2018', fechaEntrega: '15/10/2017', estadoPedido: 'NUEVO' ,destinatario:'A CORUÑA - C/ COPÉRNICO Nº6 (POL. IND. DE LA GRELA) EDIFICIO BCA 28. OFICINA: -1.1', codProducto: 202360, descripcion: 'EMBALAJE COMPUESTO, RECIPIENTE DE VIDRIO, CON EMBALAJE EXTERIOR DE PLÁSTICO RÍGIDO', lote: 'TPP0760', estadoCalidad: 'NUEVO', disponible: 'si', codAlmacen: 4, nombreAlmacen: 'HOSPITALET DE LLOBREGAT' },
 ];
+*/}

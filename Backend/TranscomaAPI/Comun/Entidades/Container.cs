@@ -13,12 +13,12 @@ namespace TranscomaAPI.Comun.Entidades
         private string _dimVolum;
         private int _numBultos;
         private Tipo_Container _tipoContainer;
-        private Cotizacion _cotizacion;
+
 
 
         public Container() { }
 
-        public Container(int peso, string dimPeso, int volumen, string dimVolum, int numBultos, Tipo_Container tipoContainer, Cotizacion cotizacion)
+        public Container(int peso, string dimPeso, int volumen, string dimVolum, int numBultos, Tipo_Container tipoContainer)
         {
             _peso = peso;
             _dimPeso = dimPeso;
@@ -26,7 +26,7 @@ namespace TranscomaAPI.Comun.Entidades
             _dimVolum = dimVolum;
             _numBultos = numBultos;
             _tipoContainer = tipoContainer;
-            _cotizacion = cotizacion;
+
         }
 
         public int Peso { get => _peso; set => _peso = value; }
@@ -35,6 +35,6 @@ namespace TranscomaAPI.Comun.Entidades
         public string DimVolum { get => _dimVolum; set => _dimVolum = value; }
         public int NumBultos { get => _numBultos; set => _numBultos = value; }
         public Tipo_Container TipoContainer { get => _tipoContainer; set => _tipoContainer = value; }
-        public Cotizacion Cotizacion { get => _cotizacion; set => _cotizacion = value; }
+    
     }
 }
