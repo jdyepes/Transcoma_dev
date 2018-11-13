@@ -52,8 +52,8 @@ export class UserComponent implements OnInit {
     if (this.rol === 'admin') {
       this.initializeUser();
     } else {
-        alert('Ud no es Administrador');
-        this.router.navigate(['/app-menu']);
+      this.router.navigate(['/app-menu']);
+      alert('Ud no es Administrador');
     }
   }
 

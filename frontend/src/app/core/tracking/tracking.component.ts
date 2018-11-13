@@ -56,9 +56,10 @@ export class PedidoDef {
 export class TrackingComponent implements OnInit, AfterViewInit {
 
 
-  mostrar = true; // si es admin muestra la lista de clientes
+  mostrar: boolean; // si es admin muestra la lista de clientes
   margen: any = '600px';
   showSpinner = true;
+  tabla: boolean; // ocultar la tabla
 
   displayedColumnsEntrada: string[] = ['codClienteEntrada', 'fechaEntrada', 'codProducto',
   'descripcion', 'lote', 'estado', 'disponible'];
@@ -93,6 +94,9 @@ export class TrackingComponent implements OnInit, AfterViewInit {
   /* Datos del usuario logueado */
   idUsuario: string;
   rol: string;
+  listCliente: Cliente[];
+  selectedOption: Cliente;
+  selectedValue: string;
 
   @ViewChild('paginatorEntrada') paginatorEntrada: MatPaginator;
   @ViewChild('paginatorSalida') paginatorSalida: MatPaginator;
@@ -111,7 +115,24 @@ export class TrackingComponent implements OnInit, AfterViewInit {
    // this.dataSourcePedido.paginator = this.paginatorPedido;
     this.idUsuario = localStorage.getItem('idUsuario');
     this.rol = localStorage.getItem('rol');
-   this.initializeTable();
+    if (this.rol === 'admin') {
+        this.mostrar = true;
+        this.tabla = false;
+        this.initializeUser();
+        console.log(this.selectedOption);
+    } else {
+        this.mostrar = false;
+        this.tabla = true;
+        this.initializeTable();
+    }
+  }
+
+  capturar() {
+    // Pasamos el valor seleccionado a la variable verSeleccion
+    console.log(this.selectedOption);
+    this.idUsuario = this.selectedOption.toString();
+    this.initializeTable();
+    this.tabla = true;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -271,6 +292,27 @@ async initializeTable() {
       }
     );
   this.showSpinner = false;
+  }
+
+  /** Obtiene la lista de clientes si es administrador */
+  async initializeUser() {
+    await this.servicioTracking.ObtenerClienteAdmin((parseInt)(this.idUsuario))
+      .then(
+        res => {
+          if (res.error) {
+            console.log('en caso de error', res.error);
+            alert('Error con el servicio');
+          } else {
+            this.listCliente = res;
+            console.log(this.listCliente);
+          }
+        },
+        error => {
+          console.log(error);
+          alert('Error cargando la lista de listaUsuarios');
+        }
+      );
+    this.showSpinner = false;
   }
 
   openDialog(valor: string, datos: any): void {

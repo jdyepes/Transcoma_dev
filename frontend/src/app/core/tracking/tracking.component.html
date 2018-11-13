@@ -4,8 +4,8 @@
   <br>
   <div class="row" id="menu">
       <mat-form-field style="margin-bottom: 100px; margin-left:20px; " *ngIf="mostrar">
-      <mat-select placeholder="Clientes">
-        <mat-option *ngFor="let roles of rolesList" [value]="roles">{{roles}}</mat-option>
+      <mat-select [(ngModel)]="selectedValue" [(value)]="selectedOption" placeholder="Clientes" >
+        <mat-option *ngFor="let clientes of listCliente" [value]="clientes.id" (click)="capturar()">{{clientes._nombre}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="standard" style="margin-left: 350px;" *ngIf="mostrar">
@@ -18,7 +18,7 @@
     </mat-form-field>
     <mat-spinner *ngIf="showSpinner"> </mat-spinner>
   </div>
-<mat-tab-group #tabGroup (selectedIndexChange)="_setDataSource($event)" >  
+<mat-tab-group #tabGroup (selectedIndexChange)="_setDataSource($event)" *ngIf="tabla">  
   <mat-tab label="Entrada" *ngIf="!showSpinner"> 
   <!--Entradas -->
       <table mat-table [dataSource]="dataSourceEntrada" class="mat-elevation-z8">
